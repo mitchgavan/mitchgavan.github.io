@@ -6,7 +6,12 @@
 //
 
 @import "_reset";
+@import "jeet/index";
 @import "_variables";
+
+// testing jeet
+//@include edit();
+
 // Syntax highlighting @import is at the bottom of this file
 
 /**************/
@@ -19,21 +24,21 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 16px/1.5 $merriweather;
   color: $darkGray;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
+  max-width: 960px;
   padding: 0 10px;
   width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
-  color: $darkerGray;
-  font-weight: bold;
+  font-family: $oswald;
+  color: $darkGray;
+  font-weight: normal;
 
   line-height: 1.7;
   margin: 1em 0 15px;
@@ -46,6 +51,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 30px;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
   a {
     color: inherit;
   }
@@ -210,32 +219,7 @@ img {
   }
 }
 
-nav {
-  float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
-  font-size: 18px;
 
-  @include mobile {
-    float: none;
-    margin-top: 9px;
-    display: block;
-    font-size: 16px;
-  }
-
-  a {
-    margin-left: 20px;
-    color: $darkGray;
-    text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
-
-    @include mobile {
-      margin: 0 10px;
-      color: $blue;
-    }
-  }
-}
 
 //
 // .main
@@ -283,7 +267,11 @@ footer {
   text-align: center;
 }
 
+@import "_app";
+@import "_header";
+@import "_nav";
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "_highlights";
 @import "_svg-icons";
+
