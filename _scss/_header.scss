@@ -21,8 +21,7 @@
   margin: 1.75rem 0 0.125rem;
   text-transform: uppercase;
   color: $darkerGray;
-  //letter-spacing: 0;
-  //@include font-size(24px);
+  @include font-size(24px);
 }
 
 .header--subTitle {
@@ -30,5 +29,5 @@
   color: $darkerGray;
   font-family: $robotoSlab;
   text-transform: lowercase;
-  @include font-size(18px);
+  @include font-size(20px);
 }

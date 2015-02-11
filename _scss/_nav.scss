@@ -2,12 +2,26 @@
 // NAVIGATION
 //
 
-.nav {
-	
+.header--nav {
+	// border-top: 1px solid #ddd;
+	// border-bottom: 1px solid #ddd;
 }
 
-.nav--item {
-	display: block;
-	float: right;
-	padding: 1em 1em 1em 0;
+.header--nav--item {
+	display: inline-block;
+	padding: 1.5em 0.25rem 1em;
+	font-family: $oswald;
+	@include font-size(14px);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #999;
+
+	// &:after {
+	// 	content: '/';
+	// 	padding: 0 0.068rem 0 0.25rem;
+	// }
+
+	// &:last-child:after {
+	// 	content: '';
+	// }
 }
