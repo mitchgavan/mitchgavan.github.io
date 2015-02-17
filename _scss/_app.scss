@@ -1,3 +1,7 @@
+.layoutWrapper {
+	@include center(960px, 1rem);
+}
+
 .main {
-	padding: 2rem 1rem;
+	padding: 2.5rem 0;
 }

@@ -6,10 +6,6 @@
 .header {
   padding: 4rem 1rem;
   border-bottom: 1px solid $lightGray;
-}
-
-.header--content {
-  @include center(960px);
   text-align: center;
 }
 
@@ -26,7 +22,7 @@
 
 .header--subTitle {
   margin: 0 0 1rem;
-  color: $darkerGray;
+  color: $gray;
   font-family: $robotoSlab;
   text-transform: lowercase;
   @include font-size(20px);
