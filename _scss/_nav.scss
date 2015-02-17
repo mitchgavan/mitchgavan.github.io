@@ -2,26 +2,26 @@
 // NAVIGATION
 //
 
-.header--nav {
+.nav {
 	// border-top: 1px solid #ddd;
 	// border-bottom: 1px solid #ddd;
 }
 
-.header--nav--item {
+.nav--item {
 	display: inline-block;
-	padding: 1.5em 0.25rem 1em;
+	padding: 1.5rem 1.625rem;
 	font-family: $oswald;
-	@include font-size(14px);
+	@include font-size(15px);
 	text-transform: uppercase;
-	letter-spacing: 1px;
-	color: #999;
+	color: #222;
+	transition: color 250ms;
+}
 
-	// &:after {
-	// 	content: '/';
-	// 	padding: 0 0.068rem 0 0.25rem;
-	// }
+.nav--item--icon {
+	margin: 0 auto 1rem;
+	transition: all 250ms ease-out;
+}
 
-	// &:last-child:after {
-	// 	content: '';
-	// }
+.nav--item:hover .nav--item--icon {
+	transform: rotate(35deg);
 }
