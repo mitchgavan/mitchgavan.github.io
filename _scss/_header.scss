@@ -4,9 +4,13 @@
 //
 
 .header {
-  padding: 4rem 1rem;
+  padding: 4rem 0;
   border-bottom: 1px solid $lightGray;
   text-align: center;
+
+  @include bp(large) {
+    padding: 5rem 0;
+  }
 }
 
 .header--logo {

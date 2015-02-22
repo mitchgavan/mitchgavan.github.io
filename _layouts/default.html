@@ -25,7 +25,7 @@
   <body>
         
     <header class="header">
-      <div class="layoutWrapper">
+      <div class="container">
 
         <a href="{{ site.baseurl }}/" class="header--logo">
           <img src="/images/logo.svg" alt="Mitch Gavan" width="160" height="160" />
@@ -58,17 +58,18 @@
       
 
 
-    <div id="main" role="main" class="main layoutWrapper">
-      {{ content }}
+    <div id="main" role="main" class="main">
+      <div class="container">
+        {{ content }}
+      </div>  
     </div>
 
-    <div class="wrapper-footer">
+    
+    <footer class="footer">
       <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
+        © Mitch Gavan 2015
+      </div>  
+    </footer>
 
     {% include analytics.html %}
   </body>
