@@ -9,7 +9,10 @@
   font-family: $oswald;
   text-transform: uppercase;
   letter-spacing: 1px;
-  //color: $gray;
   @include font-size(13px);
+
+  @include bp(large) {
+    padding: 3rem 0;
+  }
 }
 
