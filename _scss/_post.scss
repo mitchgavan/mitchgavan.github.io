@@ -1,0 +1,47 @@
+//
+// POST 
+//
+
+.readMore {
+	color: $grey;
+	//text-transform: uppercase;
+	//font-family: $oswald;
+	display: inline-block;
+	padding: 0.625rem 2rem;
+    border: 1px solid $lightGrey;
+    border-radius: 40px;
+    margin: 1em 0;
+    @include font-size(12px);
+    transition: 250ms;
+
+    &:hover {
+    	color: $darkGrey;
+    	border-color: $grey;
+    }
+}
+
+.posts > .post {
+  padding-bottom: 2em;
+  //border-bottom: 1px solid $lightestGrey;
+}
+
+.posts > .post:last-child {
+  padding-bottom: 1em;
+  border-bottom: none;
+}
+
+.post {
+  blockquote {
+    margin: 1.8em .8em;
+    border-left: 2px solid $grey;
+    padding: 0.1em 1em;
+    color: $grey;
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .comments {
+    margin-top: 10px;
+  }
+
+}

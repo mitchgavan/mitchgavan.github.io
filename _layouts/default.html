@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
 
     <meta name="author" content="{{ site.name }}" />
     <meta name="description" content="{{ site.description }}">
@@ -34,7 +34,6 @@
         <h2 class="header--subTitle">
           Front-end developer
         </h2>
-        
         <nav class="nav">
           <a href="{{ site.baseurl }}/" class="nav--item">
             <div class="icon-slurpee nav--item--icon"></div>
@@ -54,11 +53,7 @@
     </header>  
 
     
-      
-      
-
-
-    <div id="main" role="main" class="main">
+    <main id="main" role="main" class="main">
       <div class="container">
         {{ content }}
       </div>  
