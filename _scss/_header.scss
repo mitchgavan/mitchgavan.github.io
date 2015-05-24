@@ -4,26 +4,51 @@
 //
 
 .header {
-  padding: 3rem 0 4rem;
+  padding: 15vh 0;
   border-bottom: 1px solid $lightestGrey;
+  background: url('images/header.jpg') no-repeat;
+  background-position: -710px bottom;
+  height: 100vh;
   text-align: center;
 
+  @include bp(medium) {
+    //padding: 10% 0;
+    background-position: center bottom;
+  }
+
   @include bp(large) {
-    padding: 5rem 0;
+    //padding: 10% 0;
   }
 }
 
 .header--title {
   margin: 1.75rem 0 0.125rem;
   text-transform: uppercase;
-  color: $darkestGrey;
-  @include font-size(24px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  @include font-size(30px);
 }
 
 .header--subTitle {
   margin: 0 0 1rem;
-  color: $grey;
+  color: #513640;
   font-family: $robotoSlab;
   text-transform: lowercase;
-  @include font-size(20px);
+  opacity: 0.7;
+  @include font-size(30px);
+
+  @include bp(medium) {
+    @include font-size(50px);
+  }
+}
+
+.header--logo img {
+  width: 160px;
+  height: 160px;
+  opacity: 0.7;
+
+  @include bp(medium) {
+    width: 200px;
+    height: 200px;
+  }
 }
