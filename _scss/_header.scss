@@ -4,7 +4,7 @@
 //
 
 .header {
-  padding: 15vh 0;
+  padding: 10vh 0;
   border-bottom: 1px solid $lightestGrey;
   background: url('images/header.jpg') no-repeat;
   background-position: -710px bottom;
@@ -12,7 +12,7 @@
   text-align: center;
 
   @include bp(medium) {
-    //padding: 10% 0;
+    padding: 15vh 0;
     background-position: center bottom;
   }
 
