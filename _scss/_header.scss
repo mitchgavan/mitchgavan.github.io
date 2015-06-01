@@ -22,7 +22,13 @@
     padding: 16vh 0;
     background-position: 0 bottom;
   }
+}
 
+.header-subpage {
+  height: 350px;
+  padding: 5rem 0;
+  background-position: center;
+  background-size: cover;
 }
 
 .header--title {
@@ -32,6 +38,16 @@
   letter-spacing: 1px;
   color: rgba(255,255,255,0.7);
   @include font-size(30px);
+}
+
+.header--title-subpage {
+  margin: 1rem 0;
+  text-transform: none;
+  @include font-size(36px);
+
+  @include bp(large) {
+    @include font-size(44px);
+  }
 }
 
 .header--subTitle {
@@ -60,5 +76,13 @@
       width: 200px;
       height: 200px;
     }
+  }
+}
+
+.header--logo-subpage {
+
+  img {
+    width: 70px;
+    height: 70px;
   }
 }

@@ -3,5 +3,9 @@
 }
 
 .main {
-	padding: 2.5rem 0;
+	padding: 3.5rem 0;
+
+	@include bp(medium) {
+		padding: 5.5rem 0;
+	}
 }
