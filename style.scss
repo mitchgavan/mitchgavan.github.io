@@ -26,21 +26,20 @@ body {
 	background: $white;
   font-family: $fontBody;
   @include font-size(16px);
-  line-height: 1.8;
-  color: $darkestGrey;
+  line-height: 1.875;
+  color: $darkerGrey;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $fontHeader;
-  color: $darkestGrey;
+  color: $darkerGrey;
   font-weight: 300;
-
-  line-height: 1.5;
+  line-height: 1.25;
   margin: 1em 0 15px;
   padding: 0;
 
-  @include mobile {
-    line-height: 1.4;
+  a {
+      border: 0;
   }
 }
 
@@ -64,16 +63,19 @@ h4 {
 }
 
 p {
-  margin: 15px 0;
+  margin: 0 0 1.625rem;
 }
 
 a {
-  color: $blue;
+  color: inherit;
+  border-bottom: 2px solid $lighterGrey;
   text-decoration: none;
 	cursor: pointer;
+  transition: all 0.2s ease-in-out;
   
   &:hover, &:active {
-    color: $blue;
+    color: $orange;
+    border-bottom-color: $orange;
   }
 }
 
@@ -147,7 +149,7 @@ img {
 // IMPORTS
 //
 
-@import "_app";
+@import "_layout";
 @import "_header";
 @import "_nav";
 @import "_footer";

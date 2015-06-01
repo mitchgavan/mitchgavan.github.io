@@ -3,26 +3,23 @@
 //
 
 .readMore {
-	color: $grey;
-	//text-transform: uppercase;
-	//font-family: $oswald;
+	color: $darkGrey;
 	display: inline-block;
 	padding: 0.625rem 2rem;
-    border: 1px solid $lightGrey;
-    border-radius: 40px;
-    margin: 1em 0;
-    @include font-size(12px);
-    transition: 250ms;
+  border: 1px solid $grey;
+  border-radius: 40px;
+  margin: 1em 0;
+  @include font-size(13px);
+  transition: all 0.2s ease-in-out;
 
     &:hover {
-    	color: $darkGrey;
-    	border-color: $grey;
+    	color: $orange;
+    	border-color: $orange;
     }
 }
 
 .posts > .post {
   padding-bottom: 2em;
-  //border-bottom: 1px solid $lightestGrey;
 }
 
 .posts > .post:last-child {
