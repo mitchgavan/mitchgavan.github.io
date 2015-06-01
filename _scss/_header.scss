@@ -25,10 +25,14 @@
 }
 
 .header-subpage {
-  height: 350px;
+  height: auto;
   padding: 5rem 0;
   background-position: center;
   background-size: cover;
+
+  @include bp(large) {
+    background-position: 0 -200px;
+  }
 }
 
 .header--title {
@@ -65,7 +69,9 @@
 }
 
 .header--logo {
+  display: block;
   border: 0;
+  line-height: 1;
 
   img {
     width: 160px;
@@ -77,12 +83,5 @@
       height: 200px;
     }
   }
-}
 
-.header--logo-subpage {
-
-  img {
-    width: 70px;
-    height: 70px;
-  }
 }
