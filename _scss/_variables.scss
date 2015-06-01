@@ -21,9 +21,10 @@ $white: #fefefe;
 $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
-$openSans: 'Open Sans', sans-serif;
-$merriweather: 'Merriweather', serif;
+$fontHeader: 'Roboto', Helvetica, Arial, sans-serif;
+$fontBody: 'Merriweather', serif;
 $robotoSlab: 'Roboto Slab', serif;
+// note to mitch - use roboto thin for heading fonts ;)
 
 // Mobile breakpoints
 @mixin mobile {
