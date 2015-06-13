@@ -4,23 +4,21 @@
 
   <body>
         
-    <header class="header header-subpage">
+    <header class="headerSubpage clearfix">
 
         <a href="{{ site.baseurl }}/" class="header--logo header--logo-subpage">
-          <img src="/images/logo-orange.svg" alt="Mitch Gavan" width="40" height="40" />
+          <!-- <img src="/images/logo-orange.svg" alt="Mitch Gavan" width="40" height="40" /> -->
+          {% include svg/logo.html %} 
         </a>
 
         <!-- <nav class="nav">
           <a href="{{ site.baseurl }}/" class="nav--item">
-            <div class="icon-slurpee nav--item--icon"></div>
             Blog
           </a>
           <a href="{{ site.baseurl }}/#" class="nav--item">
-            <div class="icon-coffee nav--item--icon"></div>
-            Work
+            Projects
           </a>
           <a href="{{ site.baseurl }}/#" class="nav--item">
-            <div class="icon-drink nav--item--icon"></div>
             About
           </a>
         </nav> -->

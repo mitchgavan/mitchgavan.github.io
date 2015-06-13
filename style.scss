@@ -25,9 +25,10 @@ html {
 body {
 	background: $white;
   font-family: $fontBody;
+  font-weight: 300;
   @include font-size(16px);
-  line-height: 1.875;
-  color: $darkerGrey;
+  line-height: 2;
+  color: $darkGrey;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -118,10 +119,7 @@ img {
   max-width: none;
 }
 
-.date {
-  font-style: italic;
-  color: $grey;
-}
+
 
 // Specify the color of the selection
 ::-moz-selection {
