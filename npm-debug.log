@@ -1,0 +1,431 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'grunt-postcss',
+1 verbose cli   'autoprefixer-core',
+1 verbose cli   'csswring' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 verbose cache add [ 'grunt-postcss', null ]
+5 verbose cache add name=undefined spec="grunt-postcss" args=["grunt-postcss",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'grunt-postcss',
+6 verbose parsed url   path: 'grunt-postcss',
+6 verbose parsed url   href: 'grunt-postcss' }
+7 verbose cache add [ 'autoprefixer-core', null ]
+8 verbose cache add name=undefined spec="autoprefixer-core" args=["autoprefixer-core",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'autoprefixer-core',
+9 verbose parsed url   path: 'autoprefixer-core',
+9 verbose parsed url   href: 'autoprefixer-core' }
+10 verbose cache add [ 'csswring', null ]
+11 verbose cache add name=undefined spec="csswring" args=["csswring",null]
+12 verbose parsed url { protocol: null,
+12 verbose parsed url   slashes: null,
+12 verbose parsed url   auth: null,
+12 verbose parsed url   host: null,
+12 verbose parsed url   port: null,
+12 verbose parsed url   hostname: null,
+12 verbose parsed url   hash: null,
+12 verbose parsed url   search: null,
+12 verbose parsed url   query: null,
+12 verbose parsed url   pathname: 'csswring',
+12 verbose parsed url   path: 'csswring',
+12 verbose parsed url   href: 'csswring' }
+13 silly lockFile 002695da-grunt-postcss grunt-postcss
+14 verbose lock grunt-postcss /Users/mitchgavan/.npm/002695da-grunt-postcss.lock
+15 silly lockFile dc23453d-autoprefixer-core autoprefixer-core
+16 verbose lock autoprefixer-core /Users/mitchgavan/.npm/dc23453d-autoprefixer-core.lock
+17 silly lockFile 89d9d80e-csswring csswring
+18 verbose lock csswring /Users/mitchgavan/.npm/89d9d80e-csswring.lock
+19 silly lockFile 002695da-grunt-postcss grunt-postcss
+20 silly lockFile 002695da-grunt-postcss grunt-postcss
+21 silly lockFile dc23453d-autoprefixer-core autoprefixer-core
+22 silly lockFile dc23453d-autoprefixer-core autoprefixer-core
+23 silly lockFile 89d9d80e-csswring csswring
+24 silly lockFile 89d9d80e-csswring csswring
+25 verbose addNamed [ 'grunt-postcss', '' ]
+26 verbose addNamed [ null, '*' ]
+27 silly lockFile 3e70d9c2-grunt-postcss grunt-postcss@
+28 verbose lock grunt-postcss@ /Users/mitchgavan/.npm/3e70d9c2-grunt-postcss.lock
+29 verbose addNamed [ 'autoprefixer-core', '' ]
+30 verbose addNamed [ null, '*' ]
+31 silly lockFile 8804afec-autoprefixer-core autoprefixer-core@
+32 verbose lock autoprefixer-core@ /Users/mitchgavan/.npm/8804afec-autoprefixer-core.lock
+33 verbose addNamed [ 'csswring', '' ]
+34 verbose addNamed [ null, '*' ]
+35 silly lockFile 54af7780-csswring csswring@
+36 verbose lock csswring@ /Users/mitchgavan/.npm/54af7780-csswring.lock
+37 silly addNameRange { name: 'grunt-postcss', range: '*', hasData: false }
+38 silly addNameRange { name: 'autoprefixer-core', range: '*', hasData: false }
+39 silly addNameRange { name: 'csswring', range: '*', hasData: false }
+40 verbose url raw grunt-postcss
+41 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-postcss' ]
+42 verbose url resolved https://registry.npmjs.org/grunt-postcss
+43 info trying registry request attempt 1 at 20:43:43
+44 verbose etag "YJAZAHBLD30K69H0TPTTEIMA"
+45 http GET https://registry.npmjs.org/grunt-postcss
+46 verbose url raw autoprefixer-core
+47 verbose url resolving [ 'https://registry.npmjs.org/', './autoprefixer-core' ]
+48 verbose url resolved https://registry.npmjs.org/autoprefixer-core
+49 info trying registry request attempt 1 at 20:43:44
+50 verbose etag "46DGEPOMFLHXKERQNTRQWO6NB"
+51 http GET https://registry.npmjs.org/autoprefixer-core
+52 verbose url raw csswring
+53 verbose url resolving [ 'https://registry.npmjs.org/', './csswring' ]
+54 verbose url resolved https://registry.npmjs.org/csswring
+55 info trying registry request attempt 1 at 20:43:44
+56 verbose etag "8ID7ZQ8VP5LDOYLISTW01ZCHP"
+57 http GET https://registry.npmjs.org/csswring
+58 http 304 https://registry.npmjs.org/grunt-postcss
+59 silly registry.get cb [ 304,
+59 silly registry.get   { date: 'Sun, 14 Jun 2015 10:43:44 GMT',
+59 silly registry.get     via: '1.1 varnish',
+59 silly registry.get     'cache-control': 'max-age=60',
+59 silly registry.get     etag: '"YJAZAHBLD30K69H0TPTTEIMA"',
+59 silly registry.get     age: '19',
+59 silly registry.get     connection: 'keep-alive',
+59 silly registry.get     'x-served-by': 'cache-mel6521-MEL',
+59 silly registry.get     'x-cache': 'HIT',
+59 silly registry.get     'x-cache-hits': '1',
+59 silly registry.get     'x-timer': 'S1434278624.012609,VS0,VE0',
+59 silly registry.get     vary: 'Accept' } ]
+60 verbose etag grunt-postcss from cache
+61 silly addNameRange number 2 { name: 'grunt-postcss', range: '*', hasData: true }
+62 silly addNameRange versions [ 'grunt-postcss',
+62 silly addNameRange   [ '0.1.0', '0.2.0', '0.3.0', '0.4.0', '0.5.0', '0.5.1' ] ]
+63 verbose addNamed [ 'grunt-postcss', '0.5.1' ]
+64 verbose addNamed [ '0.5.1', '0.5.1' ]
+65 silly lockFile 18de2a15-grunt-postcss-0-5-1 grunt-postcss@0.5.1
+66 verbose lock grunt-postcss@0.5.1 /Users/mitchgavan/.npm/18de2a15-grunt-postcss-0-5-1.lock
+67 silly lockFile 18de2a15-grunt-postcss-0-5-1 grunt-postcss@0.5.1
+68 silly lockFile 18de2a15-grunt-postcss-0-5-1 grunt-postcss@0.5.1
+69 silly lockFile 3e70d9c2-grunt-postcss grunt-postcss@
+70 silly lockFile 3e70d9c2-grunt-postcss grunt-postcss@
+71 http 304 https://registry.npmjs.org/autoprefixer-core
+72 silly registry.get cb [ 304,
+72 silly registry.get   { date: 'Sun, 14 Jun 2015 10:43:44 GMT',
+72 silly registry.get     via: '1.1 varnish',
+72 silly registry.get     'cache-control': 'max-age=60',
+72 silly registry.get     etag: '"46DGEPOMFLHXKERQNTRQWO6NB"',
+72 silly registry.get     age: '0',
+72 silly registry.get     connection: 'keep-alive',
+72 silly registry.get     'x-served-by': 'cache-mel6522-MEL',
+72 silly registry.get     'x-cache': 'MISS',
+72 silly registry.get     'x-cache-hits': '0',
+72 silly registry.get     'x-timer': 'S1434278624.053109,VS0,VE956',
+72 silly registry.get     vary: 'Accept' } ]
+73 verbose etag autoprefixer-core from cache
+74 silly addNameRange number 2 { name: 'autoprefixer-core', range: '*', hasData: true }
+75 silly addNameRange versions [ 'autoprefixer-core',
+75 silly addNameRange   [ '3.0.0',
+75 silly addNameRange     '3.0.1',
+75 silly addNameRange     '3.1.0',
+75 silly addNameRange     '3.1.1',
+75 silly addNameRange     '3.1.2',
+75 silly addNameRange     '4.0.0',
+75 silly addNameRange     '4.0.1',
+75 silly addNameRange     '4.0.2',
+75 silly addNameRange     '5.0.0',
+75 silly addNameRange     '5.1.0',
+75 silly addNameRange     '5.1.1',
+75 silly addNameRange     '5.1.2',
+75 silly addNameRange     '5.1.3',
+75 silly addNameRange     '5.1.4',
+75 silly addNameRange     '5.1.5',
+75 silly addNameRange     '5.1.6',
+75 silly addNameRange     '5.1.7',
+75 silly addNameRange     '5.1.8',
+75 silly addNameRange     '5.1.9',
+75 silly addNameRange     '5.1.10',
+75 silly addNameRange     '5.1.11',
+75 silly addNameRange     '5.2.0' ] ]
+76 verbose addNamed [ 'autoprefixer-core', '5.2.0' ]
+77 verbose addNamed [ '5.2.0', '5.2.0' ]
+78 silly lockFile 147702f3-autoprefixer-core-5-2-0 autoprefixer-core@5.2.0
+79 verbose lock autoprefixer-core@5.2.0 /Users/mitchgavan/.npm/147702f3-autoprefixer-core-5-2-0.lock
+80 silly lockFile 147702f3-autoprefixer-core-5-2-0 autoprefixer-core@5.2.0
+81 silly lockFile 147702f3-autoprefixer-core-5-2-0 autoprefixer-core@5.2.0
+82 silly lockFile 8804afec-autoprefixer-core autoprefixer-core@
+83 silly lockFile 8804afec-autoprefixer-core autoprefixer-core@
+84 http 304 https://registry.npmjs.org/csswring
+85 silly registry.get cb [ 304,
+85 silly registry.get   { date: 'Sun, 14 Jun 2015 10:43:44 GMT',
+85 silly registry.get     via: '1.1 varnish',
+85 silly registry.get     'cache-control': 'max-age=60',
+85 silly registry.get     etag: '"8ID7ZQ8VP5LDOYLISTW01ZCHP"',
+85 silly registry.get     age: '0',
+85 silly registry.get     connection: 'keep-alive',
+85 silly registry.get     'x-served-by': 'cache-mel6521-MEL',
+85 silly registry.get     'x-cache': 'MISS',
+85 silly registry.get     'x-cache-hits': '0',
+85 silly registry.get     'x-timer': 'S1434278624.058964,VS0,VE1201',
+85 silly registry.get     vary: 'Accept' } ]
+86 verbose etag csswring from cache
+87 silly addNameRange number 2 { name: 'csswring', range: '*', hasData: true }
+88 silly addNameRange versions [ 'csswring',
+88 silly addNameRange   [ '0.0.1',
+88 silly addNameRange     '0.0.2',
+88 silly addNameRange     '0.0.4',
+88 silly addNameRange     '0.1.0',
+88 silly addNameRange     '0.1.1',
+88 silly addNameRange     '0.2.0',
+88 silly addNameRange     '0.2.1',
+88 silly addNameRange     '0.3.0',
+88 silly addNameRange     '1.0.0',
+88 silly addNameRange     '1.0.1',
+88 silly addNameRange     '1.1.0',
+88 silly addNameRange     '1.1.1',
+88 silly addNameRange     '1.2.0',
+88 silly addNameRange     '1.2.1',
+88 silly addNameRange     '1.2.2',
+88 silly addNameRange     '1.2.3',
+88 silly addNameRange     '1.2.4',
+88 silly addNameRange     '1.3.0',
+88 silly addNameRange     '1.3.1',
+88 silly addNameRange     '2.0.0',
+88 silly addNameRange     '2.1.0',
+88 silly addNameRange     '3.0.0',
+88 silly addNameRange     '3.0.1',
+88 silly addNameRange     '3.0.2',
+88 silly addNameRange     '3.0.3',
+88 silly addNameRange     '3.0.4',
+88 silly addNameRange     '3.0.5' ] ]
+89 verbose addNamed [ 'csswring', '3.0.5' ]
+90 verbose addNamed [ '3.0.5', '3.0.5' ]
+91 silly lockFile d92b274d-csswring-3-0-5 csswring@3.0.5
+92 verbose lock csswring@3.0.5 /Users/mitchgavan/.npm/d92b274d-csswring-3-0-5.lock
+93 silly lockFile d92b274d-csswring-3-0-5 csswring@3.0.5
+94 silly lockFile d92b274d-csswring-3-0-5 csswring@3.0.5
+95 silly lockFile 54af7780-csswring csswring@
+96 silly lockFile 54af7780-csswring csswring@
+97 silly resolved [ { name: 'grunt-postcss',
+97 silly resolved     version: '0.5.1',
+97 silly resolved     description: 'Apply several post-processors to your CSS using PostCSS',
+97 silly resolved     author: { name: 'Dmitry Nikitenko', email: 'dima.nikitenko@gmail.com' },
+97 silly resolved     repository: { type: 'git', url: 'git://github.com/nDmitry/grunt-postcss' },
+97 silly resolved     license: 'MIT',
+97 silly resolved     engines: { node: '>= 0.10.0' },
+97 silly resolved     scripts: { test: 'grunt test' },
+97 silly resolved     keywords:
+97 silly resolved      [ 'gruntplugin',
+97 silly resolved        'postcss-runner',
+97 silly resolved        'css',
+97 silly resolved        'postprocessor',
+97 silly resolved        'postcss' ],
+97 silly resolved     files: [ 'tasks', 'LICENSE' ],
+97 silly resolved     dependencies: { chalk: '^1.0.0', diff: '^1.3.2', postcss: '^4.1.8' },
+97 silly resolved     devDependencies:
+97 silly resolved      { csswring: '^3.0.3',
+97 silly resolved        grunt: '^0.4.5',
+97 silly resolved        'grunt-contrib-clean': '^0.6.0',
+97 silly resolved        'grunt-contrib-jshint': '^0.11.1',
+97 silly resolved        'grunt-contrib-nodeunit': '^0.4.0',
+97 silly resolved        'load-grunt-tasks': '^3.1.0',
+97 silly resolved        'time-grunt': '^1.1.0' },
+97 silly resolved     peerDependencies: { grunt: '^0.4.5' },
+97 silly resolved     readme: '# grunt-postcss\n[![Build Status](https://travis-ci.org/nDmitry/grunt-postcss.png?branch=master)](https://travis-ci.org/nDmitry/grunt-postcss)\n[![Dependency Status](https://david-dm.org/nDmitry/grunt-postcss.png)](https://david-dm.org/nDmitry/grunt-postcss)\n\n> Apply several post-processors to your CSS using [PostCSS](https://github.com/postcss/postcss).\n\n## Getting Started\nThis plugin requires Grunt `~0.4.0`\n\nIf you haven\'t used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you\'re familiar with that process, you may install this plugin with this command:\n\n```shell\nnpm install grunt-postcss --save-dev\n```\n\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\n\n```js\ngrunt.loadNpmTasks(\'grunt-postcss\');\n```\n\n## Usage\n\n```\n$ npm install grunt-postcss autoprefixer-core csswring\n```\n\n```js\ngrunt.initConfig({\n  postcss: {\n    options: {\n      map: true,\n      processors: [\n        require(\'autoprefixer-core\')({browsers: \'last 1 version\'}),\n        require(\'csswring\')\n      ]\n    },\n    dist: {\n      src: \'css/*.css\'\n    }\n  }\n});\n```\n\n#### Plugin specific options\n\n```js\nrequire(\'postcss-plugin\')({option: value})\n```\n\n#### options.processors\nType: `Array`\nDefault value: `[]`\n\nAn array of PostCSS compatible post-processors.\n\n#### options.map\nType: `Boolean|Object`\nDefault value: `false`\n\nIf the `map` option isn\'t defined or is set to `false`, PostCSS won\'t create or update sourcemaps.\n\nIf `true` is specified, PostCSS will try to locate a sourcemap from a previous compilation step using an annotation comment (e.g. from Sass) and create a new sourcemap based on the found one (or just create a new inlined sourcemap). The created sourcemap can be either a separate file or an inlined map depending on what the previous sourcemap was.\n\nYou can gain more control over sourcemap generation by assigning an object to the `map` option:\n\n* `prev` (string or `false`): a path to a directory where a previous sourcemap is (e.g. `path/`). By default, PostCSS will try to find a previous sourcemap using a path from the annotation comment (or using the annotation comment itself if the map is inlined). You can also set this option to `false` to delete the previous sourcemap.\n* `inline` (boolean): whether a sourcemap will be inlined or not. By default, it will be the same as a previous sourcemap or inlined.\n* `annotation` (boolean or string): indicates that PostCSS should add annotation comments to the output CSS. By default, PostCSS will always add a comment with a path to a sourcemap unless it is inlined or the input CSS does not have an annotation comment. By default, PostCSS presumes that you want to save sourcemaps next to your output CSS files, but you can ovverride this behavior and set another path as a string value for the option.\n* `sourcesContent` (boolean): whether original file contents (e.g. Sass sources) will be included to a sourcemap. By default, it\'s `true` unless a sourcemap from a previous compilation step has the original contents missing.\n\n#### options.diff\nType: `Boolean|String`\nDefault value: `false`\n\nSet it to `true` if you want to get a patch file:\n\n```js\noptions: {\n  diff: true // or \'custom/path/to/file.css.patch\'\n}\n```\nYou can also specify a path where you want the file to be saved.\n\n#### options.safe\nType: `Boolean`\nDefault value: `false`\n\nEnable or disable [PostCSS safe mode](https://github.com/postcss/postcss#safe-mode).\n\n```js\noptions: {\n  safe: true\n}\n```\n\n## Why would I use this?\n\nUnlike the traditional approach with separate plugins, grunt-postcss allows you to parse and save CSS only once applying all post-processors in memory and thus reducing your build time. PostCSS is also a simple tool for writing your own CSS post-processors.\n',
+97 silly resolved     readmeFilename: 'README.md',
+97 silly resolved     bugs: { url: 'https://github.com/nDmitry/grunt-postcss/issues' },
+97 silly resolved     homepage: 'https://github.com/nDmitry/grunt-postcss',
+97 silly resolved     _id: 'grunt-postcss@0.5.1',
+97 silly resolved     _from: 'grunt-postcss@' },
+97 silly resolved   { name: 'autoprefixer-core',
+97 silly resolved     version: '5.2.0',
+97 silly resolved     description: 'CLI-less core of Autoprefixer to use in plugins',
+97 silly resolved     keywords: [ 'autoprefixer', 'css', 'prefix', 'postcss', 'postcss-plugin' ],
+97 silly resolved     author: { name: 'Andrey Sitnik', email: 'andrey@sitnik.ru' },
+97 silly resolved     license: 'MIT',
+97 silly resolved     repository:
+97 silly resolved      { type: 'git',
+97 silly resolved        url: 'https://github.com/postcss/autoprefixer-core.git' },
+97 silly resolved     dependencies:
+97 silly resolved      { browserslist: '~0.4.0',
+97 silly resolved        num2fraction: '^1.1.0',
+97 silly resolved        'caniuse-db': '^1.0.30000181',
+97 silly resolved        postcss: '~4.1.11' },
+97 silly resolved     devDependencies:
+97 silly resolved      { 'vinyl-source-stream': '1.1.0',
+97 silly resolved        'gulp-json-editor': '2.2.1',
+97 silly resolved        'gulp-replace': '0.5.3',
+97 silly resolved        'gulp-eslint': '0.12.0',
+97 silly resolved        'gulp-coffee': '2.3.1',
+97 silly resolved        'gulp-mocha': '2.1.0',
+97 silly resolved        browserify: '10.2.1',
+97 silly resolved        'fs-extra': '0.18.4',
+97 silly resolved        should: '6.0.3',
+97 silly resolved        mocha: '2.2.5',
+97 silly resolved        gulp: '3.8.11',
+97 silly resolved        'coffee-script': '1.9.2' },
+97 silly resolved     scripts: { test: 'gulp' },
+97 silly resolved     main: 'lib/autoprefixer',
+97 silly resolved     readme: '# Autoprefixer Core [![Build Status][ci-img]][ci]\n\n<img align="right" width="94" height="71"\n     src="http://postcss.github.io/autoprefixer/logo.svg"\n     title="Autoprefixer logo by Anton Lovchikov">\n\n[PostCSS] plugin to parse CSS and add vendor prefixes using values\nfrom [Can I Use].\n\nThis is core package to build Autoprefixer plugin for some environment\n(like [grunt‑autoprefixer]). For end-user documentation, features\nand plugins list visit [main Autoprefixer] project.\n\n<a href="https://evilmartians.com/?utm_source=autoprefixer-core">\n<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">\n</a>\n\n[grunt‑autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer\n[main Autoprefixer]:  https://github.com/postcss/autoprefixer\n[Can I Use]:          http://caniuse.com/\n[PostCSS]:            https://github.com/postcss/postcss\n[ci-img]:             https://travis-ci.org/postcss/autoprefixer-core.svg\n[ci]:                 https://travis-ci.org/postcss/autoprefixer-core\n\n## Quick Example\n\nWrite your CSS rules without vendor prefixes (in fact, forget about them\nentirely):\n\n```css\n:fullscreen a {\n    display: flex\n}\n```\n\nProcess your CSS by Autoprefixer:\n\n```js\nvar autoprefixer = require(\'autoprefixer-core\');\nvar postcss      = require(\'postcss\');\n\npostcss([ autoprefixer ]).process(css).then(function (result) {\n    result.warnings().forEach(function (warn) {\n        console.warn(warn.toString());\n    });\n    console.log(result.css);\n});\n```\n\nIt will use the data based on current browser popularity and property support\nto apply prefixes for you:\n\n```css\n:-webkit-full-screen a {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex\n}\n:-moz-full-screen a {\n    display: flex\n}\n:-ms-fullscreen a {\n    display: -ms-flexbox;\n    display: flex\n}\n:fullscreen a {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex\n}\n```\n\n## Usage\n\nTo process your CSS you need to make 3 steps:\n\n1. Build plugin for your options and browsers supported in your project.\n2. Add this plugin to PostCSS processor.\n2. Process CSS through this processor.\n\nFunction `autoprefixer(options)` returns new PostCSS plugin:\n\n```js\nvar plugin = autoprefixer({ browsers: [\'> 1%\', \'IE 7\'], cascade: false });\n```\n\nThere are 4 options:\n\n* `browsers` (array): list of browsers, which are supported in your project.\n  You can directly specify browser version (like `iOS 7`) or use selections\n  (like `last 2 version` or `> 5%`). See [Browserslist docs] for available\n  queries and default value.\n* `cascade` (boolean): should Autoprefixer uses [Visual Cascade],\n  if CSS is uncompressed. Default: `true`\n* `add` (boolean): should Autoprefixer add prefixes. Default is `true`.\n* `remove` (boolean): should Autoprefixer [remove outdated] prefixes.\n  Default is `true`.\n\nPlugin object has `info()` method for [debug purpose].\n\nYou can use PostCSS processor to process several CSS files\nto increase perfomance.\n\nSee [PostCSS API] for plugin usage documentation.\nSee all [PostCSS Runner Guidelines] for best practices.\n\n[PostCSS Runner Guidelines]: https://github.com/postcss/postcss/blob/master/docs/guidelines/runner.md\n[Browserslist docs]:         https://github.com/ai/browserslist\n[remove outdated]:           https://github.com/postcss/autoprefixer/#outdated-prefixes\n[Visual Cascade]:            https://github.com/postcss/autoprefixer#visual-cascade\n[debug purpose]:             #debug\n[PostCSS API]:               https://github.com/postcss/postcss/blob/master/docs/api.md\n\n## CSS Processing\n\nMethod `process(css, opts)` from Autoprefixer processor is a PostCSS’s method.\n\nYou must set `from` and `to` options with file names to generates corrects\nsource maps and useful error messages.\n\nOptions:\n\n* `from` (path): file path to origin CSS files.\n* `to` (path): file path to future CSS file, which will\n  contain processed CSS with prefixes.\n* `safe` (boolean): enables [Safe Mode] in PostCSS. By default `false`.\n* `map` contains options for source maps:\n\n  * `inline: false` to force save map to separated file, instead of inline it\n    to CSS in special comment by base64.\n  * `prev` (string or object): map content from previous processing step\n    (like Sass compilation).\n\n  If you set `map: false`, PostCSS will remove source map.\n\nYou can read more about the source map options in [PostCSS documentation].\n\n[PostCSS documentation]: https://github.com/postcss/postcss#source-map\n[Safe Mode]:             https://github.com/postcss/postcss#safe-mode\n\n## PostCSS Chain\n\nYou parse CSS only once and then process it through array of PostCSS processors.\n\nFor example, you can use [gulp-postcss]:\n\n```js\nvar postcss    = require(\'gulp-postcss\');\nvar sourcemaps = require(\'gulp-sourcemaps\');\n\ngulp.task(\'css\', function () {\n    var processors = [\n        require(\'autoprefixer\')(\'last 1 version\'),\n        require(\'css-mqpacker\'),\n        require(\'csswring\')\n     ];\n     return gulp.src(\'./src/style.css\')\n        .pipe(sourcemaps.init())\n        .pipe(postcss(processors))\n        .pipe(sourcemaps.write(\'.\'))\n        .pipe(gulp.dest(\'./dest\'));\n});\n```\n\n[gulp-postcss]: https://github.com/w0rm/gulp-postcss\n\n## Safe Mode\n\nPostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`\noption to the `process` method, it will  parse `a {` as `a {}`:\n\n```js\nautoprefixer.process(\'a {\');                 // will throw “Unclosed block”\nautoprefixer.process(\'a {\', { safe: true }); // will process as a closed block\n```\n\nIt is useful for legacy code when using several hacks, or interactive\ntools with live input, like [Autoprefixer demo].\n\n[Autoprefixer demo]: http://simevidas.jsbin.com/gufoko/quiet\n\n## Debug\n\nYou can check which browsers are selected and which properties will be prefixed:\n\n```js\ninfo = autoprefixer({ browsers: [\'last 1 version\'] }).info();\nconsole.log(info);\n```\n',
+97 silly resolved     readmeFilename: 'README.md',
+97 silly resolved     bugs: { url: 'https://github.com/postcss/autoprefixer-core/issues' },
+97 silly resolved     homepage: 'https://github.com/postcss/autoprefixer-core',
+97 silly resolved     _id: 'autoprefixer-core@5.2.0',
+97 silly resolved     _from: 'autoprefixer-core@' },
+97 silly resolved   { name: 'csswring',
+97 silly resolved     description: 'Minify CSS file with source maps. That\'s only.',
+97 silly resolved     version: '3.0.5',
+97 silly resolved     author:
+97 silly resolved      { name: 'Kyo Nagashima',
+97 silly resolved        email: 'hail2u@gmail.com',
+97 silly resolved        url: 'https://kyonagashima.com/' },
+97 silly resolved     bin: { csswring: './bin/csswring' },
+97 silly resolved     bugs: { url: 'https://github.com/hail2u/node-csswring/issues' },
+97 silly resolved     dependencies:
+97 silly resolved      { 'fs-extra': '^0.18.0',
+97 silly resolved        minimist: '^1.1.0',
+97 silly resolved        onecolor: '^2.4.0',
+97 silly resolved        postcss: '^4.1.0' },
+97 silly resolved     devDependencies: { nodeunit: '^0.9.0' },
+97 silly resolved     files:
+97 silly resolved      [ 'README.md',
+97 silly resolved        'bin',
+97 silly resolved        'index.js',
+97 silly resolved        'lib',
+97 silly resolved        'package.json',
+97 silly resolved        'tasks',
+97 silly resolved        'test' ],
+97 silly resolved     homepage: 'https://github.com/hail2u/node-csswring',
+97 silly resolved     keywords:
+97 silly resolved      [ 'css',
+97 silly resolved        'minifier',
+97 silly resolved        'minification',
+97 silly resolved        'sourcemap',
+97 silly resolved        'source',
+97 silly resolved        'map',
+97 silly resolved        'postcss',
+97 silly resolved        'gruntplugin' ],
+97 silly resolved     license: { type: 'MIT', url: 'http://hail2u.mit-license.org/2014' },
+97 silly resolved     main: 'index.js',
+97 silly resolved     repository:
+97 silly resolved      { type: 'git',
+97 silly resolved        url: 'https://github.com/hail2u/node-csswring.git' },
+97 silly resolved     scripts: { test: 'nodeunit test' },
+97 silly resolved     readme: 'CSSWring\n========\n\nMinify CSS file with source maps. That\'s only.\n\nWritten with [PostCSS][1].\n\n\nSYNOPSIS\n--------\n\nFor readability, almost all CSS file contains a lot of white spaces, extra\nsemicolon, etc.:\n\n    .foo {\n      color: black;\n    }\n    \n    .bar {\n      margin-bottom: 0;\n      margin-left: auto;\n      margin-right: auto;\n      margin-top: 0;\n    }\n\nThis PostCSS plugin removes these non-essential parts of CSS file, like this:\n\n    .foo{color:black}.bar{margin:0 auto}\n\n\nINSTALL\n-------\n\n    $ npm install csswring\n\n\nUSAGE\n-----\n\n    #!/usr/bin/env node\n    \n    \'use strict\';\n    \n    var fs = require(\'fs\');\n    var csswring = require(\'csswring\');\n    \n    var css = fs.readFileSync(\'test.css\', \'utf8\');\n    fs.writeFileSync(\'test.min.css\', csswring.wring(css).css);\n\n\n### As PostCSS Plugin\n\n    \'use strict\';\n    \n    var fs = require(\'fs\');\n    var postcss = require(\'postcss\');\n    \n    var css = fs.readFileSync(\'test.css\', \'utf8\');\n    fs.writeFileSync(\'test.min.css\', postcss([\n      require(\'autoprefixer-core\'),\n      require(\'csswring\');\n    ]).css);\n\n\n## As CLI Program\n\nThis package also installs a command line interface.\n\n    $ node ./node_modules/.bin/csswring --help\n    Usage: csswring [options] INPUT [OUTPUT]\n    \n    Description:\n      Minify CSS file with source maps. That\'s only.\n    \n    Options:\n          --sourcemap            Create source map file.\n          --preserve-hacks       Preserve some CSS hacks.\n          --remove-all-comments  Remove all comments.\n      -h, --help                 Show this message.\n      -v, --version              Print version information.\n    \n    Use a single dash for INPUT to read CSS from standard input.\n\nWhen PostCSS failed to parse INPUT, CLI shows a CSS parse error in GNU error\nformat instead of Node.js stack trace.\n\n\n### As Grunt Plugin\n\nThis package also installs a Grunt plugin. You can enable this plugin in\n`Gruntfile.js` of your project like that:\n\n    grunt.loadNpmTasks(\'csswring\');\n\nTo minify `src/css/**/*.css` to `build/css/**/*.min.css` with source map:\n\n    grunt.initConfig({\n      csswring: {\n        options: {\n          map: true\n        },\n    \n        main: {\n          cwd: \'src/css/\',\n          dest: \'build/css/\',\n          expand: true,\n          ext: \'min.css\',\n          src: [\n            \'**/*.css\'\n          ]\n        }\n      }\n    });\n\nThe `options` is completely same as [this package options][8].\n\nThis was not tested. I suggest using [`grunt-postcss`][7].\n\n\nMINIFICATIONS\n-------------\n\nCSSWring doesn\'t remove only white spaces or comments, but also remove an\nunnecessary parts of CSS. See [minification details][2] in our GitHub Wiki.\n\n\nOPTIONS\n-------\n\n### preserveHacks\n\nBy default, CSSWring removes all unknown portion of CSS declaration that\nincludes some CSS hacks (e.g., underscore hacks and star hacks). If you want to\npreserve these hacks, pass `preserveHacks: true` to this module.\n\n    csswring({\n      preserveHacks: true\n    }).wring(css);\n\n\n### removeAllComments\n\nBy default, CSSWring keeps a comment that start with `/*!`. If you want to\nremove all comments, pass `removeAllComments: true` to this module.\n\n    csswring({\n      removeAllComments: true\n    }).wring(css);\n\n\nAPI\n---\n\n### wring(css, [options])\n\nWring `css` with specified `options`.\n\nThe second argument is optional. The `options` is same as the second argument of\nPostCSS\'s `process()` method. This is useful for generating source map.\n\n    var fs = require(\'fs\');\n    var csswring = require(\'csswring\');\n    \n    var css = fs.readFileSync(\'from.css\', \'utf8\');\n    var result = csswring.wring(css, {\n      map: {\n        inline: false\n      },\n      from: \'from.css\',\n      to: \'to.css\'\n    });\n    fs.writeFileSync(\'to.css\', result.css);\n    fs.writeFileSync(\'to.css.map\', result.map);\n\nSee also [Source Map section][3] in PostCSS document for more about this\n`options`.\n\nYou can also merge CSSWring options mentioned above to the second argument:\n\n    var result = csswring.wring(css, {\n      map: true,\n      preserveHacks: true\n    });\n\n\n### postcss\n\nReturns a [PostCSS processor][4].\n\nYou can use this property for combining with other PostCSS processors/plugins\nsuch as [Autoprefixer][5] or [postcss-url][6].\n\n    var fs = require(\'fs\');\n    var postcss = require(\'postcss\');\n    var autoprefixer = require(\'autoprefixer\');\n    var csswring = require(\'csswring\');\n    \n    var css = fs.readFileSync(\'test.css\', \'utf8\');\n    postcss().use(\n      autoprefixer.postcss\n    ).use(\n      csswring.postcss\n    ).process(css);\n\n\nLICENSE\n-------\n\nMIT: http://hail2u.mit-license.org/2014\n\n\n[1]: https://github.com/postcss/postcss\n[2]: https://github.com/hail2u/node-csswring/wiki\n[3]: https://github.com/postcss/postcss#source-map-1\n[4]: https://github.com/postcss/postcss#processor\n[5]: https://github.com/postcss/autoprefixer-core\n[6]: https://github.com/postcss/postcss-url\n[7]: https://github.com/nDmitry/grunt-postcss\n[8]: #options\n',
+97 silly resolved     readmeFilename: 'README.md',
+97 silly resolved     _id: 'csswring@3.0.5',
+97 silly resolved     _from: 'csswring@' } ]
+98 info install grunt-postcss@0.5.1 into /Users/mitchgavan/.Trash/mitchgavan-jekyll
+99 info install autoprefixer-core@5.2.0 into /Users/mitchgavan/.Trash/mitchgavan-jekyll
+100 info install csswring@3.0.5 into /Users/mitchgavan/.Trash/mitchgavan-jekyll
+101 info installOne grunt-postcss@0.5.1
+102 info installOne autoprefixer-core@5.2.0
+103 info installOne csswring@3.0.5
+104 info /Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/autoprefixer-core unbuild
+105 info /Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/csswring unbuild
+106 info /Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss unbuild
+107 info preuninstall grunt-postcss@0.5.1
+108 info uninstall grunt-postcss@0.5.1
+109 verbose tar unpack /Users/mitchgavan/.npm/autoprefixer-core/5.2.0/package.tgz
+110 silly lockFile 2337bbfe-l-node-modules-autoprefixer-core tar:///Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/autoprefixer-core
+111 verbose lock tar:///Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/autoprefixer-core /Users/mitchgavan/.npm/2337bbfe-l-node-modules-autoprefixer-core.lock
+112 silly lockFile f4032a31-oprefixer-core-5-2-0-package-tgz tar:///Users/mitchgavan/.npm/autoprefixer-core/5.2.0/package.tgz
+113 verbose lock tar:///Users/mitchgavan/.npm/autoprefixer-core/5.2.0/package.tgz /Users/mitchgavan/.npm/f4032a31-oprefixer-core-5-2-0-package-tgz.lock
+114 verbose tar unpack /Users/mitchgavan/.npm/csswring/3.0.5/package.tgz
+115 silly lockFile 906a5a61-van-jekyll-node-modules-csswring tar:///Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/csswring
+116 verbose lock tar:///Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/csswring /Users/mitchgavan/.npm/906a5a61-van-jekyll-node-modules-csswring.lock
+117 silly lockFile de0f5c8a-n-npm-csswring-3-0-5-package-tgz tar:///Users/mitchgavan/.npm/csswring/3.0.5/package.tgz
+118 verbose lock tar:///Users/mitchgavan/.npm/csswring/3.0.5/package.tgz /Users/mitchgavan/.npm/de0f5c8a-n-npm-csswring-3-0-5-package-tgz.lock
+119 verbose true,/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules,/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules unbuild grunt-postcss@0.5.1
+120 info postuninstall grunt-postcss@0.5.1
+121 silly gunzTarPerm modes [ '755', '644' ]
+122 silly gunzTarPerm modes [ '755', '644' ]
+123 silly gunzTarPerm extractEntry package.json
+124 silly gunzTarPerm extractEntry README.md
+125 silly gunzTarPerm extractEntry index.js
+126 silly gunzTarPerm extractEntry package.json
+127 silly gunzTarPerm extractEntry README.md
+128 silly gunzTarPerm extractEntry LICENSE
+129 info /Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss unbuild
+130 silly gunzTarPerm extractEntry bin/.eslintrc
+131 silly gunzTarPerm extractEntry bin/csswring
+132 silly gunzTarPerm extractEntry CHANGELOG.md
+133 silly gunzTarPerm extractEntry data/prefixes.js
+134 silly gunzTarPerm extractEntry lib/at-rule.js
+135 silly gunzTarPerm extractEntry lib/utils.js
+136 silly gunzTarPerm extractEntry lib/info.js
+137 silly gunzTarPerm extractEntry lib/old-selector.js
+138 silly gunzTarPerm extractEntry lib/declaration.js
+139 silly gunzTarPerm extractEntry lib/autoprefixer.js
+140 silly gunzTarPerm extractEntry lib/prefixes.js
+141 silly gunzTarPerm extractEntry lib/processor.js
+142 silly gunzTarPerm extractEntry lib/resolution.js
+143 silly gunzTarPerm extractEntry lib/selector.js
+144 silly gunzTarPerm extractEntry lib/browsers.js
+145 silly gunzTarPerm extractEntry lib/supports.js
+146 silly gunzTarPerm extractEntry lib/old-value.js
+147 silly gunzTarPerm extractEntry lib/value.js
+148 silly gunzTarPerm extractEntry lib/prefixer.js
+149 silly gunzTarPerm extractEntry lib/hacks/align-content.js
+150 silly gunzTarPerm extractEntry lib/hacks/filter.js
+151 silly gunzTarPerm extractEntry lib/hacks/flex-basis.js
+152 silly gunzTarPerm extractEntry lib/hacks/flex-direction.js
+153 silly gunzTarPerm extractEntry lib/hacks/flex-flow.js
+154 silly gunzTarPerm extractEntry lib/hacks/filter-value.js
+155 silly gunzTarPerm extractEntry lib/hacks/flex-shrink.js
+156 silly gunzTarPerm extractEntry lib/hacks/flex-spec.js
+157 silly gunzTarPerm extractEntry lib/hacks/flex-values.js
+158 silly gunzTarPerm extractEntry lib/hacks/flex-wrap.js
+159 silly gunzTarPerm extractEntry lib/hacks/flex.js
+160 silly gunzTarPerm extractEntry lib/hacks/fill-available.js
+161 silly gunzTarPerm extractEntry lib/hacks/fullscreen.js
+162 silly gunzTarPerm extractEntry lib/hacks/display-flex.js
+163 silly gunzTarPerm extractEntry lib/hacks/gradient.js
+164 silly gunzTarPerm extractEntry lib/hacks/break-inside.js
+165 silly gunzTarPerm extractEntry lib/hacks/image-rendering.js
+166 silly gunzTarPerm extractEntry lib/hacks/border-radius.js
+167 silly gunzTarPerm extractEntry lib/hacks/inline-logical.js
+168 silly gunzTarPerm extractEntry lib/hacks/border-image.js
+169 silly gunzTarPerm extractEntry lib/hacks/justify-content.js
+170 silly gunzTarPerm extractEntry lib/hacks/block-logical.js
+171 silly gunzTarPerm extractEntry lib/hacks/order.js
+172 silly gunzTarPerm extractEntry lib/hacks/background-size.js
+173 silly gunzTarPerm extractEntry lib/hacks/pixelated.js
+174 silly gunzTarPerm extractEntry lib/hacks/appearance.js
+175 silly gunzTarPerm extractEntry lib/hacks/placeholder.js
+176 silly gunzTarPerm extractEntry lib/hacks/align-self.js
+177 silly gunzTarPerm extractEntry lib/hacks/transform-decl.js
+178 silly gunzTarPerm extractEntry lib/hacks/align-items.js
+179 silly gunzTarPerm extractEntry lib/hacks/transform-value.js
+180 silly gunzTarPerm extractEntry lib/hacks/flex-grow.js
+181 error error rolling back Error: EACCES, unlink '/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss/node_modules/chalk/node_modules/.bin/has-ansi'
+181 error error rolling back  grunt-postcss@0.5.1 { [Error: EACCES, unlink '/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss/node_modules/chalk/node_modules/.bin/has-ansi']
+181 error error rolling back   errno: 3,
+181 error error rolling back   code: 'EACCES',
+181 error error rolling back   path: '/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss/node_modules/chalk/node_modules/.bin/has-ansi' }
+182 error Error: EACCES, unlink '/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss/node_modules/chalk/node_modules/.bin/has-ansi'
+182 error  { [Error: EACCES, unlink '/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss/node_modules/chalk/node_modules/.bin/has-ansi']
+182 error   errno: 3,
+182 error   code: 'EACCES',
+182 error   path: '/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss/node_modules/chalk/node_modules/.bin/has-ansi' }
+183 error Please try running this command again as root/Administrator.
+184 error System Darwin 14.3.0
+185 error command "node" "/usr/local/bin/npm" "install" "grunt-postcss" "autoprefixer-core" "csswring"
+186 error cwd /Users/mitchgavan/.Trash/mitchgavan-jekyll
+187 error node -v v0.10.26
+188 error npm -v 1.4.3
+189 error path /Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss/node_modules/chalk/node_modules/.bin/has-ansi
+190 error code EACCES
+191 error errno 3
+192 error stack Error: EACCES, unlink '/Users/mitchgavan/.Trash/mitchgavan-jekyll/node_modules/grunt-postcss/node_modules/chalk/node_modules/.bin/has-ansi'
+193 verbose exit [ 3, true ]
