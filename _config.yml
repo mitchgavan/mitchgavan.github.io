@@ -72,4 +72,4 @@ exclude: ['css', '_scss', 'CNAME', 'LICENSE', 'Gemfile', 'Gemfile.lock', 'node_m
     # - LICENSE
     # - README.md
 
-keep_files: ['_site/css']
+keep_files: ['css']
