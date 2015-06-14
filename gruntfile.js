@@ -24,7 +24,7 @@ module.exports = function (grunt) {
         watch: {
             sass: {
                 files: ['_scss/**/*.{scss,sass}'],
-                tasks: ['sass']
+                tasks: ['sass', 'postcss']
             }
         },
 
@@ -48,10 +48,25 @@ module.exports = function (grunt) {
             }
         },
 
+        // postcss (for autoprefixing)
+        postcss: {
+          options: {
+            map: true,
+            processors: [
+              require('autoprefixer-core')({browsers: ['last 2 versions', 'ie 9']}),
+              require('csswring')
+            ]
+          },
+          dist: {
+            src: '_site/css/*.css'
+          }
+        },
+
         // run tasks in parallel
         concurrent: {
             serve: [
                 'sass',
+                'postcss',
                 'watch',
                 'shell:jekyllServe'
             ],
@@ -70,7 +85,8 @@ module.exports = function (grunt) {
     // Register the grunt build task
     grunt.registerTask('build', [
         'shell:jekyllBuild',
-        'sass'
+        'sass',
+        'postcss'
     ]);
 
     // Register build as the default task fallback
