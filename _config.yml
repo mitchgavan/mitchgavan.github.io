@@ -65,10 +65,10 @@ sass:
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
 
-keep_files: ['css']
+keep_files: ['css', '_site/css']
 
 # Exclude these files from your production _site
-exclude: ['CNAME', 'LICENSE', 'Gemfile', 'Gemfile.lock', 'node_modules']
+exclude: ['css', '_scss', 'CNAME', 'LICENSE', 'Gemfile', 'Gemfile.lock', 'node_modules']
     # - Gemfile
     # - Gemfile.lock
     # - LICENSE
