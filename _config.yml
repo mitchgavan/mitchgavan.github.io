@@ -68,7 +68,7 @@ gems:
 keep_files: ['css']
 
 # Exclude these files from your production _site
-exclude: ['css', '_scss', 'CNAME', 'LICENSE', 'Gemfile', 'Gemfile.lock', 'node_modules']
+exclude: ['_scss', 'CNAME', 'LICENSE', 'Gemfile', 'Gemfile.lock', 'node_modules']
     # - Gemfile
     # - Gemfile.lock
     # - LICENSE
