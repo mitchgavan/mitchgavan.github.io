@@ -23,11 +23,58 @@
 	}
 }
 
-// .nav--item--icon {
-// 	margin: 0 auto 1rem;
-// 	transition: all 250ms ease-out;
-// }
+.work .nav--item-work,
+.blog .nav--item-blog,
+.wheredoibegin .nav--item-about {
+	color: $orange;
+}
 
-// .nav--item:hover .nav--item--icon {
-// 	transform: rotate(35deg) translate(0, -0.375rem);
-// }
+.iconNav {
+	margin: 0 auto;
+	padding: 3rem 0;
+	border-bottom: 1px solid $lightestGrey;
+	text-align: center;
+
+	@include bp(medium) {
+ 		padding: 5rem 0;
+ 	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	 li {
+	 	display: inline-block;
+	 	margin: 0 1.125rem;
+
+	 	@include bp(medium) {
+	 		margin: 0 3rem;
+	 	}
+	 }
+}
+
+.iconNav--item {
+	margin: 0;
+	border-bottom: 0;
+	font-family: $fontHeader;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 1px;
+	@include font-size(16px);
+
+	@include bp(medium) {
+ 		@include font-size(20px);
+ 	}
+}
+
+.iconNav--item--icon {
+	margin: 0 auto 1rem;
+	opacity: 0.85;
+	transition: all 250ms ease-out;
+}
+
+.iconNav--item:hover .iconNav--item--icon {
+	//transform: rotate(35deg) translate(0, -0.375rem);
+	transform: scale(1.2);
+}

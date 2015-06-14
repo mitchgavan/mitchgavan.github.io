@@ -68,7 +68,7 @@
   border: 0;
   line-height: 0;
 
-  img {
+  svg {
     width: 160px;
     height: 160px;
     opacity: 0.7;
@@ -76,6 +76,10 @@
     @include bp(large) {
       width: 200px;
       height: 200px;
+    }
+
+    path {
+      fill: $orange;
     }
   }
 }
@@ -89,6 +93,11 @@
 
     path {
       fill: $darkGrey;
+      transition: fill 0.2s ease-in-out;
     }
+  }
+
+  &:hover svg path {
+    fill: $orange;
   }
 }

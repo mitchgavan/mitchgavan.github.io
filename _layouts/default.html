@@ -2,26 +2,25 @@
 <html>
   {% include head.html %} 
 
-  <body>
+  <body class="{{ page.title | downcase | remove:' ' | remove:'?' }}">
         
     <header class="headerSubpage clearfix">
 
         <a href="{{ site.baseurl }}/" class="header--logo header--logo-subpage">
-          <!-- <img src="/images/logo-orange.svg" alt="Mitch Gavan" width="40" height="40" /> -->
           {% include svg/logo.html %} 
         </a>
 
-        <!-- <nav class="nav">
-          <a href="{{ site.baseurl }}/" class="nav--item">
+        <nav class="nav">
+          <a href="{{ site.baseurl }}/blog" class="nav--item nav--item-blog">
             Blog
           </a>
-          <a href="{{ site.baseurl }}/#" class="nav--item">
-            Projects
+          <a href="{{ site.baseurl }}/work" class="nav--item nav--item-work">
+            Work
           </a>
-          <a href="{{ site.baseurl }}/#" class="nav--item">
+          <a href="{{ site.baseurl }}/Where-do-I-begin/" class="nav--item nav--item-about">
             About
           </a>
-        </nav> -->
+        </nav>
 
     </header>  
 

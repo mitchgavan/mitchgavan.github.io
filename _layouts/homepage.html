@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %} 
-
   <body>
         
     <header class="header">
-
       <div class="container">
-
-        <a href="{{ site.baseurl }}/" class="header--logo">
-          <img src="/images/logo-orange.svg" alt="Mitch Gavan" width="200" height="200" />
-        </a>
+        <div class="header--logo">
+          <!-- <img src="/images/logo-orange.svg" alt="Mitch Gavan" width="200" height="200" /> -->
+          {% include svg/logo.html %} 
+        </div>
         <h1 class="header--title">{{ site.name }}</h1>
-        <h2 class="header--subTitle">
-          Front-end developer
-        </h2>
-      
+        <h2 class="header--subTitle">Front-end developer</h2>
       </div>
     </header>  
 
+    <nav class="iconNav">
+      <ul>
+        <li>
+          <a href="{{ site.baseurl }}/work" class="iconNav--item">
+            <div class="icon-coffee iconNav--item--icon"></div>
+            Work
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.baseurl }}/blog" class="iconNav--item">
+            <div class="icon-slurpee iconNav--item--icon"></div>
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.baseurl }}/Where-do-I-begin/" class="iconNav--item">
+            <div class="icon-drink iconNav--item--icon"></div>
+            About
+          </a>
+        </li> 
+      </ul>
+    </nav>
     
     <main id="main" role="main" class="main">
       <div class="container">
-
-        <nav class="iconNav">
-          <a href="/#" class="iconNav--item">
-            <div class="icon-coffee nav--item--icon"></div>
-            Work
-          </a>
-          <a href="/" class="iconNav--item">
-            <div class="icon-slurpee nav--item--icon"></div>
-            Blog
-          </a>
-          <a href="/#" class="iconNav--item">
-            <div class="icon-drink nav--item--icon"></div>
-            About
-          </a>
-        </nav>
-
-
         {{ content }}
       </div>  
     </main>
-
     
-    {% include footer.html %}    
-
+    {% include footer.html %}
     {% include analytics.html %}
   </body>
 </html>
