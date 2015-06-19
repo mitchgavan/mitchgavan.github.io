@@ -68,7 +68,7 @@
 .iconNav--item--icon {
 	margin: 0 auto 0.5rem;
 	opacity: 0.85;
-	transition: all 250ms ease-out;
+	transition: transform 0.2s ease-in-out;
 }
 
 .iconNav--item:hover .iconNav--item--icon {

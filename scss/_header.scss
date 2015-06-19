@@ -5,21 +5,29 @@
 
 .header {
   height: 100vh;
-  padding: 15vh 0;
+  padding: 18vh 0 0;
   background: #543640 url('../images/header.jpg') no-repeat;
   background-position: -460px bottom;
   text-align: center;
+  
+  @media screen and (orientation: landscape) { 
+    height: 140vh;
+    padding: 25vh 0 0;
+    background-position: -330px bottom;
+  }
 
   @media screen and (min-width: 40.063em) and (orientation: portrait) { 
-    padding: 25vh 0;
+    height: 100vh;
+    padding: 25vh 0 0;
   }
 
   @include bp(medium) {
+    height: 100vh;
     background-position: -200px bottom;
   }
 
   @include bp(large) {
-    padding: 16vh 0;
+    padding: 16vh 0 0;
     background-position: 0 bottom;
   }
 }
@@ -55,11 +63,15 @@
   font-family: $robotoSlab;
   text-transform: lowercase;
   opacity: 0.7;
-  @include font-size(26px);
+  @include font-size(24px);
 
   @include bp(medium) {
     color: #513640;
-    @include font-size(50px);
+    @include font-size(36px);
+  }
+
+  @include bp(large) {
+    @include font-size(40px);
   }
 }
 
