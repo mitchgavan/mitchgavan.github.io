@@ -35,14 +35,14 @@ module.exports = function (grunt) {
                 relativeAssets: false,
                 outputStyle: 'expanded',
                 sassDir: '_sxss',
-                cssDir: '_site/css'
+                cssDir: '/css'
             },
             build: {
                 files: [{
                     expand: true,
                     cwd: 'scss/',
                     src: ['**/*.{scss,sass}'],
-                    dest: '_site/css',
+                    dest: 'css',
                     ext: '.css'
                 }]
             }
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
             ]
           },
           dist: {
-            src: '_site/css/*.css'
+            src: 'css/*.css'
           }
         },
 
