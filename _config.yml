@@ -58,7 +58,7 @@ permalink: /:title/
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
 
-# keep_files: ['css', '_site/css']
+keep_files: [css]
 
 # Exclude these files from your production _site
 exclude: [
