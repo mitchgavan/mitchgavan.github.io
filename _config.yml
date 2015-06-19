@@ -71,10 +71,7 @@ exclude: [
   Gruntfile.js,
   node_modules,
   readme.md,
-  css,
-  _scss,
-  Gemfile,
-  Gemfile.lock
+  _scss
 ]
 
 
