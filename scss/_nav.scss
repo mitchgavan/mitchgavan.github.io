@@ -7,7 +7,7 @@
 	top: 	1.5rem;
 	right: 1rem;
 
-	@includ bp(medium) {
+	@include bp(medium) {
 		right: 1.25rem;
 	}
 }
