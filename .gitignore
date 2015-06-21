@@ -1,5 +1,4 @@
-_site 
-/_site/
+_site
 .DS_Store
 .jekyll
 .bundle
@@ -7,4 +6,3 @@ _site
 Gemfile
 Gemfile.lock
 node_modules
-css
