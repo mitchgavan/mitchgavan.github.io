@@ -27,7 +27,7 @@ module.exports = function (grunt) {
                 tasks: ['sass', 'postcss']
             },
             javascript: {
-                files: ['js/*.js'],
+                files: ['scripts/*.js'],
                 tasks: ['uglify']
             }
         },
@@ -70,7 +70,7 @@ module.exports = function (grunt) {
         uglify: {
           my_target: {
             files: {
-              '_site/js/scripts.min.js': ['js/jquery-1.11.3.js', 'js/header.js']
+              'scripts/build/scripts.min.js': ['scripts/jquery-1.11.3.js', 'scripts/header.js']
             }
           }
         },
