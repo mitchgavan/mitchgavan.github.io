@@ -70,7 +70,9 @@ module.exports = function (grunt) {
         uglify: {
           my_target: {
             files: {
-              'scripts/build/scripts.min.js': ['scripts/jquery-1.11.3.js', 'scripts/header.js']
+              'scripts/build/scripts.min.js': ['scripts/jquery-1.11.3.js', 'scripts/header.js'],
+              '_includes/scripts/enhance.min.js': ['scripts/enhance.js'],
+              '_includes/scripts/webfontloader.min.js': ['scripts/webfontloader.js']
             }
           }
         },
