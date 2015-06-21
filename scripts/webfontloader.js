@@ -1,11 +1,13 @@
-WebFontConfig = {
+var WebFontConfig = {
   google: {
     families: ['Roboto Slab:400','Roboto:100,300','Merriweather:300,400,700']
   }
 };
 
-(function(d) {
-  var wf = d.createElement('script'), s = d.scripts[0];
-    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
-    s.parentNode.insertBefore(wf, s);
- })(document);
+(function(){
+	var wf = document.createElement("script");
+	wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	wf.async = 'true';
+	document.head.appendChild(wf);
+})();
