@@ -33,9 +33,15 @@
 }
 
 .headerSubpage {
+  height: $headerHeight;
+  width: 100%;
+  position: fixed;
+  top: 0;
   padding: 1rem;
   background: $white;
   border-bottom: 1px solid $lightestGrey;
+  transition: top 0.2s ease-in-out;
+  will-change: transform;
 }
 
 .header--title {

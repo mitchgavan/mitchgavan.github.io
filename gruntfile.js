@@ -25,6 +25,10 @@ module.exports = function (grunt) {
             sass: {
                 files: ['scss/**/*.{scss,sass}'],
                 tasks: ['sass', 'postcss']
+            },
+            javascript: {
+                files: ['js/*.js'],
+                tasks: ['uglify']
             }
         },
 
@@ -34,8 +38,8 @@ module.exports = function (grunt) {
                 sourceMap: true,
                 relativeAssets: false,
                 outputStyle: 'expanded',
-                sassDir: '_sxss',
-                cssDir: '/css'
+                sassDir: 'scss',
+                cssDir: 'css'
             },
             build: {
                 files: [{
@@ -62,11 +66,21 @@ module.exports = function (grunt) {
           }
         },
 
+        // javascript minification/concatenation
+        uglify: {
+          my_target: {
+            files: {
+              '_site/js/scripts.min.js': ['js/jquery-1.11.3.js', 'js/header.js']
+            }
+          }
+        },
+
         // run tasks in parallel
         concurrent: {
             serve: [
                 'sass',
                 'postcss',
+                'uglify',
                 'watch',
                 'shell:jekyllServe'
             ],
@@ -86,7 +100,8 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'shell:jekyllBuild',
         'sass',
-        'postcss'
+        'postcss',
+        'uglify'
     ]);
 
     // Register build as the default task fallback

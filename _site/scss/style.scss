@@ -27,6 +27,10 @@ body {
   @include font-size(16px);
   line-height: 2;
   color: $darkGrey;
+
+  &.default {
+    padding-top: $headerHeight;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -150,6 +154,7 @@ img {
 @import "_footer";
 @import "_social-nav";
 @import "_post";
+@import "_state";
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "_highlights";

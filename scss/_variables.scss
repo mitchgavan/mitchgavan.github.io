@@ -26,6 +26,9 @@ $fontHeader: 'Roboto', Helvetica, Arial, sans-serif;
 $fontBody: 'Merriweather', serif;
 $robotoSlab: 'Roboto Slab', serif;
 
+// Sizes
+$headerHeight: 83px;
+
 // Mobile breakpoints
 @mixin mobile {
   @media screen and (max-width: 640px) {
