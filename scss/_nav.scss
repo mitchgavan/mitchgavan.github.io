@@ -5,7 +5,11 @@
 .nav {
 	position: absolute;
 	top: 	1.5rem;
-	right: 2rem;
+	right: 1rem;
+
+	@includ bp(medium) {
+		right: 1.25rem;
+	}
 }
 .nav--item {
 	display: inline-block;
