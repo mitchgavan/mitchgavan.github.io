@@ -25,7 +25,7 @@
 
 	// loadJS: load a JS file asynchronously. Included from https://github.com/filamentgroup/loadJS/
 	function loadJS( src ){
-		var ref = window.document.getElementsByTagName( "script" )[ 1 ];
+		var ref = window.document.getElementsByTagName( "script" )[ 0 ];
 		var script = window.document.createElement( "script" );
 		script.src = src;
 		script.async = true;
@@ -46,7 +46,7 @@
 		// If so, pass a different reference element to the `before` argument and it'll insert before that instead
 		// note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
 		var ss = window.document.createElement( "link" );
-		var ref = before || window.document.getElementById( "enhance" );
+		var ref = before || window.document.getElementsByTagName( "script" )[ 0 ];
 		var sheets = window.document.styleSheets;
 		ss.rel = "stylesheet";
 		ss.href = href;
