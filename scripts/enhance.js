@@ -46,7 +46,7 @@
 		// If so, pass a different reference element to the `before` argument and it'll insert before that instead
 		// note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
 		var ss = window.document.createElement( "link" );
-		var ref = before || window.document.getElementsByTagName( "script" )[ 0 ];
+		var ref = before || window.document.getElementById( "enhance" );
 		var sheets = window.document.styleSheets;
 		ss.rel = "stylesheet";
 		ss.href = href;
@@ -136,11 +136,11 @@
 		Once the cookie is set, the full CSS is assumed to be in cache, and the server-side templates should reference the full CSS directly from the head of the page with a link element, in place of inline critical styles.
 		*/
 	var fullCSS = getMeta( fullCSSKey );
-	if( fullCSS && !cookie( fullCSSKey ) ){
+	//if( fullCSS && !cookie( fullCSSKey ) ){
 		loadCSS( fullCSS.content );
 		// set cookie to mark this file fetched
-		cookie( fullCSSKey, "true", 7 );
-	}
+		//cookie( fullCSSKey, "true", 7 );
+	//}
 
 	/* Enhancements for qualified browsers - "Cutting the Mustard"
 		Add your qualifications for major browser experience divisions here.
