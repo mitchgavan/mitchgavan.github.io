@@ -25,7 +25,7 @@
 
 	// loadJS: load a JS file asynchronously. Included from https://github.com/filamentgroup/loadJS/
 	function loadJS( src ){
-		var ref = window.document.getElementsByTagName( "script" )[ 0 ];
+		var ref = window.document.getElementsByTagName( "script" )[ 1 ];
 		var script = window.document.createElement( "script" );
 		script.src = src;
 		script.async = true;
