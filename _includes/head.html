@@ -12,24 +12,11 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-  <meta name="fullcss" content="{{ site.baseurl }}/css/style.css">
-  <meta name="fulljs"  content="{{ site.baseurl }}/scripts/build/scripts.min.js">
-
-  <style>
-    {% include css/critical.css %}
-  </style>
-
-  <script id="enhance">
-    {% include scripts/enhance.min.js %}
-  </script>
-
   <script>
     {% include scripts/webfontloader.min.js %}
   </script>
 
-  <noscript>
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/style.css" />
-  </noscript>
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/style.css" />
 
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
