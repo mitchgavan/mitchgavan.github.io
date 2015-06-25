@@ -77,6 +77,46 @@ module.exports = function (grunt) {
           }
         },
 
+        // critical css
+        criticalcss: {
+            custom: {
+                options: {
+                    url: "http://0.0.0.0:4000/",
+                    width: 1920,
+                    height: 1080,
+                    outputfile: "_includes/css/critical.css",
+                    filename: "css/style.css", // Using path.resolve( path.join( ... ) ) is a good idea here
+                    buffer: 800*1024,
+                    ignoreConsole: false
+                }
+            }
+        },
+
+        // svg optimizer
+        svgmin: {
+            options: {
+                plugins: [{
+                    removeViewBox: false
+                }, {
+                    removeUselessStrokeAndFill: false
+                }, {
+                    convertPathData: {
+                        straightCurves: false // advanced SVGO plugin option
+                    }
+                }]
+            },
+            dist: {                     // Target
+                files: [{               // Dictionary of files
+                    expand: true,       // Enable dynamic expansion.
+                    cwd: 'images/',     // Src matches are relative to this path.
+                    src: ['**/*.svg'],  // Actual pattern(s) to match.
+                    dest: 'images/',       // Destination path prefix.
+                    ext: '.svg'     // Dest filepaths will have this extension.
+                    // ie: optimise img/src/branding/logo.svg and store it in img/branding/logo.min.svg
+                }]
+            }
+        },
+
         // run tasks in parallel
         concurrent: {
             serve: [
