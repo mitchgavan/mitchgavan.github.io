@@ -6,7 +6,7 @@ layout: homepage
   {% for post in site.posts %}
     <article class="post">    
       
-      <h1 class="post--title">
+      <h2 class="post--title">
       	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </h1>
 
@@ -15,7 +15,7 @@ layout: homepage
 	  </div>
 
       <div class="post--content">
-        {{ post.content | truncatewords:75}}
+        {{ post.content | truncatewords:70}}
       </div>
       
       <a href="{{ site.baseurl }}{{ post.url }}" class="button">Read more →</a>

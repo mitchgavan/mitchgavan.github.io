@@ -55,15 +55,15 @@ h1 {
 }
 
 h2 {
-  font-size: 24px;
+  @include font-size(34px);
 }
 
 h3 {
-  font-size: 20px;
+  @include font-size(24px);
 }
 
 h4 {
-  font-size: 18px;
+  @include font-size(20px);
 }
 
 p {
