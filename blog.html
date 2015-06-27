@@ -8,9 +8,11 @@ title: Blog
   {% for post in site.posts %}
     <article class="post">    
       
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
+      <h1 class="post--title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+      <div class="post--date">
+	    Posted on {{ post.date | date: "%B %e, %Y" }}
+	  </div>
+      <div class="post--content">
         {{ post.content | truncatewords:70}}
       </div>
       

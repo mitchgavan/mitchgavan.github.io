@@ -119,3 +119,9 @@
     fill: $orange;
   }
 }
+
+.banner {
+  height: 64vh;
+  background: #543640 url('../images/header-about.jpg') no-repeat;
+  background-size: cover;
+}

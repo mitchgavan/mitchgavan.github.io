@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: about
 title: Where do I begin?
 ---
 

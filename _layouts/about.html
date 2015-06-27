@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %} 
+
+  <body class="default {{ page.title | downcase | remove:' ' | remove:'?' }}">
+        
+    <header id="nav" class="headerSubpage clearfix">
+
+        <a href="{{ site.baseurl }}/" class="header--logo header--logo-subpage">
+          {% include svg/logo.html %} 
+        </a>
+
+        <nav class="nav">
+          <a href="{{ site.baseurl }}/blog" class="nav--item nav--item-blog">
+            Blog
+          </a>
+          <a href="{{ site.baseurl }}/work" class="nav--item nav--item-work">
+            Work
+          </a>
+          <a href="{{ site.baseurl }}/Where-do-I-begin/" class="nav--item nav--item-about">
+            About
+          </a>
+        </nav>
+
+    </header>  
+
+    <div class="banner"></div>
+
+    <main id="main" role="main" class="main">
+      <div class="container">
+        <article class="post">
+          <h1 class="post--title">{{ page.title }}</h1>
+          <div class="post--date">
+            Posted on {{ page.date | date: "%B %e, %Y" }}
+          </div>
+          {{ content }}
+
+          {% include disqus.html disqus_identifier=page.disqus_identifier %}
+        </article>
+    </main>
+
+    
+    {% include footer.html %}    
+    {% include analytics.html %}
+  </body>
+</html>
