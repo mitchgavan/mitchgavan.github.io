@@ -2,22 +2,6 @@
 // POST 
 //
 
-.readMore {
-	color: $darkGrey;
-	display: inline-block;
-	padding: 0.5rem 1.875rem;
-  border: 1px solid $grey;
-  border-radius: 44px;
-  margin: 1em 0;
-  @include font-size(13px);
-  transition: all 0.2s ease-in-out;
-
-    &:hover {
-    	color: $orange;
-    	border-color: $orange;
-    }
-}
-
 .posts > .post {
   padding-bottom: 4rem;
 }
@@ -27,24 +11,8 @@
   border-bottom: none;
 }
 
-.post {
-  blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $grey;
-    padding: 0.1em 1em;
-    color: $grey;
-    font-size: 22px;
-    font-style: italic;
-  }
-
-  .comments {
-    margin-top: 10px;
-  }
-
-}
-
 .post--title {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .post--date {
@@ -52,3 +20,14 @@
   margin-bottom: 1.75rem;
   @include font-size(14px);
 }
+
+blockquote {
+  margin: 1.8em .8em;
+  border-left: 2px solid $grey;
+  padding: 0.1em 1em;
+  font-style: italic;
+}
+
+// .comments {
+//   margin-top: 10px;
+// }

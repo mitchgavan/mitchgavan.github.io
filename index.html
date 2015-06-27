@@ -6,13 +6,19 @@ layout: homepage
   {% for post in site.posts %}
     <article class="post">    
       
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+      <h1 class="post--title">
+      	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </h1>
+
+      <div class="post--date">
+	    Posted on {{ post.date | date: "%B %e, %Y" }}
+	  </div>
 
       <div class="entry">
-        {{ post.content | truncatewords:90}}
+        {{ post.content | truncatewords:75}}
       </div>
       
-      <a href="{{ site.baseurl }}{{ post.url }}" class="readMore">Read more →</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="button">Read more →</a>
     </article>
   {% endfor %}
 </div>
