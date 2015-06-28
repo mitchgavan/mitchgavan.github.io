@@ -1,6 +1,7 @@
 ---
 layout: about
 title: Where do I begin?
+description: I've finally managed to get my own blog up and running. I hope the content on here helps other developers/designers in some way or another. 
 ---
 
 Welcome to my new website! I've finally managed to get my own blog up and running. Because seriously, what kind of person who creates for the web doesn't have one? Anyway, I hope the content on here helps other developers/designers in some way or another. 
