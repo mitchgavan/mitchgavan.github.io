@@ -5,18 +5,20 @@
 
 .header {
   height: 100vh;
+  padding: 18vh 0 0;
   background: #543640 url('../images/header.jpg') no-repeat;
   background-position: -500px bottom;
   text-align: center;
-  position: relative;
   
   @media screen and (orientation: landscape) { 
     height: 140vh;
+    padding: 25vh 0 0;
     background-position: -330px bottom;
   }
 
   @media screen and (min-width: 40.063em) and (orientation: portrait) { 
     height: 100vh;
+    padding: 25vh 0 0;
   }
 
   @include bp(medium) {
@@ -25,6 +27,7 @@
   }
 
   @include bp(large) {
+    padding: 16vh 0 0;
     background-position: 0 bottom;
   }
 }
@@ -39,15 +42,6 @@
   border-bottom: 1px solid $lightestGrey;
   transition: top 0.2s ease-in-out;
   will-change: transform;
-}
-
-.header--container {
-  position: absolute;
-  width: 100%;
-  padding: 1rem;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .header--title {
