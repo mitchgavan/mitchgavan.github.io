@@ -2,9 +2,9 @@
 <html>
   {% include head.html %} 
 
-  <body class="default {{ page.title | downcase | remove:' ' | remove:'?' }}">
+  <body class="{{ page.title | downcase | remove:' ' | remove:'?' }}">
         
-    <header id="nav" class="headerSubpage clearfix">
+    <header id="nav" class="headerSubpage headerSubpage-transparent clearfix">
 
         <a href="{{ site.baseurl }}/" class="header--logo header--logo-subpage">
           {% include svg/logo.html %} 
@@ -24,7 +24,7 @@
 
     </header>  
 
-    <div class="banner"></div>
+    <div id="banner" class="banner"></div>
 
     <main id="main" role="main" class="main">
       <div class="container">

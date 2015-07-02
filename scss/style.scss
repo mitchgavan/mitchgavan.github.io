@@ -27,6 +27,7 @@ body {
   @include font-size(16px);
   line-height: 2;
   color: $darkGrey;
+  text-size-adjust: none;
 
   &.default {
     padding-top: $headerHeight;

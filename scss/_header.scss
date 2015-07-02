@@ -40,8 +40,13 @@
   padding: 1rem;
   background: $white;
   border-bottom: 1px solid $lightestGrey;
-  transition: top 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   will-change: transform;
+}
+
+.headerSubpage-transparent {
+  background: transparent;
+  border-bottom: 0;  
 }
 
 .header--title {
@@ -112,12 +117,18 @@
     path {
       fill: $darkGrey;
       transition: fill 0.2s ease-in-out;
+
+      .headerSubpage-transparent & {
+        fill: $white;
+      }
     }
   }
 
   &:hover svg path {
     fill: $orange;
   }
+
+
 }
 
 .banner {

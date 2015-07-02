@@ -2,8 +2,11 @@
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
-var $navbar = $('#nav')
+var $body = $('body');
+var $navbar = $('#nav');
+var $banner = $('#banner');
 var navbarHeight = $navbar.outerHeight();
+var bannerHeight = $banner.outerHeight();
 var test;
 
 
@@ -30,11 +33,18 @@ function hasScrolled() {
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
         $navbar.addClass('is-navUp');
+        
     } else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {
-            $navbar.removeClass('is-navUp');
-        }
+            $navbar.removeClass('is-navUp headerSubpage-transparent');
+
+            if (st < bannerHeight && !$body.hasClass('default')) {
+                $navbar.addClass('headerSubpage-transparent');
+            }
+
+            
+        } 
     }
     
     lastScrollTop = st;
