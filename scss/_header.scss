@@ -41,6 +41,7 @@
   background: $white;
   border-bottom: 1px solid $lightestGrey;
   transition: all 0.2s ease-in-out;
+  z-index: 99;
   will-change: transform;
 }
 

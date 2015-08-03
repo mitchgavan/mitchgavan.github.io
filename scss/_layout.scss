@@ -2,10 +2,33 @@
 	@include center(740px, 1rem);
 }
 
+.containerWide {
+	@include center(1200px, 1rem);
+}
+
+.col-2 {
+	
+	@include bp(medium) {
+		@include col(1/2, 0, 2, 0, 5);
+	}
+}
+
 .main {
 	padding: 3.5rem 0;
 
 	@include bp(medium) {
 		padding: 5.5rem 0;
 	}
+}
+
+.center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
 }

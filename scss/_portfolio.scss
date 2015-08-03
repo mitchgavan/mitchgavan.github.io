@@ -1,0 +1,82 @@
+//
+// Portfolio 
+//
+
+.pageTitle {
+  margin: 0 0 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  @include font-size(18px);
+
+  @include bp(medium) {
+    margin: 0 0 5rem;
+  }
+}
+
+.projectTitle {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.item {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.item--hero {
+  display: block;
+  position: relative;
+  margin-bottom: 2rem;
+  border: 0;
+  overflow: hidden;
+
+  img {
+    display: block;
+  }
+
+  &:hover .item--hero--overlay {
+    background-color: rgba(255,255,255,0.8)
+  }
+
+  &:hover .item--hero--overlay--cta {
+    opacity: 1;
+  }
+}
+
+.item--hero--overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.item--hero--overlay--cta {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: $darkerGrey;
+  font-family: $fontHeader;
+  text-transform: uppercase;
+  @include font-size(20px);
+}
+
+.item--title {
+  margin-bottom: 0.75rem;
+  @include font-size(26px);
+}
+
+.item--description {
+  @include font-size(14px);
+  color: $grey;
+}
+
+.screenshot {
+  margin: 2rem 0 3.5rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2)
+}
