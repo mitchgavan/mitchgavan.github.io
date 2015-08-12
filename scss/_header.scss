@@ -5,6 +5,7 @@
 
 .header {
   height: 100vh;
+  min-height: 480px;
   padding: 18vh 0 0;
   background: #543640 url('../images/header.jpg') no-repeat;
   background-position: -500px bottom;
@@ -136,4 +137,45 @@
   height: 64vh;
   background: #543640 url('../images/header-about.jpg') no-repeat;
   background-size: cover;
+}
+
+// Bouncing Arrow
+
+.header--arrow {
+  display: none;
+
+  @include bp(large) {
+    display: block;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+    background: url('../images/chevron-down.svg') no-repeat;
+    background-size: contain;
+    opacity: 0.7;
+    border: 0;
+
+    //TODO move to placeholder
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.bounce {
+  animation: bounce 3s infinite 2s;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
 }
