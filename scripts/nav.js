@@ -27,8 +27,10 @@ var NavToggle = (function () {
         }
     };
 
-    if ($body.hasClass('default')) {
+    clearInterval(scrollInterval);
+    clearInterval(scrollIntervalAlt);
 
+    if ($body.hasClass('default')) {
         var scrollInterval = setInterval(checkScroll, 250);
 
     } else {
