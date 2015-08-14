@@ -1,22 +1,21 @@
-$(document).ready(function() {
+var NavToggle = (function () {
 
-    // Hide nav on on scroll down
     var didScroll;
     var lastScrollTop = 0;
     var delta = 5;
     var $body = $('body');
     var $navbar = $('#nav');
     var navbarHeight = $navbar.outerHeight();
+    var $banner = $('#banner');
+    var bannerHeight = $banner.outerHeight();
 
-
-    $(window).scroll(function(event){
+    var bindScrollAction = $(window).scroll(function(event){
         didScroll = true;
     });
 
-
     if ($body.hasClass('default')) {
 
-        setInterval(function() {
+        var checkScroll = setInterval(function() {
             if (didScroll) {
                 hasScrolled();
                 didScroll = false;
@@ -25,19 +24,16 @@ $(document).ready(function() {
 
     } else {
 
-        var $banner = $('#banner');
-        var bannerHeight = $banner.outerHeight();
-
-        setInterval(function() {
+        var checkScrollAlt = setInterval(function() {
             if (didScroll) {
-                hasScrolledDefault();
+                hasScrolledAlt();
                 didScroll = false;
             }
         }, 250);
 
     }
 
-    function hasScrolled() {
+    var hasScrolled = function() {
         var st = $(this).scrollTop();
         
         // Make sure they scroll more than delta
@@ -58,9 +54,9 @@ $(document).ready(function() {
         }
         
         lastScrollTop = st;
-    }
+    };
 
-    function hasScrolledDefault() {
+    var hasScrolledAlt = function() {
         var st = $(this).scrollTop();
         
         // Make sure they scroll more than delta
@@ -87,20 +83,4 @@ $(document).ready(function() {
         lastScrollTop = st;
     }
 
-    // Smooth Page Scrolling TODO: move to seperate file
-    $(function() {
-      $('a[href*=#]:not([href=#])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-          if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top
-            }, 1000);
-            return false;
-          }
-        }
-      });
-});
-    
 });
