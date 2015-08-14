@@ -1,5 +1,6 @@
 var NavToggle = (function () {
 
+    var didScroll;
     var lastScrollTop = 0;
     var delta = 5;
     var $body = $('body');
@@ -8,14 +9,28 @@ var NavToggle = (function () {
     var $banner = $('#banner');
     var bannerHeight = $banner.outerHeight();
 
+    var bindScrollAction = $(window).scroll(function(event){
+        didScroll = true;
+    });
+
     if ($body.hasClass('default')) {
-        $(window).scroll(function(event){
-            hasScrolled();
-        });
+
+        var checkScroll = setInterval(function() {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
     } else {
-        $(window).scroll(function(event){
-            hasScrolledAlt();
-        });
+
+        var checkScrollAlt = setInterval(function() {
+            if (didScroll) {
+                hasScrolledAlt();
+                didScroll = false;
+            }
+        }, 250);
+
     }
 
     var hasScrolled = function() {
