@@ -13,23 +13,27 @@ var NavToggle = (function () {
         didScroll = true;
     });
 
+    var checkScroll = function() {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    };
+
+    var checkScrollAlt = function() {
+        if (didScroll) {
+            hasScrolledAlt();
+            didScroll = false;
+        }
+    };
+
     if ($body.hasClass('default')) {
 
-        var checkScroll = setInterval(function() {
-            if (didScroll) {
-                hasScrolled();
-                didScroll = false;
-            }
-        }, 250);
+        var scrollInterval = setInterval(checkScroll, 250);
 
     } else {
 
-        var checkScrollAlt = setInterval(function() {
-            if (didScroll) {
-                hasScrolledAlt();
-                didScroll = false;
-            }
-        }, 250);
+        var scrollIntervalAlt = setInterval(checkScrollAlt, 250);
 
     }
 
