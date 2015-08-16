@@ -28,7 +28,7 @@ module.exports = function (grunt) {
             },
             javascript: {
                 files: ['scripts/*.js'],
-                tasks: ['uglify']
+                tasks: ['jshint', 'uglify']
             }
         },
 
@@ -67,10 +67,13 @@ module.exports = function (grunt) {
         },
 
         // javascript minification/concatenation
+        jshint: {
+          all: ['scripts/*.js']
+        },
         uglify: {
           my_target: {
             files: {
-              'scripts/build/scripts.min.js': ['scripts/jquery-1.11.3.js', 'scripts/fastclick.js', 'scripts/nav.js', 'scripts/smooth-page-scroll.js', 'scripts/global.js'],
+              'scripts/build/scripts.min.js': ['scripts/lib/jquery-1.11.3.js', 'scripts/lib/fastclick.js', 'scripts/nav.js', 'scripts/smooth-page-scroll.js', 'scripts/global.js'],
               '_includes/scripts/enhance.min.js': ['scripts/enhance.js'],
               '_includes/scripts/webfontloader.min.js': ['scripts/webfontloader.js']
             }
@@ -122,6 +125,7 @@ module.exports = function (grunt) {
             serve: [
                 'sass',
                 'postcss',
+                'jshint',
                 'uglify',
                 'watch',
                 'shell:jekyllServe'
@@ -143,6 +147,7 @@ module.exports = function (grunt) {
         'shell:jekyllBuild',
         'sass',
         'postcss',
+        'jshint',
         'uglify'
     ]);
 
