@@ -11,15 +11,16 @@
 		right: 1.25rem;
 	}
 }
+
 .nav--item {
 	display: inline-block;
 	margin: 0 0 0 1.125rem;
+	border: 0;
 	font-family: $fontHeader;
 	font-weight: 300;
 	@include font-size(14px);
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	border: 0;
 	color: $darkerGrey;
 
 	&:hover {

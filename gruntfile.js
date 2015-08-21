@@ -70,6 +70,7 @@ module.exports = function (grunt) {
         jshint: {
           all: ['scripts/*.js']
         },
+        
         uglify: {
           my_target: {
             files: {

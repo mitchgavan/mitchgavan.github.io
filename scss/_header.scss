@@ -44,6 +44,7 @@
   transition: all 0.2s ease-in-out;
   z-index: 99;
   will-change: transform;
+  @extend %clearfix;
 }
 
 .headerSubpage-transparent {

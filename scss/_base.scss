@@ -1,27 +1,13 @@
-
 //
-// BASE IMPORTS
+// BASE RULES 
 //
-
-@import "_reset";
-@import "jeet/index";
-@import "_variables";
-
-// testing jeet
-//@include edit();
-
-// Syntax highlighting @import is at the bottom of this file
-
-/**************/
-/* BASE RULES */
-/**************/
 
 html {
   font-size: 100%;
 }
 
 body {
-	background: $white;
+  background: $white;
   font-family: $fontBody;
   font-weight: 300;
   @include font-size(16px);
@@ -75,7 +61,7 @@ a {
   color: inherit;
   border-bottom: 2px solid $lighterGrey;
   text-decoration: none;
-	cursor: pointer;
+  cursor: pointer;
   transition: all 0.2s ease-in-out;
   
   &:hover, &:active {
@@ -131,35 +117,3 @@ img {
   color: $black;
   background: $lightestGrey;
 }
-
-// Nicolas Gallagher's micro clearfix hack
-// http://nicolasgallagher.com/micro-clearfix-hack/
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-
-//
-// IMPORTS
-//
-
-@import "_layout";
-@import "_header";
-@import "_nav";
-@import "_footer";
-@import "_social-nav";
-@import "_post";
-@import "_buttons";
-@import "_portfolio";
-@import "_state";
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-@import "_highlights";
-@import "_svg-icons";
-
