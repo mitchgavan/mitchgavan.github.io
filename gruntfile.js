@@ -155,7 +155,8 @@ module.exports = function (grunt) {
                 'jshint',
                 'uglify',
                 'watch',
-                'newer:imagemin',
+                'newer:imagemin:bitmaps',
+                'newer:imagemin:svgs',
                 'delete_sync',
                 'shell:jekyllServe'
             ],
