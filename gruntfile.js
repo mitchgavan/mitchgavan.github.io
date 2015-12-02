@@ -31,16 +31,12 @@ module.exports = function (grunt) {
                 tasks: ['jshint', 'uglify']
             },
             bitmapimages: {
-                files: ['_images/**/*.{png,jpg,gif}'],
+                files: ['images/**/*.{png,jpg,gif}'],
                 tasks: ['newer:imagemin:bitmaps'],
             },
             svgimages: {
-                files: ['_svg/**/*.svg'],
+                files: ['images/**/*.svg'],
                 tasks: ['newer:imagemin:svgs'],
-            },
-            deletesync: {
-                files: ['_svg/**/*.svg', '_images/**/*.{png,jpg,gif}'],
-                tasks: ['delete_sync'],
             }
         },
 
@@ -113,9 +109,9 @@ module.exports = function (grunt) {
             bitmaps: {
                 files: [{
                     expand: true,                 
-                    cwd: '_images/',                  
+                    cwd: 'images/',                  
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: '_site/images/'
+                    dest: 'images/'
                 }]
             },
             svgs: {
@@ -127,23 +123,10 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,                
-                    cwd: '_svg/',             
+                    cwd: 'images/',             
                     src: ['**/*.svg'],
-                    dest: '_site/svg/'               
+                    dest: 'images/'               
                 }]
-            }
-        },
-
-        delete_sync: {
-            bitmaps: {
-                cwd: '_site/images',
-                src: ['**/*'],
-                syncWith: '_images'
-            },
-            svgs: {
-                cwd: '_site/svg',
-                src: ['**/*'],
-                syncWith: '_svg'
             }
         },
 
@@ -154,10 +137,9 @@ module.exports = function (grunt) {
                 'postcss',
                 'jshint',
                 'uglify',
-                'watch',
                 'newer:imagemin:bitmaps',
                 'newer:imagemin:svgs',
-                'delete_sync',
+                'watch',
                 'shell:jekyllServe'
             ],
             options: {
@@ -179,8 +161,7 @@ module.exports = function (grunt) {
         'postcss',
         'jshint',
         'uglify',
-        'imagemin',
-        'delete_sync'
+        'imagemin'
     ]);
 
     // Register build as the default task fallback
