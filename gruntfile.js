@@ -179,7 +179,7 @@ module.exports = function (grunt) {
         'postcss',
         'jshint',
         'uglify',
-        'newer:imagemin',
+        'imagemin',
         'delete_sync'
     ]);
 
