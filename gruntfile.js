@@ -29,6 +29,18 @@ module.exports = function (grunt) {
             javascript: {
                 files: ['scripts/*.js'],
                 tasks: ['jshint', 'uglify']
+            },
+            bitmapimages: {
+                files: ['_images/**/*.{png,jpg,gif}'],
+                tasks: ['newer:imagemin:bitmaps'],
+            },
+            svgimages: {
+                files: ['_svg/**/*.svg'],
+                tasks: ['newer:imagemin:svgs'],
+            },
+            deletesync: {
+                files: ['_svg/**/*.svg', '_images/**/*.{png,jpg,gif}'],
+                tasks: ['delete_sync'],
             }
         },
 
@@ -96,28 +108,42 @@ module.exports = function (grunt) {
             }
         },
 
-        // svg optimizer
-        svgmin: {
-            options: {
-                plugins: [{
-                    removeViewBox: false
-                }, {
-                    removeUselessStrokeAndFill: false
-                }, {
-                    convertPathData: {
-                        straightCurves: false // advanced SVGO plugin option
-                    }
+        // Image Tasks
+        imagemin: {   
+            bitmaps: {
+                files: [{
+                    expand: true,                 
+                    cwd: '_images/',                  
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: '_site/images/'
                 }]
             },
-            dist: {                     // Target
-                files: [{               // Dictionary of files
-                    expand: true,       // Enable dynamic expansion.
-                    cwd: 'images/',     // Src matches are relative to this path.
-                    src: ['**/*.svg'],  // Actual pattern(s) to match.
-                    dest: 'images/',       // Destination path prefix.
-                    ext: '.svg'     // Dest filepaths will have this extension.
-                    // ie: optimise img/src/branding/logo.svg and store it in img/branding/logo.min.svg
+            svgs: {
+                options: {
+                    svgoPlugins: [
+                        { removeViewBox: false }, 
+                        { removeUselessStrokeAndFill: false }
+                    ]
+                },
+                files: [{
+                    expand: true,                
+                    cwd: '_svg/',             
+                    src: ['**/*.svg'],
+                    dest: '_site/svg/'               
                 }]
+            }
+        },
+
+        delete_sync: {
+            bitmaps: {
+                cwd: '_site/images',
+                src: ['**/*'],
+                syncWith: '_images'
+            },
+            svgs: {
+                cwd: '_site/svg',
+                src: ['**/*'],
+                syncWith: '_svg'
             }
         },
 
@@ -129,6 +155,8 @@ module.exports = function (grunt) {
                 'jshint',
                 'uglify',
                 'watch',
+                'newer:imagemin',
+                'delete_sync',
                 'shell:jekyllServe'
             ],
             options: {
@@ -149,7 +177,9 @@ module.exports = function (grunt) {
         'sass',
         'postcss',
         'jshint',
-        'uglify'
+        'uglify',
+        'newer:imagemin',
+        'delete_sync'
     ]);
 
     // Register build as the default task fallback
