@@ -6,7 +6,7 @@ description: I've finally managed to get my own blog up and running. I hope the 
 
 Welcome to my new website! I've finally managed to get my own blog up and running. Because seriously, what kind of person who creates for the web doesn't have one? Anyway, I hope the content on here helps other developers/designers in some way or another. 
 
-I guess I’ll introduce myself a little; I’m currently working as a front-end developer at the Fernwood Fitness head office in Melbourne. We have a great IT team that is working on multiple customer facing and internal projects at this time. Working along side a number of experienced professionals for around two years now, has allowed me to improve my skills immensely. When I first joined the team I could barely score a point in the table tennis games - now each game is an intensely fought battle down to the wire.
+I guess I’ll introduce myself a little; I’m currently working as a front-end developer at the Fernwood Fitness head office in Melbourne. We have a great IT team that is always working on multiple customer facing and internal projects. Working along side a number of experienced professionals since mid 2013 has allowed me to improve my skills immensely. When I first joined the team I could barely score a point in the table tennis games - now each game is an intensely fought battle down to the wire.
 
 In all of our projects we follow the agile development process. From the estimation sessions to the code reviews it is a pretty well structured development environment that is gratifying to be a part of. It is also where I was first introduced to a Github workflow and have never looked back. This site is built with Github's [Jekyll](http://jekyllrb.com/)!
 
