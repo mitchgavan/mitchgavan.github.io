@@ -189,8 +189,7 @@ table {
 /**
  * Apply a clearfix to an element.
  */
-.headerSubpage:after,
-.headerSubpage:before {
+.headerSubpage:after, .headerSubpage:before {
   content: "";
   display: table;
 }
@@ -749,7 +748,7 @@ img {
 }
 
 blockquote {
-  margin: 1.8em 0.8em;
+  margin: 1.8em .8em;
   border-left: 2px solid #666;
   padding: 0.1em 1em;
   font-style: italic;
