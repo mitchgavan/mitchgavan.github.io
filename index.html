@@ -2,8 +2,10 @@
 layout: homepage
 ---
 
+<h2 class="pageTitle">Recent Posts</h1>
+
 <div class="posts">
-  {% for post in site.posts %}
+  {% for post in site.posts limit: 5 %}
     <article class="post">    
       
       <h2 class="post--title">
