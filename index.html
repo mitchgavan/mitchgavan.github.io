@@ -2,7 +2,7 @@
 layout: homepage
 ---
 
-<h2 class="pageTitle">Recent Posts</h1>
+<h2 class="pageTitle">Recent Posts</h2>
 
 <div class="posts">
   {% for post in site.posts limit: 5 %}
@@ -25,4 +25,8 @@ layout: homepage
       <a href="{{ site.baseurl }}{{ post.url }}" class="button">Read more →</a>
     </article>
   {% endfor %}
+</div>
+
+<div class="center">
+  <a href="{{ site.baseurl }}/blog">More posts&hellip;</a>
 </div>
