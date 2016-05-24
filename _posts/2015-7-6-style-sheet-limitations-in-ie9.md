@@ -2,6 +2,7 @@
 layout: post
 title: Style sheet limitations in IE9
 description: I recently came across some limitations with Internet Explorer 9 that don’t seem to be documented very clearly anywhere, which caused a bit of a headache after spending way too much time trying to debug.
+image: /images/posts/ie9-limitations.jpg
 ---
 
 With Microsoft’s new browser ‘Edge’ about to be released, it’s an exciting time for web developers. Millions of users are going to update to Windows 10, where Edge will be the default browser. That’s great news for everybody, but in most cases our job will still require us to support older browsers for the time being. I recently came across some limitations with Internet Explorer 9 that don’t seem to be documented very clearly anywhere. And it caused a bit of a headache to say the least, after spending way too much time trying to debug.

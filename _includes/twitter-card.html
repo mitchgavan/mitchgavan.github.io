@@ -1,0 +1,20 @@
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ site.footer-links.twitter }}">
+{% if page.title %}
+  <meta name="twitter:title" content="{{ page.title }}">
+{% else %}
+  <meta name="twitter:title" content="{{ site.name }}">
+{% endif %}
+{% if page.url %}
+  <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+{% endif %}
+{% if page.description %}
+  <meta name="twitter:description" content="{{ page.description }}">
+{% else %}
+  <meta name="twitter:description" content="{{ site.description }}">
+{% endif %}
+{% if page.image %}
+  <meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
+{% else %}
+  <meta name="twitter:image" content="{{ site.url }}/images/banner.jpg">
+{% endif %}

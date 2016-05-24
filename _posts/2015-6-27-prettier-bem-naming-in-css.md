@@ -2,6 +2,7 @@
 layout: post
 title: Prettier BEM naming in CSS
 description: Our team decided to go with a variation of BEM that still has all of the same benefits, but I believe is a little more visually pleasing. 
+image: /images/posts/bem-css.jpg
 ---
 
 Naming conventions are just as important in CSS as they are in JavaScript or any other language. The Block, Element, Modifier methodology (BEM) is a naming convention for classes in HTML and CSS. Its goal is to help developer’s write more predictable and maintainable code. It has become very popular as of late, with its value becoming evident to anyone that has implemented it in a large project. BEM is obviously not the only way to go, there are other popular methodologies out there such as [SMACSS](https://smacss.com) and [OOCSS](http://oocss.org). It is up to the development team to choose a method that works for them, and be consistent. Our team decided to go with a variation of BEM that still has all of the same benefits, but I believe is a little more visually pleasing.

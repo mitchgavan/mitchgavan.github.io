@@ -21,6 +21,10 @@
   @include font-size(14px);
 }
 
+.post--image {
+  margin: 1rem 0;
+}
+
 blockquote {
   margin: 1.8em .8em;
   border-left: 2px solid $grey;

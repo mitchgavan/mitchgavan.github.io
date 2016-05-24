@@ -2,6 +2,7 @@
 layout: post
 title: Speed up your workflow with LibSass and Autoprefixer
 description: I recently switched one of our large projects from Ruby Sass and Compass to LibSass and Autoprefixer, resulting in drastic improvements to compilation time. 
+image: /images/posts/libsass-autoprefixer.jpg
 ---
 
 LibSass is a C/C++ port of the Sass engine that is much faster than the original version written in Ruby. LibSass has always been a bit behind in terms of features that it supports. But with the recent releases it has caught up significantly and supports more than enough for most use cases. And with the [announcement](https://github.com/sass/libsass/wiki/The-LibSass-Compatibility-Plan) that there will be no more updates to the Ruby version until LibSass is on par with it in every way, it’s a great time to start using it. 

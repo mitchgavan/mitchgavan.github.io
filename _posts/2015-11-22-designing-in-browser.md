@@ -2,6 +2,7 @@
 layout: post
 title: Designing in browser - when is the right time?
 description: Saving time by creating less throw-away deliverables definitely sounded appealing, so I gave it a shot when designing the UI for a new web app.
+image: /images/posts/designing-in-browser.jpg
 ---
 
 The concept of designing in browser has been around for a little while now - forget pixel perfect mockups and save time by jumping straight into the browser. Now that we are designing for a multitude of screen sizes, it’s becoming more common to skip creating mock-ups in design tools such as Photoshop altogether. Dave Rupert’s article on [responsive deliverables](http://daverupert.com/2013/04/responsive-deliverables/) describes how the old PSD-to-HTML workflow that served us so well, may no longer be an applicable solution.

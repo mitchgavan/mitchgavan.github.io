@@ -10,11 +10,13 @@ layout: homepage
       
       <h2 class="post--title">
       	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </h1>
-
+      </h2>
+      
+      <!--<img src="{{post.image}}" class="post--image" alt="{{post.title}}">-->
+      
       <div class="post--date">
-	    Posted on {{ post.date | date: "%B %e, %Y" }}
-	  </div>
+	      Posted on {{ post.date | date: "%B %e, %Y" }}
+	    </div>
 
       <div class="post--content">
         {{ post.content | truncatewords:70}}
