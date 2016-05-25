@@ -18,34 +18,31 @@ It was time to look into implementing LibSass. It wasn’t going to be a small t
 ```scss
 // Using Compass
 div {
-	@include transform(rotate(-5deg));
-	@include transition(opacity 0.15s ease-in-out);
+    @include transform(rotate(-5deg));
+    @include transition(opacity 0.15s ease-in-out);
 }
 
 // Using Autoprefixer
 div {
-	transform: rotate(-5deg);
-	transition: opacity 0.15s ease-in-out;
+    transform: rotate(-5deg);
+    transition: opacity 0.15s ease-in-out;
 }
-
 ```
 
 As you can see now we only have to write actual CSS, which feels a lot cleaner. After you think you’ve removed all Compass references, go ahead and try to compile your Sass. Most likely you will have missed something. Thankfully the Sass grunt task will tell us where this error is happening, so we can quickly fix these up. When your Sass is compiling without any errors we’re good to move onto the next step. Goodbye Compass!
 
 Now we’re ready to remove the Ruby Sass grunt task. We were using [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass), so to remove this simply enter this command:
 
-```
+```javascript
 npm uninstall grunt-contrib-sass --save-dev
-
 ```
 
 _Note: There are other Ruby Sass grunt tasks, so be sure to confirm which one you are using and substitute the name in the above example._ 
 
 Next it’s time to install LibSass. We’re going to be adding it into a grunt workflow, so we’ll be using [grunt-sass](https://github.com/sindresorhus/grunt-sass). Install this using the following command:
 
-```
+```javascript
 npm install --save-dev grunt-sass
-
 ```
 
 Next add the grunt-sass configuration to your gruntfile. Below is a basic example:
@@ -64,17 +61,15 @@ grunt.initConfig({
     }
 });
 grunt.loadNpmTasks('grunt-sass');
-
 ```
 
 This is very similar to our previous Ruby Sass implementation, so it should be familiar to you. Once we have this set up to reference the correct folder and file names it’s time to test this out. Run the task by entering 'grunt sass' in the command line and feel the speed! Our compilation time with Ruby Sass was around 7 seconds, and now with LibSass it’s down to less than a second! On average our compilation time is now around 0.6 seconds. And that’s compiling 5 separate style sheets, so in most use cases you can expect this compilation time to be even lower. 
 
  Time to add Autoprefixer to our workflow. The Autoprefixer grunt task is now deprecated in favor of PostCSS. [PostCSS](https://github.com/nDmitry/grunt-postcss) is a tool for transforming CSS with JavaScript plugins. Autoprefixer is one of these plugins. We can install both of these by entering the following command:
 
- ```
- npm install --save-dev grunt-postcss autoprefixer-core
-
- ```
+```javascript
+npm install --save-dev grunt-postcss autoprefixer-core
+```
 
  And here is an example of the configuration setup:
 
@@ -108,7 +103,6 @@ This example provides the required prefixes to support the last 2 versions of ea
         }
     }
 }
-
 ```
 
 Now each time we save a Sass file LibSass is run followed by Autoprefixer. And we're done! For our project, the total compilation time is now only around 0.75 seconds, compared to the previous time of around 7 seconds with Ruby Sass and Compass. Speedy! I hope this has shown you that moving to LibSass isn’t that hard to accomplish and that the benefits are definitely worth the time.

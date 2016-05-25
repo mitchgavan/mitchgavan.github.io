@@ -49,10 +49,13 @@ baseurl: ""
 # !! You don't need to change any of the configuration flags below !!
 #
 
-markdown: redcarpet
+markdown: kramdown
 highlighter: rouge
 permalink: /:title/
 
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 # Use the following plug-ins
 gems:
