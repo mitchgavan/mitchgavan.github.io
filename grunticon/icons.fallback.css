@@ -19,6 +19,11 @@
 	background-repeat: no-repeat;
 }
 
+.icon-github {
+	background-image: url('png/icon-github.png');
+	background-repeat: no-repeat;
+}
+
 .icon-instagram {
 	background-image: url('png/icon-instagram.png');
 	background-repeat: no-repeat;
