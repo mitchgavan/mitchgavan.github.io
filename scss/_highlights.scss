@@ -2,7 +2,7 @@
 .highlight {
   background-color: #efefef;
   padding: 7px 7px 7px 10px;
-  margin: 0.25rem 0 2rem 0;  
+  margin: 0.25rem 0 2rem 0;
   overflow: scroll;
   @include font-size(14px);
 }
@@ -11,6 +11,7 @@ code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
 }
 
+.highlight .lineno { color: #999 } /* Line Number */
 .highlight .c { color: #586E75 } /* Comment */
 .highlight .err { color: #93A1A1 } /* Error */
 .highlight .g { color: #93A1A1 } /* Generic */
