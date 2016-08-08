@@ -10,39 +10,39 @@ We're going to create a multiple choice quiz with React - without setting up any
 ### Initial Setup
 To get started make sure you have Node 4 or later installed on your machine. Then we need to install *Create React App* once globally with the following command:
 
-```
-npm install -g create-react-app
-```
+{% highlight text %}
+  npm install -g create-react-app
+{% endhighlight %}
 
 Then to create your app run the following command:
 
-```
-create-react-app react-quiz
-cd react-quiz
-```
+{% highlight text %}
+  create-react-app react-quiz
+  cd react-quiz
+{% endhighlight %}
 
 Feel free to name your app whatever you like, I've named it *react-quiz* here. This will create a new directory named *react-quiz* inside the current directory, generate the initial project structure and install the dependencies. Your app folder will now look something like this:
 
-```
-react-quiz/
- README.md
- index.html
- favicon.ico
- node_modules/
- package.json
- src/
-  App.css
-  App.js
-  index.css
-  index.js
-  logo.svg
-```
+{% highlight text %}
+  react-quiz/
+   README.md
+   index.html
+   favicon.ico
+   node_modules/
+   package.json
+   src/
+    App.css
+    App.js
+    index.css
+    index.js
+    logo.svg
+{% endhighlight %}
 
 Once installation is complete we can run the app with the following command:
 
-```
-npm start
-```
+{% highlight text %}
+  npm start
+{% endhighlight %}
 
 Open http://localhost:3000 to view it in the browser. Feel free to take a moment to familiarise yourself with the current code. The page will reload automatically if you make edits. You will see any build errors and lint warnings in the console. We now have a nice modern development environment for free! Now we can start creating the quiz.
 
@@ -59,7 +59,7 @@ We'll be thinking in [the react way](https://facebook.github.io/react/docs/think
 These components will be composed together through a container component to build our quiz.
 
 ### Creating the first component
-Create a new folder named *components*, and inside that create a new file named `Question.js`. This is where we'll start writing our first React component. Add the following code:
+Create a new folder named `components`, and inside that create a new file named `Question.js`. This is where we'll start writing our first React component. Add the following code:
 
 {% highlight text linenos %}
   import React from 'react';
@@ -85,9 +85,9 @@ This very simple component is just displaying the question. The question's conte
 
 Let's add this component to our main container component. First we need to import the component, open  `App.js` add this import statement just below the others:
 
-```
-import Question from './components/Question';
-```
+{% highlight text %}
+  import Question from './components/Question';
+{% endhighlight %}
 
 Then add the component to the `App` component's render function. Here is what the JSX should now look like:
 
@@ -460,130 +460,144 @@ Finally we need to display the result. Create a new file in the `components` dir
 
 This is a presentation component that will display the result. Next we have to update the `render` function in `App.js`. Replace the `<Quiz/>` component in the `render` function with the following:
 
-    {this.state.result ? this.renderResult() : this.renderQuiz()}
+{% highlight text %}
+  {this.state.result ? this.renderResult() : this.renderQuiz()}
+{% endhighlight %}
 
 Here we're using the JavaScript ternary operater, which is a shorthand if statement, to determine whether the quiz or the result should be displayed. If `state.result` has a value then it will display the result.
 
 Finally we need to create these two functions we just added. Add the following code directly above the render function:
 
-    renderQuiz() {
-      return (
-        <Quiz
-          answer={this.state.answer}
-          answerOptions={this.state.answerOptions}
-          questionId={this.state.questionId}
-          question={this.state.question}
-          questionTotal={quizQuestions.length}
-          onAnswerSelected={this.handleAnswerSelected}
-        />
-      );
-    }
+{% highlight text linenos %}
+  renderQuiz() {
+    return (
+      <Quiz
+        answer={this.state.answer}
+        answerOptions={this.state.answerOptions}
+        questionId={this.state.questionId}
+        question={this.state.question}
+        questionTotal={quizQuestions.length}
+        onAnswerSelected={this.handleAnswerSelected}
+      />
+    );
+  }
 
-    renderResult() {
-      return (
-        <Result quizResult={this.state.result} />
-      );
-    }
+  renderResult() {
+    return (
+      <Result quizResult={this.state.result} />
+    );
+  }
+{% endhighlight %}
 
 We now have a fully functional quiz! If you want to deploy your app, you can run the `npm run build` command to generate an optimized build for production. Your app will now be minified and ready to be deployed!
 
 
-Bonus: Add animation
-----------------
+### Bonus: Adding animation
+
 Let's add some subtle animation to make the user experience feel a bit nicer. Firstly we need to install the React animation component with the following command:
 
-    npm install react-addons-css-transition-group
+{% highlight text %}
+  npm install react-addons-css-transition-group
+{% endhighlight %}
 
-This component provides us with an easy way to perform CSS transitions and animations with React components. If you've ever worked with animations in Angular this will feel familiar to you, as it's inspired by the excellent *ng-animate* library. We're simply going to be adding a fade-in and fade-out effect to our questions.
+This provides us with an easy way to perform CSS transitions and animations with React components. If you've ever worked with animations in Angular this will feel familiar to you, as it's inspired by the excellent *ng-animate* library. We're simply going to be adding a fade-in and fade-out effect to our questions.
 
 Navigate to the `Quiz.js` component and add the following import statement below the others:
 
-    import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+{% highlight text %}
+  import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+{% endhighlight %}
 
-*ReactCSSTransitionGroup* is a simple element that wraps all of the components you are interested in animating. We're going to be animating the entire quiz component. To do that, update the render function with the following code:
+`ReactCSSTransitionGroup` is a simple element that wraps all of the components you are interested in animating. We're going to be animating the entire quiz component. To do that, update the render function with the following code:
 
-      return (
-	    <ReactCSSTransitionGroup
-	      className="container"
-	      component="div"
-	      transitionName="fade"
-	      transitionEnterTimeout={800}
-	      transitionLeaveTimeout={500}
-	      transitionAppear
-	      transitionAppearTimeout={500}
-	    >
-	      <div key={props.questionId}>
-	        <QuestionCount
-	          counter={props.questionId}
-	          total={props.questionTotal}
-	        />
-	        <Question content={props.question} />
-	        <ul className="answerOptions">
-	          {props.answerOptions.map(renderAnswerOptions)}
-	        </ul>
-	      </div>
-	    </ReactCSSTransitionGroup>
-	);
+{% highlight text linenos %}
+  return (
+    <ReactCSSTransitionGroup
+      className="container"
+      component="div"
+      transitionName="fade"
+      transitionEnterTimeout={800}
+      transitionLeaveTimeout={500}
+      transitionAppear
+      transitionAppearTimeout={500}
+    >
+      <div key={props.questionId}>
+        <QuestionCount
+          counter={props.questionId}
+          total={props.questionTotal}
+        />
+        <Question content={props.question} />
+        <ul className="answerOptions">
+          {props.answerOptions.map(renderAnswerOptions)}
+        </ul>
+      </div>
+    </ReactCSSTransitionGroup>
+  );
+{% endhighlight %}
 
-There are quite a few properties on the `ReactCSSTransitionGroup` element here, I'll go through what each one's purpose is. The `component` prop is specifying what HTML element this will be rendered as. The `transitionName` prop is specifying the name of the CSS classes that will be added to the element. In our case they will be `fade-enter` and `fade-enter-active` when the element is being rendered, and `fade-leave` and `fade-leave-active` when they are being removed. The `transitionEnterTimeout` and `transitionLeaveTimeout` are specifying the animation durations. This also needs to be specified in the CSS. You will find that the required CSS has already been added to the `index.css` file from Github. This is what it looks like:
+Here we've wrapped the quiz element in a `ReactCSSTransitionGroup` element. Child elements of `ReactCSSTransitionGroup` must be provided with a unique `key` attribute. This is how React determines which children have entered, left, or stayed. We've defined the key as `props.questionId` on line 11, as that value will be different for each question.
 
-    .fade-enter {
-	    opacity: 0;
-	}
+There are quite a few properties on the `ReactCSSTransitionGroup` element here, I'll go through what each one's purpose is. The `component` prop is specifying what HTML element this will be rendered as. The `transitionName` prop is specifying the name of the CSS classes that will be added to the element. In our case they will be `fade-enter` and `fade-enter-active` when the element is being rendered, and `fade-leave` and `fade-leave-active` when they are being removed. The `transitionEnterTimeout` and `transitionLeaveTimeout` are specifying the animation durations. This also needs to be specified in the CSS. You'll find that the required CSS is already included in the `index.css` file we previously got from Github. This is what it looks like:
 
-	.fade-enter.fade-enter-active {
-	    opacity: 1;
-	    transition: opacity 0.5s ease-in-out 0.3s;
-	}
+{% highlight css linenos %}
+  .fade-enter {
+    opacity: 0;
+  }
 
-	.fade-leave {
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    opacity: 1;
-	}
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out 0.3s;
+  }
 
-	.fade-leave.fade-leave-active {
-	    opacity: 0;
-	    transition: opacity 0.5s ease-in-out;
-	}
+  .fade-leave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+
+  .fade-leave.fade-leave-active {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+{% endhighlight %}
 
 This CSS is just changing the opacity values, and specifying the transition duration and type. The `transitionEnterTimeout` has been specified as 800ms to cater for the 300ms delay we're adding to the `.fade-enter` CSS transition. The `transitionAppear` prop is specifying that we want the component to be animated on initial mount. And `transitionAppearTimeout` specifies the duration of that animation. The CSS for that is similar to the other animations:
 
-    .fade-appear {
-	    opacity: 0;
-	}
+{% highlight css linenos %}
+  .fade-appear {
+    opacity: 0;
+  }
 
-	.fade-appear.fade-appear-active {
-	    opacity: 1;
-	    transition: opacity 0.5s ease-in-out;
-	}
-
-
-The final item to mention is that child elements of `ReactCSSTransitionGroup` must be provided with a `key` attribute. This is how React determines which children have entered, left, or stayed.
+  .fade-appear.fade-appear-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+{% endhighlight %}
 
 The last thing we need to change is the `render` function of the  `Result.js` component. Replace the `render` function with the following:
 
-    return (
-	  <ReactCSSTransitionGroup
-	    className="container result"
-	    component="div"
-	    transitionName="fade"
-	    transitionEnterTimeout={800}
-	    transitionLeaveTimeout={500}
-	    transitionAppear
-	    transitionAppearTimeout={500}
-	  >
-	    <div>
-	      You prefer <strong>{props.quizResult}</strong>!
-	    </div>
-	  </ReactCSSTransitionGroup>
-	);
+{% highlight text linenos %}
+  return (
+    <ReactCSSTransitionGroup
+      className="container result"
+      component="div"
+      transitionName="fade"
+      transitionEnterTimeout={800}
+      transitionLeaveTimeout={500}
+      transitionAppear
+      transitionAppearTimeout={500}
+    >
+      <div>
+        You prefer <strong>{props.quizResult}</strong>!
+      </div>
+    </ReactCSSTransitionGroup>
+  );
+{% endhighlight %}
 
 This will ensure that our results component is also animated in. And with that, our quiz animation is complete!
 
-Completed Demo
-----------------
+### Completed Demo
 
 You can find the [complete source code for this quiz on Github](https://github.com/mitchgavan/react-multi-choice-quiz). I hope this tutorial was helpful, I went through a lot of concepts pretty quickly, so if you have any questions feel free to hit me up on [Twitter](https://twitter.com/MitchG23).
