@@ -21,7 +21,7 @@ Then to create your app run the following command:
   cd react-quiz
 {% endhighlight %}
 
-Feel free to name your app whatever you like, I've named it *react-quiz* here. This will create a new directory named *react-quiz* inside the current directory, generate the initial project structure and install the dependencies. Your app folder will now look something like this:
+Feel free to name your app whatever you like, I've named it *react-quiz* here. This will create a new directory named *react-quiz* inside the current directory, generate the initial project structure and install the dependencies. Your app directory will now look something like this:
 
 {% highlight text %}
   react-quiz/
@@ -44,7 +44,7 @@ Once installation is complete we can run the app with the following command:
   npm start
 {% endhighlight %}
 
-Open http://localhost:3000 to view it in the browser. Feel free to take a moment to familiarise yourself with the current code. The page will reload automatically if you make edits. You will see any build errors and lint warnings in the console. We now have a nice modern development environment for free! Now we can start creating the quiz.
+You can now view it in a browser at http://localhost:3000. Feel free to take a moment to familiarise yourself with the current code. The page will reload automatically if you make edits. You will also see any build errors and lint warnings in the console. And just like that we have a nice modern development environment setup! Now we can start creating the quiz.
 
 ### What we're building
 We all know how a quiz works, there are a list of questions, and each question has a few different options that map to the possible outcomes. The data that we'll be working with today will determine which video game console company the user is a bigger fan of; Nintendo, Sony or Microsoft. Our quiz has five questions, with three options to choose from per question. However the quiz we're creating will work with any amount of questions/answer options.
@@ -59,7 +59,7 @@ We'll be thinking in [the react way](https://facebook.github.io/react/docs/think
 These components will be composed together through a container component to build our quiz.
 
 ### Creating the first component
-Create a new folder named `components`, and inside that create a new file named `Question.js`. This is where we'll start writing our first React component. Add the following code:
+Create a new directory named `components`, and inside that create a new file named `Question.js`. This is where we'll start writing our first React component. Add the following code:
 
 {% highlight text linenos %}
   import React from 'react';
@@ -77,13 +77,13 @@ Create a new folder named `components`, and inside that create a new file named 
   export default Question;
 {% endhighlight %}
 
-You may be wondering why we're not using the class syntax for this component. Since this is a [stateless presentation component](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions), we don't need to use a class to create the component. In fact it's best practice not to, as you eliminate a lot of boilerplate code this way.
+You may be wondering why we're not using the class syntax for this component. Since this is a [stateless presentation component](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions), we don't need to use a class to create the component. In fact it's best practice not to, as it allows you to eliminate a lot of boilerplate code this way.
 
 There's a popular pattern in React that divides your components into two categories; **presentational** and **container** components. The most basic description of this pattern is that container components should be concerned with how things work, and presentational components should define how things look. Check out [this article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.ezqa6w143) for a more detailed explanation.
 
-This very simple component is just displaying the question. The question's content is being passed in via props from a container component. The `propTypes` (short for property types) in React are used to assist developers, they define the type of prop and what props are required. React will warn you in the console when there is an invalid `propType`.
+This very simple component is just displaying the question. The question's content is being passed in via props from a container component. The `propTypes` (short for property types) in React are used to assist developers, they define the type of prop and what props are required. React will warn you when there is an invalid `propType`.
 
-Let's add this component to our main container component. First we need to import the component, open  `App.js` add this import statement just below the others:
+Let's add this component to our main container component. First we need to import the component, open  `App.js` and add this import statement just below the others:
 
 {% highlight text %}
   import Question from './components/Question';
@@ -106,7 +106,7 @@ Then add the component to the `App` component's render function. Here is what th
 Note that we're just passing in a string to the `content` prop for demonstration purposes, this will be changed later on. If you view the app in the browser the question should now be displayed.
 
 ### Creating the other presentational components
-Next we'll create the question count component. In the *components* folder, create a new file named `QuestionCount.js` and add the following:
+Next we'll create the question count component. In the `components` folder, create a new file named `QuestionCount.js` and add the following:
 
 {% highlight text linenos %}
   import React from 'react';
@@ -129,7 +129,7 @@ Next we'll create the question count component. In the *components* folder, crea
 
 This is very similar to the previous component we created. It will receive two props, `counter` and `total` from a container component.
 
-The next component will display the answer options. Create a file named `AnswerOption.js` in the *components* folder. And add the following JavaScript:
+The next component will display the answer options. Create a file named `AnswerOption.js` in the `components` folder and add the following:
 
 {% highlight text linenos %}
   import React from 'react';
@@ -164,10 +164,10 @@ The next component will display the answer options. Create a file named `AnswerO
   export default AnswerOption;
 {% endhighlight %}
 
-This component consists of a list item with a radio button and label. There is one new concept introduced here on line 10; the `checked` property is a comparison statement. This value will be a boolean (true or false) based on the condition.
+This component consists of a list item with a radio button and label. There is one new concept introduced here on line 10; the `checked` property is a comparison statement. This value will be a boolean (true or false) based on whether the answer selected is equal to the answer option type.
 
 ### Bringing the components together
-We will now bring these components together within the Quiz component. Create a new file named Quiz.js in the components directory. And paste in the following import statements:
+We will now bring these components together within the `Quiz` component. Create a new file named `Quiz.js` in the components directory. And paste in the following import statements:
 
 {% highlight text %}
   import React from 'react';
@@ -176,7 +176,7 @@ We will now bring these components together within the Quiz component. Create a 
   import AnswerOption from '../components/AnswerOption';
 {% endhighlight %}
 
-Here we are importing the components that we just created. Now let's define the Quiz component:
+Here we are importing the components that we just created. Now let's define the `Quiz` component:
 
 {% highlight text linenos %}
   function Quiz(props) {
@@ -207,9 +207,9 @@ Here we are importing the components that we just created. Now let's define the 
   export default Quiz;
 {% endhighlight %}
 
-We're building the quiz with the components we previously created, and passing them the required props. You'll notice that we're passing in props that have been passed down to the Quiz component. So this Quiz component is also a presentational component. That's because we want to try and keep all of the code concerned with the display of components separate from the functionality.
+We're building the quiz with the components we previously created, and passing them the required props. You'll notice that we're passing in props that have been passed down to the `Quiz` component. So the `Quiz` component is also a presentational component. That's because we want to try and keep all of the code concerned with the display of components separate from the functionality.
 
-To make this code work we need to define the *renderAnswerOptions* function that is being used to create each of the *AnswerOptions*. Paste in this code just above the return statement:
+To make this code work we need to define the `renderAnswerOptions` function that is being used to create each of the `AnswerOptions`. Paste in this code just above the return statement:
 
 {% highlight text linenos %}
   function renderAnswerOptions(key) {
@@ -226,13 +226,13 @@ To make this code work we need to define the *renderAnswerOptions* function that
   }
 {% endhighlight %}
 
-Don't worry too much about the properties for now, they will be defined in the main container component (`App.js`). Essentially, this will render an *AnswerOption* component for each of the answer options defined in our state.
+Don't worry too much about the properties for now, they'll be defined in the main container component (`App.js`). Essentially, this will render an `AnswerOption` component for each of the answer options defined in our state.
 
 ### Add some style
 *Create React App* configures Webpack for us so that we can define separate CSS files for each module. It will then bundle all of our CSS into one file upon saving. We won't be diving too much into styling. So for this tutorial I've just put all of the styles into one CSS file. Grab the CSS from the Github repository [here](https://github.com/mitchgavan/react-multi-choice-quiz/blob/master/src/index.css), and replace the current contents of `index.css` with it.
 
 ### Adding functionality
-Before creating the quiz functionality we need to define the app's state. Inside `App.js`, we define our initial state in the App class's constructor function. This is the idiomatic way of declaring initial state when using ES6. In `App.js`, place the following code at the top of the *App* class:
+Before creating the quiz functionality we need to define the app's state. Inside `App.js`, we define our initial state in the App class's constructor function. This is the idiomatic way of declaring initial state when using ES6. In `App.js`, place the following code at the top of the `App` class:
 
 {% highlight text linenos %}
   constructor(props) {
@@ -273,9 +273,9 @@ Next, we'll populate our app's state using the `componentWillMount` life cycle e
   }
 {% endhighlight %}
 
-The `componentWillMount` life cycle event is invoked once, both on the client and server, immediately before the initial rendering occurs. When you call `setState` within this method as we are above, `render()` will see the updated state and it will be executed only once despite the state change.
+The `componentWillMount` life cycle event is invoked once, both on the client and server, immediately before the initial rendering occurs. When you call `setState` within this method as we are above on line 4, `render()` will see the updated state and it will be executed only once despite the state change.
 
-As you may've notice we've also used a function named `shuffleArray` here, this will randomise the order of the answer options - just to spice things up a bit. But we're yet to define that function, so let's do that now directly below the `componentWillMount` function:
+As you may've notice we've also used a function named `shuffleArray` on line 2, this will randomise the order of the answer options - just to spice things up a bit. But we're yet to define that function, so let's do that now directly below the `componentWillMount` function:
 
 {% highlight text linenos %}
   shuffleArray(array) {
