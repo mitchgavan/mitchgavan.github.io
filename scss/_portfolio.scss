@@ -1,5 +1,5 @@
 //
-// Portfolio 
+// Portfolio
 //
 
 .pageTitle {
@@ -76,7 +76,12 @@
   color: $grey;
 }
 
+.mockup,
 .screenshot {
   margin: 2rem 0 3.5rem;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2)
+  border: 1px solid transparent !important;
+}
+
+.screenshot {
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }

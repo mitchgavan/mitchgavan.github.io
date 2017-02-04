@@ -78,7 +78,7 @@ module.exports = function (grunt) {
         jshint: {
           all: ['scripts/*.js']
         },
-        
+
         uglify: {
           my_target: {
             files: {
@@ -105,11 +105,11 @@ module.exports = function (grunt) {
         },
 
         // Image Tasks
-        imagemin: {   
+        imagemin: {
             bitmaps: {
                 files: [{
-                    expand: true,                 
-                    cwd: 'images/',                  
+                    expand: true,
+                    cwd: 'images/',
                     src: ['**/*.{png,jpg,gif}'],
                     dest: 'images/'
                 }]
@@ -117,15 +117,15 @@ module.exports = function (grunt) {
             svgs: {
                 options: {
                     svgoPlugins: [
-                        { removeViewBox: false }, 
+                        { removeViewBox: false },
                         { removeUselessStrokeAndFill: false }
                     ]
                 },
                 files: [{
-                    expand: true,                
-                    cwd: 'images/',             
+                    expand: true,
+                    cwd: 'images/',
                     src: ['**/*.svg'],
-                    dest: 'images/'               
+                    dest: 'images/'
                 }]
             }
         },
