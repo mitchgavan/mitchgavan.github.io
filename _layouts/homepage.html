@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
-  {% include head.html %} 
+  {% include head.html %}
   <body>
-        
+
     <header class="header">
       <div class="container">
         <div class="header--logo">
-          {% include svg/logo.html %} 
+          {% include svg/logo.html %}
         </div>
         <h1 class="header--title">{{ site.name }}</h1>
         <h2 class="header--subTitle">Front-end developer/designer</h2>
       </div>
       <a href="#iconNav" class="header--arrow bounce">Scroll Down</a>
-    </header>  
+    </header>
 
     <nav id="iconNav" class="iconNav">
       <ul>
         <li>
-          <a href="{{ site.baseurl }}/blog" class="iconNav--item">
+          <a href="{{ site.baseurl }}/blog/" class="iconNav--item">
             <div class="icon-slurpee iconNav--item--icon"></div>
             Blog
           </a>
         </li>
         <li>
-          <a href="{{ site.baseurl }}/work" class="iconNav--item">
+          <a href="{{ site.baseurl }}/work/" class="iconNav--item">
             <div class="icon-coffee iconNav--item--icon"></div>
             Work
           </a>
         </li>
         <li>
-          <a href="{{ site.baseurl }}/Where-do-I-begin/" class="iconNav--item">
+          <a href="{{ site.baseurl }}/about/" class="iconNav--item">
             <div class="icon-drink iconNav--item--icon"></div>
             About
           </a>
-        </li> 
+        </li>
       </ul>
     </nav>
-    
+
     <main id="main" role="main" class="main">
       <div class="container">
         {{ content }}
-      </div>  
+      </div>
     </main>
-    
+
     {% include footer.html %}
     {% include analytics.html %}
   </body>

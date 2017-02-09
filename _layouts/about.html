@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
-  {% include head.html %} 
+  {% include head.html %}
 
   <body class="{{ page.title | downcase | remove:' ' | remove:'?' }}">
-        
+
     <header id="nav" class="headerSubpage headerSubpage-transparent">
 
         <a href="{{ site.baseurl }}/" class="header--logo header--logo-subpage">
-          {% include svg/logo.html %} 
+          {% include svg/logo.html %}
         </a>
 
         <nav class="nav">
-          <a href="{{ site.baseurl }}/blog" class="nav--item nav--item-blog">
+          <a href="{{ site.baseurl }}/blog/" class="nav--item nav--item-blog">
             Blog
           </a>
-          <a href="{{ site.baseurl }}/work" class="nav--item nav--item-work">
+          <a href="{{ site.baseurl }}/work/" class="nav--item nav--item-work">
             Work
           </a>
-          <a href="{{ site.baseurl }}/Where-do-I-begin/" class="nav--item nav--item-about">
+          <a href="{{ site.baseurl }}/about/" class="nav--item nav--item-about">
             About
           </a>
         </nav>
 
-    </header>  
+    </header>
 
     <div id="banner" class="banner"></div>
 
@@ -31,16 +31,14 @@
         <article class="post">
           <h1 class="post--title">{{ page.title }}</h1>
           <div class="post--date">
-            Posted on {{ page.date | date: "%B %e, %Y" }}
+            Posted on February 8, 2017
           </div>
           {{ content }}
-
-          {% include disqus.html disqus_identifier=page.disqus_identifier %}
         </article>
     </main>
 
-    
-    {% include footer.html %}    
+
+    {% include footer.html %}
     {% include analytics.html %}
   </body>
 </html>

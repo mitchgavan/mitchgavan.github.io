@@ -35,7 +35,7 @@ After looking into the rule limit further I found that the 4095 rule limit might
 
 ```
 
-As you can imagine there is the potential to have quite a few more selectors than rules in a style sheet. Even though the original statement of 4095 rules was from an official Microsoft blog it appeared to be incorrect. There is a [Github gist](https://gist.github.com/ericandrewlewis/8c850adb4d779aa42e13) confirming that it is actually a selector limit and not rules. Back to the CSS stats I went, only to find that even though our style sheet was a lot closer to that limit, coming in at around 3600 selectors, it was still under the 4095 limit. 
+As you can imagine there is the potential to have quite a few more selectors than rules in a style sheet. Even though the original statement of 4095 rules was from an official Microsoft blog it appeared to be incorrect. There is a [Github gist](https://gist.github.com/ericandrewlewis/8c850adb4d779aa42e13) confirming that it is actually a selector limit and not rules. Back to the CSS stats I went, only to find that even though our style sheet was a lot closer to that limit, coming in at around 3600 selectors, it was still under the 4095 limit.
 
 After taking a breather and another quick google I found that people have identified that [IE9 also has a file size limit](http://stackoverflow.com/questions/11080560/does-ie9-have-a-file-size-limit-for-css) of 288kb. Although there were a couple of stack overflow comments stating this, there were also a few mentions of this being a rough limit. This has to be our issue. Please let it be the issue. Our style sheet was around 240kb, this is a decent amount below the reported 288kb limit. But there was still a possiblity that this was actually the issue. I mean, nothing about this problem seemed to be set in stone so I had to confirm.
 
@@ -44,11 +44,3 @@ To test whether this was the issue I moved one of our Sass partials that was bei
 To resolve the issue I simply moved the [Foundation](http://foundation.zurb.com/) framework's CSS into another style sheet. In my particular case this wasn’t a problem as we were already loading these two style sheets, so fortunately no extra resource request was required. But generally speaking keeping resource requests to a minimum is important, especially for mobile devices. A responsible way to handle this would be to only split the CSS into two files for IE9 and below. That way mobile devices won’t get hit with an extra request. This can be easily accomplished with Internet Explorer conditional statements, check out [this article](http://www.sitepoint.com/web-foundations/internet-explorer-conditional-comments/) for more information on how to implement them. And with the help of [BlessCSS](http://blesscss.com/), this file splitting can be automated and included as part of your build process. There is also a [grunt plugin](https://github.com/Ponginae/grunt-bless) available.
 
 I know 240kb may seem like a lot of CSS, but with the popularity of CSS frameworks like Bootstrap and Foundation these days it is not that uncommon to find in large web apps. To sum it up, there appears to be no exact style sheet file size limit in IE9, but it’s generally around 250kb.
-
-
-
-
-
-
-
- 
