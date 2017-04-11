@@ -141,10 +141,10 @@ The next component will display the answer options. Create a file named `AnswerO
           type="radio"
           className="radioCustomButton"
           name="radioGroup"
-          checked={props.answerType === props.userAnswer}
+          checked={props.answerType === props.answer}
           id={props.answerType}
           value={props.answerType}
-          disabled={props.userAnswer}
+          disabled={props.answer}
           onChange={props.onAnswerSelected}
         />
         <label className="radioCustomLabel" htmlFor={props.answerType}>
@@ -157,7 +157,7 @@ The next component will display the answer options. Create a file named `AnswerO
   AnswerOption.propTypes = {
     answerType: React.PropTypes.string.isRequired,
     answerContent: React.PropTypes.string.isRequired,
-    userAnswer: React.PropTypes.string.isRequired,
+    answer: React.PropTypes.string.isRequired,
     onAnswerSelected: React.PropTypes.func.isRequired
   };
 
