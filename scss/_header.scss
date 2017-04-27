@@ -4,31 +4,30 @@
 //
 
 .header {
+  position: relative;
   height: 100vh;
+  width: 100vw;
   min-height: 480px;
-  padding: 18vh 0 0;
   background: #543640 url('../images/header.jpg') no-repeat;
   background-position: -500px bottom;
   text-align: center;
-  
-  @media screen and (orientation: landscape) { 
+
+  @media screen and (orientation: landscape) {
     height: 140vh;
-    padding: 25vh 0 0;
     background-position: -330px bottom;
   }
 
-  @media screen and (min-width: 40.063em) and (orientation: portrait) { 
+  @media screen and (min-width: 40.063em) and (orientation: portrait) {
     height: 100vh;
-    padding: 25vh 0 0;
   }
 
   @include bp(medium) {
     height: 100vh;
     background-position: -200px bottom;
+    background-size: cover;
   }
 
   @include bp(large) {
-    padding: 16vh 0 0;
     background-position: 0 bottom;
   }
 }
@@ -49,7 +48,19 @@
 
 .headerSubpage-transparent {
   background: transparent;
-  border-bottom: 0;  
+  border-bottom: 0;
+}
+
+.header--container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+  @include bp(large) {
+    transform: translate(-50%, -85%);
+  }
 }
 
 .header--title {
@@ -72,7 +83,7 @@
 }
 
 .header--subTitle {
-  margin: 0 0 1rem;
+  margin: 0;
   color: #70454a;
   font-family: $robotoSlab;
   text-transform: lowercase;
@@ -93,25 +104,20 @@
   display: inline-block;
   border: 0;
   line-height: 0;
+  width: 160px;
+  height: 160px;
+  opacity: 0.7;
 
-  svg {
-    width: 160px;
-    height: 160px;
-    opacity: 0.7;
-
-    @include bp(large) {
-      width: 200px;
-      height: 200px;
-    }
-
-    path {
-      fill: $orange;
-    }
+  @include bp(large) {
+    width: 200px;
+    height: 200px;
   }
 }
 
 .header--logo-subpage {
   float: left;
+  width: auto;
+  height: auto;
 
   svg {
     width: 50px;
