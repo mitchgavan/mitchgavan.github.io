@@ -5,7 +5,7 @@ description: Tutorial on creating a multiple choice quiz with React - without se
 image: /images/posts/react-quiz.jpg
 ---
 
-We're going to create a multiple choice quiz with React - without setting up any build configuration. This is now possible thanks to the [Create React App](https://github.com/facebookincubator/create-react-app) project, which was recently created by the team at Facebook. [Check out the demo here](http://mitchgavan.com/react-multi-choice-quiz/) to see the quiz in action. Starting a new React project usually involves a lot of overhead that can be time consuming for anyone and straight up daunting to beginners. With *Create React App* you get a modern workflow with Webpack, Babel (for ES6 syntax support), ESLint and more all configured for you. This allows you to jump into writing your code straight away.
+We're going to create a multiple choice quiz with React - without setting up any build configuration. This is now possible thanks to the [Create React App](https://github.com/facebookincubator/create-react-app) project, which was recently created by the team at Facebook. [Check out the demo here](http://mitchgavan.github.io/react-multi-choice-quiz/) to see the quiz in action. Starting a new React project usually involves a lot of overhead that can be time consuming for anyone and straight up daunting to beginners. With *Create React App* you get a modern workflow with Webpack, Babel (for ES6 syntax support), ESLint and more all configured for you. This allows you to jump into writing your code straight away.
 
 ### Initial Setup
 To get started make sure you have Node 4 or later installed on your machine. Then we need to install *Create React App* once globally with the following command:
