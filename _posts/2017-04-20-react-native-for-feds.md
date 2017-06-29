@@ -151,6 +151,6 @@ Publishing your iOS app involves a few more steps. Both stores require you to cr
 
 ### You can do it
 
-As I mentioned earlier, one of the main reasons I wanted to write this article is to let other front-end developers know that building a real native app with React Native isn't that different to developing web applications. You will be utilising a lot of your existing kills and extending them when venturing into React Native development. If you want to learn more, I can't recommend [Frontend Masters course](https://frontendmasters.com/courses/react-native/) on React Native and Redux by Scott Moss enough!
+As I mentioned earlier, one of the main reasons I wanted to write this article is to let other front-end developers know that building a real native app with React Native isn't that different to developing web applications. You will be utilising a lot of your existing skills and extending them when venturing into React Native development. If you want to learn more, I can't recommend [Frontend Masters course](https://frontendmasters.com/courses/react-native/) on React Native and Redux by Scott Moss enough!
 
 I just wanted to add one last thing in regards to side projects. Working on something that wasn't for a client, or even for a friend, but just for me was a really nice change. You can make whatever you want, when you want. Not everybody has the time to be able to do something like that, but if you do I'd highly recommend it.
