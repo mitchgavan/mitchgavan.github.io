@@ -2,6 +2,11 @@
   "name": "mitchgavan",
   "description": "Front-end developer from Melbourne Australia.",
   "author": "Mitch Gavan",
+  "scripts": {
+    "start": "grunt serve",
+    "build": "grunt build",
+    "deploy": "grunt build && now _site"
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-concurrent": "^1.0.1",
