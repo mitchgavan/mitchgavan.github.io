@@ -1,19 +1,20 @@
 ---
 layout: homepage
+home: Front-end Developer
 ---
 
 <h2 class="pageTitle">Recent Posts</h2>
 
 <div class="posts">
   {% for post in site.posts limit: 5 %}
-    <article class="post">    
-      
+    <article class="post">
+
       <h2 class="post--title">
       	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </h2>
-      
+
       <!--<img src="{{post.image}}" class="post--image" alt="{{post.title}}">-->
-      
+
       <div class="post--date">
 	      Posted on {{ post.date | date: "%B %e, %Y" }}
 	    </div>
@@ -21,7 +22,7 @@ layout: homepage
       <div class="post--content">
         {{ post.content | truncatewords:70}}
       </div>
-      
+
       <a href="{{ site.baseurl }}{{ post.url }}" class="button">Read more →</a>
     </article>
   {% endfor %}
