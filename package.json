@@ -4,8 +4,7 @@
   "author": "Mitch Gavan",
   "scripts": {
     "start": "grunt serve",
-    "build": "grunt build",
-    "deploy": "grunt build && now _site"
+    "build": "grunt build"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
