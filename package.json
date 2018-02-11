@@ -10,6 +10,7 @@
     "autoprefixer": "^7.2.1",
     "csswring": "^6.0.2",
     "grunt": "~0.4.5",
+    "grunt-cli": "^1.2.0",
     "grunt-concurrent": "^1.0.1",
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-imagemin": "^1.0.1",
