@@ -89,21 +89,6 @@ module.exports = function (grunt) {
           }
         },
 
-        // critical css
-        criticalcss: {
-            custom: {
-                options: {
-                    url: "http://0.0.0.0:4000/",
-                    width: 1920,
-                    height: 1080,
-                    outputfile: "_includes/css/critical.css",
-                    filename: "css/style.css", // Using path.resolve( path.join( ... ) ) is a good idea here
-                    buffer: 800*1024,
-                    ignoreConsole: false
-                }
-            }
-        },
-
         // Image Tasks
         imagemin: {
             bitmaps: {
