@@ -57,9 +57,9 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-# Use the following plug-ins
-plugins:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+# # Use the following plug-ins
+# plugins:
+#   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
 
 
 # Exclude these files from your production _site
