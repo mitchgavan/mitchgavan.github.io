@@ -75,10 +75,10 @@
 .header--title-subpage {
   margin: 1rem 0;
   text-transform: none;
-  @include font-size(36px);
+  @include font-size(32px);
 
   @include bp(large) {
-    @include font-size(44px);
+    @include font-size(40px);
   }
 }
 
@@ -96,7 +96,7 @@
   }
 
   @include bp(large) {
-    @include font-size(40px);
+    @include font-size(36px);
   }
 }
 
