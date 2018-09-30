@@ -1,0 +1,105 @@
+---
+layout: default
+permalink: /work/nab-yourself/
+title: Projects - NAB Yourself
+---
+
+<main id="main" role="main" class="main">
+  <div class="containerWide">
+    <h1 class="projectTitle">NAB - Yourself</h1>
+  </div>
+  <div class="container">
+    <p>
+      I worked on the Yourself for National Australia Bank whilst I was at Clemenger BBDO. My role was senior full
+      stack developer. The experience was part of a campaign that aimed to get users to start talking to themselves
+      aloud, in order to get a better understanding of what you want in life. We created a web app that processes what
+      you say and visualises it in real-time. Below is a quick recording the of the live app:
+    </p>
+  </div>
+  <div class="containerWide">
+    <div class="videoEmbed">
+      <iframe src="https://player.vimeo.com/video/222180767" width="640" height="386" frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="container">
+    <p>
+      This was one of the most technologically ambitious projects the team had ever taken on. The application was built
+      as a single page app and micro-service architecture. The front-end was built with Vue.js, VueX for state
+      management, and custom ES6 libraries that we created. The micro-services for facial analysis, speech recognition,
+      image generation and more were built with Serverless framework, Node.js and AWS.
+    </p>
+    <p>
+      The experience can be broken down into four key areas:
+    </p>
+    <ul>
+      <li>First generate your avatar</li>
+      <li>Talk to yourself</li>
+      <li>Generate statement based on important topics calculated</li>
+      <li>Generate and store shareable assets</li>
+    </ul>
+    <h3>Generate your avatar</h3>
+    <p>
+      The user takes a ‘selfie’ using their devices camera, we then use Amazon Recognition to perform an analysis of
+      the photo. We then generated an avatar for the user based on the analysis results. Some of the parameters that
+      the generated avatar was based on included; eye, mouth, nose position and size, gender, beard, glasses. The
+      avatar was created as an SVG, the facial features were nested SVGs that were scaled and positioned based on the
+      selfie. The user could then adjust their features/hairstyle through the UI.
+    </p>
+  </div>
+  <div class="containerWide">
+    <img src="{{ site.baseurl }}/images/work/nabyourself/yourself-1.jpg" alt="Customise avatar" class="screenshot">
+  </div>
+  <div class="container">
+    <h3>Talk to yourself</h3>
+    <p>
+      During this stage the user is prompted to speak to the app through a series of questions. The speech is analysed
+      in real-time using the native SpeechRecognition API for browsers that support it, and the IBM Watson service is
+      used in other browsers. As the user is speaking the avatar is filled in with patterns that relate to the topics
+      they mention. Each avatar consists of a certain number of clipping masks that will get filled with different
+      patterns. Resulting in a unique personalised avatar based on what the user wants in life.
+    </p>
+    <p>
+      The avatar generation was my main area of focus. I created a standalone ES6 library for this feature. Since it
+      was quite a unique feature we needed to prototype this early on to
+      understand what was feasible. So building it as a library allowed us to work on it independently of the rest of
+      the app and integrate it when ready. One of
+      the main concerns we initially had with the avatar was performance, we were
+      not sure how it would perform when filled with patterns that would be animating in real-time. After an initial
+      unsuccessful attempt and some more research, I came across the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/pattern">Pattern
+        element</a> available in the SVG spec. Using this feature, which is
+      supported in all browser we support (IE11+), greatly improved performance.
+    </p>
+    <p>
+      I used the Greensock MorphSVG plugin to create the icon morphing animation. When the user spoke this was analysed
+      and then triggered a call to the avatar library that would contain metrics on how the current pattern should be
+      morphed, including: diameter, spacing, angle, color, background color and icon type. I was very happy with the
+      end result, silky smooth morphing animations even with a full face of patterns!
+    </p>
+    <h3>Generate statement</h3>
+    <p>
+      Once the avatar is filled with patterns the user can move onto the next step, which displays a summary of what we
+      detected was important to them. This is also customisable.
+    </p>
+  </div>
+  <div class="containerWide">
+    <img src="{{ site.baseurl }}/images/work/nabyourself/yourself-2.jpg" alt="Generate statement" class="screenshot">
+  </div>
+  <div class="container">
+    <h3>Generate final shareable</h3>
+    <p>
+      They can then share/save images of their avatar and statement. For this we converted the SVG image to PNG using
+      browser APIs. However IE11 didn’t provide support for this, so in order to provide support for IE, I created a
+      micro-service that did the image generation server side.
+      This involved using puppeteer to launch an instance of Chrome to render the SVG to canvas, then convert it to a
+      base-64 PNG image. And all of this was accomplished in a Lambda function, which I thought was very cool!
+    </p>
+    <p>
+      It may have been a struggle at times, especially with quite a tight deadline. But in the end we had combined
+      multiple cutting edge technologies together to produce a unique web experience! Not only was our team very proud
+      of it, but it was also very well received by the client.
+    </p>
+    <a href="https://yourself.nab.com.au/" rel="nofollow" class="button">Visit website →</a>
+  </div>
+
+</main>
