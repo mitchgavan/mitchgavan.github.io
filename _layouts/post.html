@@ -2,23 +2,28 @@
 layout: default
 ---
 <main id="main" role="main" class="main">
-  <div class="container">
-	<article class="post">
-	  <h1 class="post--title">{{ page.title }}</h1>
-		
-		{% if page.image %}
+	<div class="container">
+		<article class="post">
+			<h1 class="post--title">{{ page.title }}</h1>
+
+			{% if page.image %}
 			<img src="{{page.image}}" class="post--image" alt="{{page.title}}">
-		{% endif %}
-	  
-	  <div class="post--date">
-	    Posted on {{ page.date | date: "%B %e, %Y" }}
-	  </div>
+			{% endif %}
 
-	  <div class="post--content">
-	    {{ content }}
-	  </div>
+			<div class="post--date">
+				Posted on {{ page.date | date: "%B %e, %Y" }}
+				{% if page.updated %}
+				<div>
+					<em>(Updated {{page.updated}})</em>
+				</div>
+				{% endif %}
+			</div>
 
-	  {% include disqus.html disqus_identifier=page.disqus_identifier %}
-	</article>
-  </div>
+			<div class="post--content">
+				{{ content }}
+			</div>
+
+			{% include disqus.html disqus_identifier=page.disqus_identifier %}
+		</article>
+	</div>
 </main>
