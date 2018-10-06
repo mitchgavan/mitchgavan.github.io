@@ -5,19 +5,13 @@ description: Tutorial on creating a multiple choice quiz with React - without se
 image: /images/posts/react-quiz.jpg
 ---
 
-We're going to create a multiple choice quiz with React - without setting up any build configuration. This is now possible thanks to the [Create React App](https://github.com/facebookincubator/create-react-app) project, which was recently created by the team at Facebook. [Check out the demo here](http://mitchgavan.github.io/react-multi-choice-quiz/) to see the quiz in action. Starting a new React project usually involves a lot of overhead that can be time consuming for anyone and straight up daunting to beginners. With *Create React App* you get a modern workflow with Webpack, Babel (for ES6 syntax support), ESLint and more all configured for you. This allows you to jump into writing your code straight away.
+We're going to create a multiple choice quiz with React - without setting up any build configuration. This is now possible thanks to the [Create React App](https://github.com/facebookincubator/create-react-app) project, which was created by the team at Facebook. [Check out the demo here](http://mitchgavan.github.io/react-multi-choice-quiz/) to see the quiz in action. Starting a new React project usually involves a lot of overhead that can be time consuming for anyone and straight up daunting to beginners. With *Create React App* you get a modern workflow with Webpack, Babel (for ES6 syntax support), ESLint and more all configured for you. This allows you to jump into writing your code straight away.
 
 ### Initial Setup
-To get started make sure you have Node 4 or later installed on your machine. Then we need to install *Create React App* once globally with the following command:
+To get started make sure you have Node 4 or later installed on your machine. Then to create your app, from the command line, run the following command in your preferred directory:
 
 {% highlight text %}
-  npm install -g create-react-app
-{% endhighlight %}
-
-Then to create your app run the following command:
-
-{% highlight text %}
-  create-react-app react-quiz
+  npx create-react-app react-quiz
   cd react-quiz
 {% endhighlight %}
 
@@ -44,7 +38,7 @@ Once installation is complete we can run the app with the following command:
   npm start
 {% endhighlight %}
 
-You can now view it in a browser at http://localhost:3000. Feel free to take a moment to familiarise yourself with the current code. The page will reload automatically if you make edits. You will also see any build errors and lint warnings in the console. And just like that we have a nice modern development environment setup! Now we can start creating the quiz.
+You can now view it in a browser at http://localhost:3000. Feel free to take a moment to familiarise yourself with the current code. The page will reload automatically if you make any changes. You will also see any build errors and lint warnings in the console. And just like that we have a nice modern development environment setup! Now we can start creating the quiz.
 
 ### What we're building
 We all know how a quiz works, there are a list of questions, and each question has a few different options that map to the possible outcomes. The data that we'll be working with today will determine which video game console company the user is a bigger fan of; Nintendo, Sony or Microsoft. Our quiz has five questions, with three options to choose from per question. However the quiz we're creating will work with any amount of questions/answer options.
@@ -59,10 +53,17 @@ We'll be thinking in [the react way](https://facebook.github.io/react/docs/think
 These components will be composed together through a container component to build our quiz.
 
 ### Creating the first component
-Create a new directory named `components`, and inside that create a new file named `Question.js`. This is where we'll start writing our first React component. Add the following code:
+First off, we'll install the [prop-types](https://github.com/facebook/prop-types) library for React, by running the following command in our project's root directory:
+
+{% highlight text %}
+  npm install prop-types
+{% endhighlight %}
+
+Then create a new directory named `components`, and inside that create a new file named `Question.js`. This is where we'll start writing our first React component. Add the following code:
 
 {% highlight text linenos %}
   import React from 'react';
+  import PropTypes from 'prop-types';
 
   function Question(props) {
     return (
@@ -71,7 +72,7 @@ Create a new directory named `components`, and inside that create a new file nam
   }
 
   Question.propTypes = {
-    content: React.PropTypes.string.isRequired
+    content: PropTypes.string.isRequired
   };
 
   export default Question;
@@ -110,6 +111,7 @@ Next we'll create the question count component. In the `components` folder, crea
 
 {% highlight text linenos %}
   import React from 'react';
+  import PropTypes from 'prop-types';
 
   function QuestionCount(props) {
     return (
@@ -120,8 +122,8 @@ Next we'll create the question count component. In the `components` folder, crea
   }
 
   QuestionCount.propTypes = {
-    counter: React.PropTypes.number.isRequired,
-    total: React.PropTypes.number.isRequired
+    counter: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired
   };
 
   export default QuestionCount;
@@ -133,6 +135,7 @@ The next component will display the answer options. Create a file named `AnswerO
 
 {% highlight text linenos %}
   import React from 'react';
+  import PropTypes from 'prop-types';
 
   function AnswerOption(props) {
     return (
@@ -155,22 +158,23 @@ The next component will display the answer options. Create a file named `AnswerO
   }
 
   AnswerOption.propTypes = {
-    answerType: React.PropTypes.string.isRequired,
-    answerContent: React.PropTypes.string.isRequired,
-    answer: React.PropTypes.string.isRequired,
-    onAnswerSelected: React.PropTypes.func.isRequired
+    answerType: PropTypes.string.isRequired,
+    answerContent: PropTypes.string.isRequired,
+    answer: PropTypes.string.isRequired,
+    onAnswerSelected: PropTypes.func.isRequired
   };
 
   export default AnswerOption;
 {% endhighlight %}
 
-This component consists of a list item with a radio button and label. There is one new concept introduced here on line 10; the `checked` property is a comparison statement. This value will be a boolean (true or false) based on whether the answer selected is equal to the answer option type.
+This component consists of a list item with a radio button and label. There is one new concept introduced here on line 11; the `checked` property is a comparison statement. This value will be a boolean (true or false) based on whether the answer selected is equal to the answer option type.
 
 ### Bringing the components together
 We will now bring these components together within the `Quiz` component. Create a new file named `Quiz.js` in the components directory. And paste in the following import statements:
 
 {% highlight text %}
   import React from 'react';
+  import PropTypes from 'prop-types';
   import Question from '../components/Question';
   import QuestionCount from '../components/QuestionCount';
   import AnswerOption from '../components/AnswerOption';
@@ -195,13 +199,13 @@ Here we are importing the components that we just created. Now let's define the 
   }
 
   Quiz.propTypes = {
-    answer: React.PropTypes.string.isRequired,
-    answerOptions: React.PropTypes.array.isRequired,
-    counter: React.PropTypes.number.isRequired,
-    question: React.PropTypes.string.isRequired,
-    questionId: React.PropTypes.number.isRequired,
-    questionTotal: React.PropTypes.number.isRequired,
-    onAnswerSelected: React.PropTypes.func.isRequired
+    answer: PropTypes.string.isRequired,
+    answerOptions: PropTypes.array.isRequired,
+    counter: PropTypes.number.isRequired,
+    question: PropTypes.string.isRequired,
+    questionId: PropTypes.number.isRequired,
+    questionTotal: PropTypes.number.isRequired,
+    onAnswerSelected: PropTypes.func.isRequired
   };
 
   export default Quiz;
@@ -300,7 +304,6 @@ As you may've notice we've also used a function named `shuffleArray` on line 2, 
 
 As the name suggests this function will shuffle an array. I won't dive into how it's doing so, as that's outside the scope of this tutorial, but here's a [link to the source](http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array) if you're interested.
 
-
 Now let's define the render function for the `App.js` component:
 
 {% highlight text linenos %}
@@ -349,31 +352,19 @@ This function is currently performing two tasks; setting the answer and then set
 
 {% highlight text linenos %}
   setUserAnswer(answer) {
-    const updatedAnswersCount = update(this.state.answersCount, {
-      [answer]: {$apply: (currentValue) => currentValue + 1}
-    });
-    this.setState({
-      answersCount: updatedAnswersCount,
+    this.setState((state) => ({
+      answersCount: {
+        ...state.answersCount,
+        [answer]: state.answersCount[answer] + 1
+      },
       answer: answer
-    });
+    }));
   }
-{% endhighlight %}
-
-We're making use of [React's immutability helpers](https://facebook.github.io/react/docs/update.html) here, so before this code will work we need to install the new dependancy, `react-addons-update`. To do so, make sure you're in the directory for this project and enter the following command:
-
-{% highlight text %}
-  npm install react-addons-update --save
-{% endhighlight %}
-
-Then import it into `App.js` with this line:
-
-{% highlight text %}
-  import update from 'react-addons-update';
 {% endhighlight %}
 
 Okay let's talk about what's going on here. We're setting the answer based on the user's selection, which is the first instance of changing state based on user actions. The value being passed in as the answer parameter on line 1, is the value of the selected answer. Which in our case will be either *Nintendo*, *Microsoft* or *Sony*.
 
-It's recommended that you never mutate *state* directly, since calling `setState()` afterwards may replace the change you made. We should treat *state* as if it is unable to be changed (immutable). This is why on line 2 we're utilising `react-addons-update` to create a new object. This object has the original properties of `this.state.answersCount` merged with the new `answerCount` value. We then update the state by assigning the new object with `setState` on line 5. The DOM is not re-rendered until we call `setState`, which is the primary method used to trigger UI updates from event handlers and server request callbacks. We have now updated the state without mutating it directly.
+On line 2 we're calling `setState` with a function rather than an object. This is so we can access the previous state, which will be passed into the function as the first parameter. `setState` is the primary method used to trigger UI updates from event handlers and server request callbacks. In React we should treat *state* as if it is unable to be changed (immutable). This is why on line 3 we're creating a new object. This object has the original properties of `this.state.answersCount` (through the use of the [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)) merged with the new `answerCount` value. We have now updated the state without mutating it directly.
 
 Next we need to define the `setNextQuestion` function. As the name suggests, this will update our state to display the next question. Add this code below the `updatedAnswersCount` function:
 
@@ -442,6 +433,7 @@ Finally we need to display the result. Create a new file in the `components` dir
 
 {% highlight text linenos %}
   import React from 'react';
+  import PropTypes from 'prop-types';
 
   function Result(props) {
     return (
@@ -452,7 +444,7 @@ Finally we need to display the result. Create a new file in the `components` dir
   }
 
   Result.propTypes = {
-    quizResult: React.PropTypes.string.isRequired,
+    quizResult: PropTypes.string.isRequired,
   };
 
   export default Result;
@@ -494,10 +486,10 @@ We now have a fully functional quiz! If you want to deploy your app, you can run
 
 ### Bonus: Adding animation
 
-Let's add some subtle animation to make the user experience feel a bit nicer. Firstly we need to install the React animation component with the following command:
+Let's add some subtle animation to make the user experience feel a bit nicer. Firstly we need to install the React animation component with the following command (note we're using v1 of the library, [v2](https://github.com/reactjs/react-transition-group/blob/master/Migration.md) has changed quite a bit):
 
 {% highlight text %}
-  npm install react-addons-css-transition-group
+  npm install react-transition-group@1.x
 {% endhighlight %}
 
 This provides us with an easy way to perform CSS transitions and animations with React components. If you've ever worked with animations in Angular this will feel familiar to you, as it's inspired by the excellent *ng-animate* library. We're simply going to be adding a fade-in and fade-out effect to our questions.
@@ -505,14 +497,14 @@ This provides us with an easy way to perform CSS transitions and animations with
 Navigate to the `Quiz.js` component and add the following import statement below the others:
 
 {% highlight text %}
-  import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+  import { CSSTransitionGroup } from 'react-transition-group';
 {% endhighlight %}
 
-`ReactCSSTransitionGroup` is a simple element that wraps all of the components you are interested in animating. We're going to be animating the entire quiz component. To do that, update the render function with the following code:
+`CSSTransitionGroup` is a simple element that wraps all of the components you are interested in animating. We're going to be animating the entire quiz component. To do that, update the render function with the following code:
 
 {% highlight text linenos %}
   return (
-    <ReactCSSTransitionGroup
+    <CSSTransitionGroup
       className="container"
       component="div"
       transitionName="fade"
@@ -531,13 +523,13 @@ Navigate to the `Quiz.js` component and add the following import statement below
           {props.answerOptions.map(renderAnswerOptions)}
         </ul>
       </div>
-    </ReactCSSTransitionGroup>
+    </CSSTransitionGroup>
   );
 {% endhighlight %}
 
-Here we've wrapped the quiz element in a `ReactCSSTransitionGroup` element. Child elements of `ReactCSSTransitionGroup` must be provided with a unique `key` attribute. This is how React determines which children have entered, left, or stayed. We've defined the key as `props.questionId` on line 11, as that value will be different for each question.
+Here we've wrapped the quiz element in a `CSSTransitionGroup` element. Child elements of `CSSTransitionGroup` must be provided with a unique `key` attribute. This is how React determines which children have entered, left, or stayed. We've defined the key as `props.questionId` on line 11, as that value will be different for each question.
 
-There are quite a few properties on the `ReactCSSTransitionGroup` element here, I'll go through what each one's purpose is. The `component` prop is specifying what HTML element this will be rendered as. The `transitionName` prop is specifying the name of the CSS classes that will be added to the element. In our case they will be `fade-enter` and `fade-enter-active` when the element is being rendered, and `fade-leave` and `fade-leave-active` when they are being removed. The `transitionEnterTimeout` and `transitionLeaveTimeout` are specifying the animation durations. This also needs to be specified in the CSS. You'll find that the required CSS is already included in the `index.css` file we previously got from Github. This is what it looks like:
+There are quite a few properties on the `CSSTransitionGroup` element here, I'll go through what each one's purpose is. The `component` prop is specifying what HTML element this will be rendered as. The `transitionName` prop is specifying the name of the CSS classes that will be added to the element. In our case they will be `fade-enter` and `fade-enter-active` when the element is being rendered, and `fade-leave` and `fade-leave-active` when they are being removed. The `transitionEnterTimeout` and `transitionLeaveTimeout` are specifying the animation durations. This also needs to be specified in the CSS. You'll find that the required CSS is already included in the `index.css` file we previously got from Github. This is what it looks like:
 
 {% highlight css linenos %}
   .fade-enter {
@@ -580,7 +572,7 @@ The last thing we need to change is the `render` function of the  `Result.js` co
 
 {% highlight text linenos %}
   return (
-    <ReactCSSTransitionGroup
+    <CSSTransitionGroup
       className="container result"
       component="div"
       transitionName="fade"
@@ -592,7 +584,7 @@ The last thing we need to change is the `render` function of the  `Result.js` co
       <div>
         You prefer <strong>{props.quizResult}</strong>!
       </div>
-    </ReactCSSTransitionGroup>
+    </CSSTransitionGroup>
   );
 {% endhighlight %}
 
