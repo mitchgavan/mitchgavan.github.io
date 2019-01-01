@@ -1,6 +1,6 @@
 {
   "name": "mitchgavan",
-  "description": "Front-end developer from Melbourne Australia.",
+  "description": "Software Engineer from Melbourne Australia.",
   "author": "Mitch Gavan",
   "scripts": {
     "start": "grunt serve",

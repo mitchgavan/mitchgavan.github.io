@@ -1,3 +1,6 @@
 {
-  "version": 2
+  "version": 2,
+  "env": {
+    "REDIRECT_URL": "https://mitchgavan.com/"
+  }
 }
