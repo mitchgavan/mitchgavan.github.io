@@ -4,8 +4,7 @@
   "author": "Mitch Gavan",
   "scripts": {
     "start": "grunt serve",
-    "build": "grunt build",
-    "dev": "bundle exec jekyll serve"
+    "build": "grunt build"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.1",
