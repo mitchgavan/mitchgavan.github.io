@@ -1,5 +1,5 @@
 .highlight:not(div) {
-  background-color: #efefef;
+  background-color: $codeBg;
   padding: 7px 7px 7px 10px;
   margin: 0.25rem 0 2rem 0;
   overflow: scroll;
@@ -8,6 +8,11 @@
 
 code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+}
+
+p code {
+  background-color: $codeBg;
+  padding: 0.125rem 0.375rem;
 }
 
 .highlight .lineno { color: #999 } /* Line Number */
