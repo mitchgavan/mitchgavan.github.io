@@ -1,6 +1,11 @@
 var WebFontConfig = {
   google: {
-    families: ['Roboto Slab:400','Roboto:100,300','Merriweather:300,400,700']
+    families: [
+			'Roboto Slab:400',
+			'Roboto:300,400',
+			'Merriweather:300,400,700',
+			'Source+Code+Pro:400'
+		]
   }
 };
 

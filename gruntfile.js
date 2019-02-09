@@ -16,7 +16,7 @@ module.exports = function (grunt) {
                 command: 'jekyll build'
             },
             jekyllServe: {
-                command: 'jekyll serve'
+                command: 'bundle exec jekyll serve --livereload --drafts'
             }
         },
 
@@ -124,8 +124,8 @@ module.exports = function (grunt) {
                 'uglify',
                 'newer:imagemin:bitmaps',
                 'newer:imagemin:svgs',
-                'watch',
-                'shell:jekyllServe'
+                'shell:jekyllServe',
+                'watch'
             ],
             options: {
                 logConcurrentOutput: true

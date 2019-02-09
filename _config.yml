@@ -59,7 +59,7 @@ kramdown:
 
 # # Use the following plug-ins
 # plugins:
-#   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+#   - jekyll-gist
 
 
 # Exclude these files from your production _site

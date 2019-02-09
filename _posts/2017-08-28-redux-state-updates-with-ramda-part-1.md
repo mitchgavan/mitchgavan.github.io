@@ -5,7 +5,6 @@ description: In this post I go through some practical examples that can help mak
 image: /images/posts/redux-and-ramda.jpg
 ---
 
-
 I got my first taste of functional programming when getting started with React,  since then I've gradually been learning more FP concepts and applying them to my code. It's definitely become a popular topic in JavaScript as of late. In this post I'd like to go through some practical examples that can help make Redux reducers more declarative, often requiring less code. I'll be using the functional library [Ramda](http://ramdajs.com/). These examples and concepts are by no means specific to Redux, and can be of use in any JS application.
 
 In this post I'm going to focus on updating arrays with Ramda (a future post will focus on updating objects). A lot of the time in JavaScript, arrays are modified using `push`, `unshift` and `splice`. However these methods mutate the original array, and in Redux that's not allowed. Reducers must be pure functions, which means that:

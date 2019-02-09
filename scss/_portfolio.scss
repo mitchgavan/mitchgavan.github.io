@@ -6,10 +6,11 @@
   margin: 0 0 2.5rem;
   text-align: center;
   text-transform: uppercase;
+  color: $lightGrey;
   @include font-size(18px);
 
   @include bp(medium) {
-    margin: 0 0 4rem;
+    margin: 0 0 3rem;
   }
 }
 
@@ -60,9 +61,14 @@
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  color: $darkerGrey;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: $darkGrey;
+  color: $white;
   font-family: $fontHeader;
+  font-weight: 500;
   text-transform: uppercase;
+  z-index: 1;
   @include font-size(20px);
 }
 
@@ -72,8 +78,8 @@
 }
 
 .item--description {
-  @include font-size(14px);
-  color: $grey;
+  @include font-size(16px);
+  color: $lightGrey;
 }
 
 .mockup,

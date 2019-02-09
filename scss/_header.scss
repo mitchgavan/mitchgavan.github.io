@@ -66,10 +66,10 @@
 .header--title {
   margin: 3vh 0 1vh;
   text-transform: uppercase;
-  font-weight: 100;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,0.7);
-  @include font-size(30px);
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.5);
+  @include font-size(26px);
 }
 
 .header--title-subpage {
@@ -124,7 +124,7 @@
     height: 50px;
 
     path {
-      fill: $darkGrey;
+      fill: $darkerGrey;
       transition: fill 0.2s ease-in-out;
 
       .headerSubpage-transparent & {
