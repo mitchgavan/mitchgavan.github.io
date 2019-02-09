@@ -1,4 +1,3 @@
-
 //
 // HEADER
 //
@@ -9,12 +8,12 @@
   width: 100vw;
   min-height: 480px;
   background: #543640 url('../images/header.jpg') no-repeat;
-  background-position: -500px bottom;
+  background-position: center top;
+  background-size: cover;
   text-align: center;
 
   @media screen and (orientation: landscape) {
     height: 140vh;
-    background-position: -330px bottom;
   }
 
   @media screen and (min-width: 40.063em) and (orientation: portrait) {
@@ -24,7 +23,6 @@
   @include bp(medium) {
     height: 100vh;
     background-position: -200px bottom;
-    background-size: cover;
   }
 
   @include bp(large) {
@@ -55,12 +53,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -85%);
   width: 100%;
-
-  @include bp(large) {
-    transform: translate(-50%, -85%);
-  }
 }
 
 .header--title {
@@ -84,7 +78,7 @@
 
 .header--subTitle {
   margin: 0;
-  color: #70454a;
+  color: #412937;
   font-family: $robotoSlab;
   text-transform: lowercase;
   opacity: 0.7;
@@ -92,10 +86,6 @@
 
   @include bp(medium) {
     color: #513640;
-    @include font-size(36px);
-  }
-
-  @include bp(large) {
     @include font-size(36px);
   }
 }
@@ -145,8 +135,6 @@
   background: #543640 url('../images/header-about.jpg') no-repeat;
   background-size: cover;
 }
-
-// Bouncing Arrow
 
 .header--arrow {
   display: none;
