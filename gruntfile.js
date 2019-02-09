@@ -16,7 +16,7 @@ module.exports = function (grunt) {
                 command: 'jekyll build'
             },
             jekyllServe: {
-                command: 'bundle exec jekyll serve --livereload'
+                command: 'bundle exec jekyll serve --livereload --drafts'
             }
         },
 

@@ -9,8 +9,8 @@
   border: 1px solid $grey;
   border-radius: 100em;
   margin: 0.875rem 0.875rem 0.875rem 0;
-  @include font-size(13px);
-  transition: all 0.2s ease-in-out;
+  @include font-size(14px);
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 
   &:hover {
   	color: $orange;

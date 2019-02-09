@@ -10,8 +10,8 @@ body {
   background: $white;
   font-family: $fontBody;
   font-weight: 300;
-  @include font-size(16px);
-  line-height: 2;
+  @include font-size(18px);
+  line-height: 1.75;
   color: $darkGrey;
   text-size-adjust: none;
 
@@ -23,7 +23,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: $fontHeader;
   color: $darkerGrey;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.25;
   margin: 0.125rem 0 1.125rem;
   padding: 0;
@@ -42,15 +42,15 @@ h1 {
 }
 
 h2 {
-  @include font-size(34px);
+  @include font-size(36px);
 }
 
 h3 {
-  @include font-size(26px);
+  @include font-size(28px);
 }
 
 h4 {
-  @include font-size(20px);
+  @include font-size(22px);
 }
 
 p {
