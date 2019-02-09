@@ -40,7 +40,7 @@ You should see your new app running in the iOS Simulator shortly. Congratulation
 
 React native ships with ES2015 support, which means no need to set up something like Babel to transpile your JavaScript. You will just need to understand the basic React concepts like JSX, components, state, and props to get started. If you already know React, you'll still need to learn some React-Native-specific stuff, like the native components. Here is the Hello World app from the official docs:
 
-{% highlight text %}
+{% highlight jsx %}
 import React, { Component } from 'react';
 import { AppRegistry, Text } from 'react-native';
 
@@ -72,7 +72,7 @@ When first starting out I found that thinking about it in this way helped me dec
 
 With React Native, you style your components with CSS in JavaScript. Every core component accepts a prop called style to add your classes or inline styles. It's important to note that React Native only includes a particular subset of CSS properties, some components may only accept certain properties. The official documentation will have all the information you need. CSS properties usually match their web equivalents, but are camel case instead of snake case. Here is an example of a component with styling:
 
-{% highlight text %}
+{% highlight jsx %}
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
