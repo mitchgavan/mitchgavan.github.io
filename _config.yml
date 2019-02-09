@@ -58,8 +58,8 @@ kramdown:
   syntax_highlighter: rouge
 
 # # Use the following plug-ins
-plugins:
-  - jekyll-gist
+# plugins:
+#   - jekyll-gist
 
 
 # Exclude these files from your production _site

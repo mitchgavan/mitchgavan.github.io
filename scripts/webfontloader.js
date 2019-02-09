@@ -4,6 +4,7 @@ var WebFontConfig = {
 			'Roboto Slab:400',
 			'Roboto:300,400',
 			'Merriweather:300,400,700',
+			'Source+Code+Pro:400'
 		]
   }
 };

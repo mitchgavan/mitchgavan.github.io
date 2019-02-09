@@ -265,10 +265,6 @@ Next we need to create the `CartItem` component we're utilising above. Create a 
 import  React  from  'react';
 import  './CartItem.css';
 
-export  default ({ title, cost, quantity }) => (
-import React from 'react';
-import './CartItem.css';
-
 export default ({ title, cost, quantity }) => (
   <div className="CartItem">
     <div>{title}</div>
