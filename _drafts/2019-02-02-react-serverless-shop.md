@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Create a serverless eCommerce app with React, Stripe and Netlify
+title: Create a serverless eCommerce site with React, Stripe and Netlify
 description: TODO
 image: /images/posts/redux-and-ramda.jpg
 ---
 
-In this tutorial I'm going to show you how to create your own eCommerce solution so that you can start accepting payments on your website without the need for a traditional server or third-party subscription service. We'll be using React to build the functionality, Netlify to host the site and communicate with Stripe for payment processing.
+In this tutorial I'm going to show you how to create your own eCommerce solution so that you can start accepting payments on your website without the need for a traditional server or third-party subscription service. We'll be using React (with hooks!) to build the functionality, communicate with Stripe for payment processing, and Netlify to deploy and host the site. You can view the final result of what we'll be creating [here](https://google.com).
 
 Before we get started I'd just like to point out that the solution we'll be creating won't cost you anything to run and maintain until you reach the generous limits of Netlify's [free tier](https://www.netlify.com/pricing/). The only thing you'll need to note is that Stripe charges a [small fee](https://stripe.com/au/pricing) for each payment processed, in return for their secure and scalable payment platform. 
 
@@ -372,14 +372,217 @@ There's a bit going on in the `handleAddToCartClick` function so let's dissect i
 
 Finally, we've imported the Cart component and added it to the render function on line 53.  We're passing the list of `itemsIncart` from the App component's state to Cart component via a prop. And with that we have a basic functioning shopping cart user interface.
 
-## Checkout form with stripe elements
+## Checkout form with Stripe Elements
 We are going to make use of [Stripe Elements](https://stripe.com/payments/elements) to create the checkout form. Stripe Elements are a set of pre-built UI components, created by Stripe, to help you securely collect your customer's card details. They have also created [react-stripe-elements](https://github.com/stripe/react-stripe-elements), which includes these elements are React components. This is what we'll be using, go ahead and install it with this command:
-```
-npm install react-stripe-elements
-```
 
+{% highlight bash linenos %}
+npm install react-stripe-elements
+{% endhighlight %}
+
+Next we need to add the Stripe.js library inside the `head` tag of`public/index.html`. This library is responsible for communicating with Stripe and performing the tokenization. We need to add it to the page this way for [PCI compliance](https://www.pcicomplianceguide.org/faq/), it cannot be included in our script bundle, as it needs to be loaded from Stripe's servers at runtime. The `react-stripe-elements` library depends upon this script.
+
+Now that we've got that setup we can go ahead and create the checkout form component. Create a new directory `src/components/CheckoutForm` and add a file named `CheckoutForm.js`, then add the following to it:
+
+{% highlight jsx linenos %}
+import React, { Component } from 'react';
+import { CardElement, injectStripe } from 'react-stripe-elements';
+import './CheckoutForm.css';
+
+class CheckoutForm extends Component {
+  submit = e => {
+    e.preventDefault();
+    console.log('submitted');
+  };
+
+  render() {
+    return (
+      <form className="CheckoutForm" onSubmit={this.submit}>
+        <h4>Would you like to complete the purchase?</h4>
+        <CardElement />
+        <button className="CheckoutForm-button" type="submit">
+          Submit Order
+        </button>
+      </form>
+    );
+  }
+}
+
+export default injectStripe(CheckoutForm);
+
+{% endhighlight %}
+
+Submitting the form currently only logs that the form was submitted. Instead of adding an `onClick` handler, we're adding the `onSubmit` handler to the `form` that encapsulates it. This is preferable as the user can submit the form by pressing the enter key as well as clicking the submit button.
+
+We're importing the `CardElement` component from `react-stripe-elements`, this includes inputs for all of the major card fields: the card number, the expiration date, and the CVC. There other Stripe Element components if you want to display those inputs separately. The `CardElement` also handles client side validation of the input fields for us. To enable this, we're wrapping the `CheckoutForm` in the injectStripe function. This returns a new component with an injected stripe prop, which contains a Stripe object.
+
+We now need to add some styles for the checkout form. Create a new CSS file in `src/components/CheckoutForm/CheckoutForm` named `CheckoutForm.css`. And add the following CSS:
+
+{% highlight css linenos %}
+.CheckoutForm {
+  border-top: 1px solid #eee;
+  margin: 0 auto;
+  max-width: 800px;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.CheckoutForm-button {
+  display: inline-block;
+  margin: 0 0 1rem 0;
+  padding: 0.85em 1em;
+  border: 0;
+  outline: 0;
+  border-radius: 100em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  background-color: #7fdc45;
+  color: #fff;
+  cursor: pointer;
+  transition-property: background-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+  -webkit-appearance: none;
+}
+
+.CheckoutForm-button:hover,
+.CheckoutForm-button:focus {
+  background-color: #68b637;
+}
+
+.CheckoutForm-error {
+  color: #dc4545;
+}
+
+.StripeElement {
+  display: block;
+  margin: 0.5rem auto 1.5rem;
+  max-width: 500px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  outline: 0;
+  background: white;
+}
+{% endhighlight %}
+
+Now we need to add the checkout form to our app. So back in our `App.js` we need to add the following where the rest of our imports are, add the following:
+
+{% highlight js %}
+import { Elements, StripeProvider } from 'react-stripe-elements';
+import CheckoutForm from './components/CheckoutForm/CheckoutForm';
+{% endhighlight %}
+
+Then we'll use these components in the `render` function. Directly after the `<Cart />` element, add the following:
+
+{% highlight jsx %}
+{itemsInCart.length > 0 && (
+  <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+    <Elements>
+      <CheckoutForm />
+    </Elements>
+  </StripeProvider>
+)}
+{% endhighlight %}
+
+Our `CheckoutForm` component is enclosed within the Stripe Elements components. The `StripeProvider` component initializes Stripe and passes in your publishable key. This is a test key, you'll need to get your key from your Stripe account dashboard.
+
+The Elements component creates an Elements group. When you use multiple Stripe Elements components instead of the combined `CardElement` that we're using, the Elements group indicates they're related. For example, if you used separate components for the card number, expiration date, and CVC, you would put them all in the same Elements group. Note that Elements must contain the component that you wrapped with `injectStripe`.
+
+## Create a token for securely sending card information
+Back in the `CheckoutForm` component, we need to update the `submit` function so that it tokenizes the card information and sends it to the server. Replace what we currently have in `src/components/CheckoutForm/CheckoutForm.js` with the following:
+
+{% highlight jsx linenos%}
+import React, { Component } from 'react';
+import { CardElement, injectStripe } from 'react-stripe-elements';
+import './CheckoutForm.css';
+
+class CheckoutForm extends Component {
+  state = {
+    complete: false,
+    errorMessage: null,
+  };
+
+  submit = async e => {
+    e.preventDefault();
+
+    try {
+      let { token } = await this.props.stripe.createToken({ name: 'Name' });
+
+      let response = await fetch('/charge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: token.id,
+      });
+
+      if (response.ok) {
+        this.setState({ complete: true });
+      }
+    } catch (err) {
+      this.setState({
+        errorMessage: err.message || 'Sorry, something went wrong.',
+      });
+    }
+  };
+
+  render() {
+    const { complete, errorMessage } = this.state;
+
+    if (complete) {
+      return <div>Payment successful!</div>;
+    }
+
+    return (
+      <form className="CheckoutForm" onSubmit={this.submit}>
+        <h4>Would you like to complete the purchase?</h4>
+        <CardElement />
+        <button className="CheckoutForm-button" type="submit">
+          Submit Order
+        </button>
+        {errorMessage && (
+          <div className="CheckoutForm-error">{errorMessage}</div>
+        )}
+      </form>
+    );
+  }
+}
+
+export default injectStripe(CheckoutForm);
+{% endhighlight %}
+
+TODO explain the changes made here.
 
 ## Setup Netlify Lambda
+Now we have to write our server side code to handle the api call we are making upon the form submission. As mentioned earlier, we'll be using lambda functions on Netlify. Netlify lets you deploy Lambda functions without an AWS account, and handles setting up API gateways and deployment configurations for you. With function management handled directly within Netlify. After a little bit of set up, all we have to worry about is write the code within the lambda function. So let's get that set up now. Start by installing the `netlify-lambda` package:
+
+{% highlight bash %}
+npm install netlify-lambda --save-dev
+{% endhighlight %}
+
+Next we need to define where the functions will be built to and served from. Create a new file in the root directory of the project named `netlify.toml`, and add the following to it:
+
+{% highlight text %}
+[build]
+  Command = "npm run build"
+  Functions = "lambda"
+  Publish = "build"
+{% endhighlight %}
+
+Here we're telling Netlify that our lambda functions will be in a directory named `lambda` and our publish folder is `build` - as that is the default for `create-react-app`. Now we need to set up a way to run the lambda function. To do so, we can add a `start:lambda` script to the scripts section of our `package.json`, so our scripts section should now look like this:
+
+{%highlight json %}
+"scripts": {
+  "start": "react-scripts start",
+  "start:lambda": "netlify-lambda serve src/lambda",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
+{% endhighlight %}
+
+- Add proxy
 
 ## Write Lambda function code to tokenize payment
 
