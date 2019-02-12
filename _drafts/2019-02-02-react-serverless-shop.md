@@ -554,6 +554,57 @@ export default injectStripe(CheckoutForm);
 
 TODO explain the changes made here.
 
+## Write Lambda function code to tokenize payment
+Intro to lambda code
+
+{% highlight js linenos %}
+const stripe = require('stripe')('sk_test_yaKbjP7rkSGdMeQtQvTMx4cG');
+
+exports.handler = (event, context, callback) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+
+  // Only allow POST
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  const data = JSON.parse(event.body);
+
+  if (!data.token || parseInt(data.amount) < 1) {
+    return callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: 'Some required fields were not supplied.',
+      }),
+    });
+  }
+
+  stripe.charges
+    .create({
+      amount: parseInt(data.amount),
+      currency: 'aud',
+      description: 'Dreamcast game shop',
+      source: data.token,
+    })
+    .then(({ status }) => {
+      return callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({ status }),
+      });
+    })
+    .catch(err => {
+      return callback(null, {
+        statusCode: 400,
+        body: JSON.stringify({
+          message: `Error: ${err.message}`,
+        }),
+      });
+    });
+};
+{% endhighlight %}
+
+Explain what is going on in the code above.
+
 ## Setup Netlify Lambda
 Now we have to write our server side code to handle the api call we are making upon the form submission. As mentioned earlier, we'll be using lambda functions on Netlify. Netlify lets you deploy Lambda functions without an AWS account, and handles setting up API gateways and deployment configurations for you. With function management handled directly within Netlify. After a little bit of set up, all we have to worry about is write the code within the lambda function. So let's get that set up now. Start by installing the `netlify-lambda` package:
 
@@ -582,8 +633,30 @@ Here we're telling Netlify that our lambda functions will be in a directory name
 },
 {% endhighlight %}
 
-- Add proxy
+Now when we run `npm run start:lambda` our lambda function will be running on `localhost:9000`. But if we try to access our new endpoint from our react app we'll get a CORS error. In order for us to be able to use our lambda functions in our react app during development we need to set up a proxy. First, `install http-proxy-middleware` using npm:
 
-## Write Lambda function code to tokenize payment
+{% highlight text %}
+npm install http-proxy-middleware --save
+{% endhighlight %}
+
+Then create a new file `src/setupProxy.js` and add the following:
+
+{%highlight js linenos %}
+const proxy = require('http-proxy-middleware');
+
+module.exports = function(app) {
+  app.use(
+    proxy('/.netlify/functions/', {
+      target: 'http://localhost:9000/',
+      pathRewrite: {
+        '^/\\.netlify/functions': '',
+      },
+    })
+  );
+};
+{% endhighlight %}
+
+This creates a proxy by directly accessing the Express app instance created by create react app ([proxy documentation](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development)). Note that our lambda function will be served from the same origin once deployed, this change is only required for local development.
+If we run both the app and the lambda by running `npm start` and `npm run start:lambda`, our api call will now work as expected when accessed through `http://localhost:3000`.
 
 ## Deploy to netlify
