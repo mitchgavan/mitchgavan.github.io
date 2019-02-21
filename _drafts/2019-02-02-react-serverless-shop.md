@@ -5,9 +5,11 @@ description: TODO
 image: /images/posts/redux-and-ramda.jpg
 ---
 
-In this tutorial I'm going to show you how to create your own eCommerce solution so that you can start accepting payments on your website without the need for a traditional server or third-party subscription service. We'll be using React (with hooks!) to build the functionality, communicate with Stripe for payment processing, and Netlify to deploy and host the site. You can view the final result of what we'll be creating [here](https://google.com).
+In this tutorial we're going to create an eCommerce app that accepts payments without the need for a traditional server. We'll use React (with hooks!) to build a simple UI for demo purposes. We'll integrate Stripe for payment processing. Stripe requires a server to process a payment, so we'll create a Lambda function to handle that. Netlify lets you deploy Lambda functions without an AWS account, with function management handled within Netlify. And Netlify will also take care of deployment and hosting for us. You can view the final result of what we'll be creating [here](https://vigilant-torvalds-79378e.netlify.com/).
 
-Before we get started I'd just like to point out that the solution we'll be creating won't cost you anything to run and maintain until you reach the generous limits of Netlify's [free tier](https://www.netlify.com/pricing/). The only thing you'll need to note is that Stripe charges a [small fee](https://stripe.com/au/pricing) for each payment processed, in return for their secure and scalable payment platform. 
+So why a static site with a serverless backend (aka the [JAMStack](https://jamstack.org/)) over a traditional server rendered app? Improved security; server-side processes abstracted into microservice APIs, surface areas for attacks are reduced. And we'll be leveraging the domain expertise of specialist third-party services. Cheaper, easier hosting and scaling; the static site is just a stack of files that can be served anywhere, and scaled with CDNs. Whilst with Lambda functions you only pay for what use as it doesn't need to be constantly running and will automatically scale based on traffic.
+
+The solution we'll be creating won't cost you anything to run and maintain until you reach the generous limits of Netlify's [free tier](https://www.netlify.com/pricing/). The only thing you'll need to note is that Stripe charges a [small fee](https://stripe.com/au/pricing) for each payment processed, in return for their secure and scalable payment platform. 
 
 We're going to be using [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started) to create our application. It allows to get started quickly with a modern build setup with no configuration. Run the following command to generate your project, feel free to name it whatever you like, I've named mine `my-shop`:
 
@@ -356,7 +358,7 @@ export default function App() {
         </div>
         <Cart itemsInCart={itemsInCart} />
         {itemsInCart.length > 0 && (
-          <StripeProvider apiKey="pk_test_TbaT0lpvmSdTKqV2LOsRk4vG">
+          <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
             <Elements>
               <CheckoutForm />
             </Elements>
@@ -377,6 +379,7 @@ On the next line we're trying to find the item in the cart based on it's ID by u
 Finally, we've imported the Cart component and added it to the render function on line 48.  We're passing the list of `itemsIncart` from the App component's state to Cart component via a prop. And with that we have a basic functioning shopping cart user interface.
 
 ## Checkout form with Stripe Elements
+
 We are going to make use of [Stripe Elements](https://stripe.com/payments/elements) to create the checkout form. Stripe Elements are a set of pre-built UI components, created by Stripe, to help you securely collect your customer's card details. They have also created [react-stripe-elements](https://github.com/stripe/react-stripe-elements), which includes these elements are React components. This is what we'll be using, go ahead and install it with this command:
 
 {% highlight bash linenos %}
@@ -544,6 +547,7 @@ Our `CheckoutForm` component is enclosed within the Stripe Elements components. 
 The Elements component creates an Elements group. When you use multiple Stripe Elements components instead of the combined `CardElement` that we're using, the Elements group indicates they're related. For example, if you used separate components for the card number, expiration date, and CVC, you would put them all in the same Elements group. Note that Elements must contain the component that we wrapped with `injectStripe`.
 
 ## Write Lambda function code to tokenize payment
+
 Now we need to write the code for our Lambda function, which is going to be executed when we submit the checkout form. With Netlify functions, each JavaScript file to be deployed as a Lambda function must export a handler method with the following structure:
 
 {% highlight js %}
@@ -626,6 +630,7 @@ On line 12 we parse the body content, and check to see if the required data has 
 On line 20 we are using the Stripe client library to create a charge with the token and amount provided in the request body, in US dollars. If the charge is successful we return a 200 response with the successful status object (which in this case is just a string `'succeeded'`). If the charge fails and an exception is thrown, and we return a 400 error.
 
 ## Setup Netlify Lambda
+
 Now we have to write our server side code to handle the api call we are making upon the form submission. As mentioned earlier, we'll be using Lambda functions on Netlify. Netlify lets you deploy Lambda functions without an AWS account, and handles setting up API gateways and deployment configurations for you. With function management handled directly within Netlify. After a little initial set up, all we have to worry about is writing the code within the Lambda function. Let's get that set up now, first install the `netlify-lambda` package:
 
 {% highlight text %}
@@ -679,5 +684,35 @@ module.exports = function(app) {
 This creates a proxy by directly accessing the Express app instance created by create react app ([proxy documentation](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development)). Note that our Lambda function will be served from the same origin once deployed, this change is only required for local development.
 If we run both the app and the Lambda by running `npm start` and `npm run start:lambda`, our api call will now work as expected when accessed through `http://localhost:3000`.
 
+## Convenient Build scripts
+
+During development we currently have to start the react app and the Lambda function with two separate commands. We will also need to build each of these when preparing for deployment. Let's improve that so that we only need to run a single command for each of these cases. To run multiple npm-scripts we will install [npm-run-all](https://www.npmjs.com/package/npm-run-all):
+
+{%highlight js text %}
+npm install npm-run-all --save-dev
+{% endhighlight %}
+
+Then update the `scripts` block of your `package.json` to look like this:
+
+{%highlight js linenos %}
+  "scripts": {
+    "start": "run-p start:**",
+    "start:app": "react-scripts start",
+    "start:lambda": "netlify-lambda serve src/lambda",
+    "build": "run-p build:**",
+    "build:app": "react-scripts build",
+    "build:lambda": "netlify-lambda build src/lambda",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+{% endhighlight %}
+
+We can now run `npm start` to start both the react app and the Lambda. And we can run `npm run build` to build them both.
+
 ## Deploy to netlify
-Let's send this thing live. Deployments with Netlify are a breeze. First we need to make some slight alterations to our build script.
+
+You are now ready to deploy to Netlify. This is super simple and only requires a few steps. In the Netlify console be sure to configure your site to run `npm run build` as the build command, and set the build directory to `build`. If your site is using Github or something similar you now have a modern build pipeline at your fingertips. Checkout the [Netlify docs](https://www.netlify.com/docs/welcome/) for details on how to set this up.
+
+## That's it!
+
+Our little eCommerce app is ready to start accepting payments! Here's a link to a [completed version](https://vigilant-torvalds-79378e.netlify.com/) of this tutorial. Although the user interface only provides very basic functionality, we've now got a modern eCommerce app that's secure, scalable and cheap to run. You can view the full source code of the completed demo on [Github](https://github.com/mitchgavan/serverless-shop-tutorial).
