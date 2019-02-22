@@ -1,17 +1,17 @@
 ---
 layout: post
 title: Create a serverless eCommerce site with React, Stripe and Netlify
-description: TODO
-image: /images/posts/redux-and-ramda.jpg
+description: In this tutorial we're going to create a serverless eCommerce react app that includes a Lambda function for payment processing via Stripe.
+image: /images/posts/serverless-shop.jpg
 ---
 
-In this tutorial we're going to create an eCommerce app that accepts payments without the need for a traditional server. We'll use React (with hooks!) to build a simple UI for demo purposes. We'll integrate Stripe for payment processing. Stripe requires a server to process a payment, so we'll create a Lambda function to handle that. Netlify lets you deploy Lambda functions without an AWS account, with function management handled within Netlify. And Netlify will also take care of deployment and hosting for us. You can view the final result of what we'll be creating [here](https://vigilant-torvalds-79378e.netlify.com/).
+In this tutorial we're going to create an eCommerce app that accepts payments without the need for a traditional server. We'll use React (with hooks!) to build a simple UI for demo purposes. We'll integrate Stripe for payment processing. Stripe requires a server to process a payment, so we'll create a Lambda function to handle that. Netlify lets you deploy Lambda functions without an AWS account, with function management handled within Netlify. And Netlify will also handle our deployment and hosting. You can view the final result of what we'll be creating, hosted on Netlify [here](https://vigilant-torvalds-79378e.netlify.com/).
 
-So why a static site with a serverless backend (aka the [JAMStack](https://jamstack.org/)) over a traditional server rendered app? Improved security; server-side processes abstracted into microservice APIs, surface areas for attacks are reduced. And we'll be leveraging the domain expertise of specialist third-party services. Cheaper, easier hosting and scaling; the static site is just a stack of files that can be served anywhere, and scaled with CDNs. Whilst with Lambda functions you only pay for what use as it doesn't need to be constantly running and will automatically scale based on traffic.
+So why a static site with a serverless backend (aka the [JAMStack](https://jamstack.org/)) over a traditional server rendered app? Improved security; server-side processes abstracted into microservice APIs means that surface areas for attacks are reduced. Whilst leveraging the domain expertise of specialist third-party services. Cheaper, easier hosting and scaling; the static site is just a stack of files that can be served anywhere, and scaled with CDNs. Whilst with Lambda functions you only pay for what use as it doesn't need to be constantly running and will automatically scale based on traffic.
 
-The solution we'll be creating won't cost you anything to run and maintain until you reach the generous limits of Netlify's [free tier](https://www.netlify.com/pricing/). The only thing you'll need to note is that Stripe charges a [small fee](https://stripe.com/au/pricing) for each payment processed, in return for their secure and scalable payment platform. 
+The solution we'll be creating won't cost you anything to run and maintain until you reach the generous limits of Netlify's [free tier](https://www.netlify.com/pricing/). The only thing you'll need to note is that Stripe charges a [small fee](https://stripe.com/au/pricing) for each payment processed, in return for usage of their secure, scalable payment platform.
 
-We're going to be using [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started) to create our application. It allows to get started quickly with a modern build setup with no configuration. Run the following command to generate your project, feel free to name it whatever you like, I've named mine `my-shop`:
+We're going to be using [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started) to create our application. It allows you to get started quickly with a modern build setup without requiring any configuration. Run the following command to generate your project, feel free to name it whatever you like, I've named mine `my-shop`:
 
 ```text
 npx create-react-app my-shop
@@ -24,11 +24,11 @@ cd my-shop
 npm start
 ```
 
-Then open [http://localhost:3000/](http://localhost:3000/) to view your app.
+Then open [http://localhost:3000](http://localhost:3000/) in your browser to view your app.
 
 ## Products UI
 
-Time to start writing some code. First we need some items in our shop. To keep things simple, we'll just add a few items. To do so, create a new directory `src/api` and inside that create a file named `api.js`. This is usually where you would make an api call to fetch your data, but we'll just be hard coding it for simplicity. Add this code to your newly created file:
+Time to start writing some code. First we need to add some items to our shop. To keep things simple, we'll just add a few items. To do so, create a new directory `src/api` and inside that create a file named `api.js`. This is usually where you would make an api call to fetch your data, but we'll just be hard coding it for the sake of simplicity in this tutorial. Add this code to your newly created file:
 
 {% highlight javascript linenos %}
 export default [
@@ -53,7 +53,7 @@ export default [
 ];
 {% endhighlight %}
 
-Now let's display these items. Create a new directory `src/components/Product`. We will add a new directory in the `components` directory for each component we create. Inside the `Product` directory. Create a new JavaScript file named `Product.js` and a CSS file named `Product.css`. Add the following code to `Product.js`:
+Now let's display these items. Create a new directory `src/components/Product`. We'll add a new directory in the `components` directory for each component we create. Inside the `Product` directory. Create a new JavaScript file named `Product.js` and a CSS file named `Product.css`. Add the following code to `Product.js`:
 
 {% highlight jsx linenos %}
 import React from 'react';
@@ -546,7 +546,7 @@ Our `CheckoutForm` component is enclosed within the Stripe Elements components. 
 
 The Elements component creates an Elements group. When you use multiple Stripe Elements components instead of the combined `CardElement` that we're using, the Elements group indicates they're related. For example, if you used separate components for the card number, expiration date, and CVC, you would put them all in the same Elements group. Note that Elements must contain the component that we wrapped with `injectStripe`.
 
-## Write Lambda function code to tokenize payment
+## Tokenize payment inside Lambda function
 
 Now we need to write the code for our Lambda function, which is going to be executed when we submit the checkout form. With Netlify functions, each JavaScript file to be deployed as a Lambda function must export a handler method with the following structure:
 
@@ -684,7 +684,7 @@ module.exports = function(app) {
 This creates a proxy by directly accessing the Express app instance created by create react app ([proxy documentation](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development)). Note that our Lambda function will be served from the same origin once deployed, this change is only required for local development.
 If we run both the app and the Lambda by running `npm start` and `npm run start:lambda`, our api call will now work as expected when accessed through `http://localhost:3000`.
 
-## Convenient Build scripts
+## Convenient build scripts
 
 During development we currently have to start the react app and the Lambda function with two separate commands. We will also need to build each of these when preparing for deployment. Let's improve that so that we only need to run a single command for each of these cases. To run multiple npm-scripts we will install [npm-run-all](https://www.npmjs.com/package/npm-run-all):
 
@@ -709,10 +709,10 @@ Then update the `scripts` block of your `package.json` to look like this:
 
 We can now run `npm start` to start both the react app and the Lambda. And we can run `npm run build` to build them both.
 
-## Deploy to netlify
+## Deploy to Netlify
 
 You are now ready to deploy to Netlify. This is super simple and only requires a few steps. In the Netlify console be sure to configure your site to run `npm run build` as the build command, and set the build directory to `build`. If your site is using Github or something similar you now have a modern build pipeline at your fingertips. Checkout the [Netlify docs](https://www.netlify.com/docs/welcome/) for details on how to set this up.
 
 ## That's it!
 
-Our little eCommerce app is ready to start accepting payments! Here's a link to a [completed version](https://vigilant-torvalds-79378e.netlify.com/) of this tutorial. Although the user interface only provides very basic functionality, we've now got a modern eCommerce app that's secure, scalable and cheap to run. You can view the full source code of the completed demo on [Github](https://github.com/mitchgavan/serverless-shop-tutorial).
+Our little eCommerce app is ready to start accepting payments! Here's a link to a [completed version](https://vigilant-torvalds-79378e.netlify.com/) of this tutorial. Although the user interface only provides very basic functionality, we've created a modern eCommerce app that's secure, scalable and cheap to run. You can view the full source code of the completed demo on [Github](https://github.com/mitchgavan/serverless-shop-tutorial).
