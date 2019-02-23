@@ -122,7 +122,7 @@ export default function Product({ onAddToCartClick, price, title }) {
 }
 {% endhighlight %}
 
-Now to utilise our newly created Product component. Open up `src/App.js` and delete all of the code that was generated for you. And add the following:
+Now to utilise our newly created Product component. Open up `src/App.js` and delete all of the code that was generated for you. Then add the following:
 
 {% highlight jsx linenos %}
 import React from 'react';
@@ -150,7 +150,7 @@ export default function App() {
 }
 {% endhighlight %}
 
-At the top of this file we're importing our items api data and our Products component. Then adding some basic layout. The part that renders our products is on line 16. Here we're mapping over our items array and transforming each item in the array into a Product component. We're passing the required props (item and price) to the Product, along with a key prop which React requires in order to efficiently update the DOM.
+At the top of this file we're importing our items api data and our Products component. Then adding some basic layout. The part that renders our products is on line 16. Here we're mapping over our items array and transforming each item in the array into a Product component. We're passing the required props (item and price) to each Product, along with a key prop which React requires in order to efficiently update the DOM.
 
 To finish this section off, replace the CSS in `App.css` with the following:
 
@@ -211,11 +211,11 @@ import React from 'react';
 import CartItem from './CartItem/CartItem';
 import './Cart.css';
 
-export default function Cart({ itemsInCart }) {
+export default function Cart({ itemsInCart, totalCost }) {
   return (
     <div className="Cart">
       <h2 className="Cart-title">Your shopping cart</h2>
-      {itemsInCart.length ? (
+      {itemsInCart.length > 0 ? (
         <div>
           {itemsInCart.map(item => (
             <CartItem
@@ -226,10 +226,7 @@ export default function Cart({ itemsInCart }) {
             />
           ))}
           <div className="Cart-total-cost">
-            Total cost: $
-            {itemsInCart
-              .reduce((acc, item) => acc + item.price * item.quantity, 0)
-              .toFixed(2)}
+            Total cost: ${totalCost.toFixed(2)}
           </div>
         </div>
       ) : (
@@ -240,9 +237,11 @@ export default function Cart({ itemsInCart }) {
 }
 {% endhighlight %}
 
-This component will render our shopping cart. This component will receive an array of items that have been added to the cart. We don't need to worry about how they got there yet, as the Cart component simply takes a list of items and determines how to render them.
+Our `<Cart />` component will render our shopping cart. This component will receive an array of items that have been added to the cart. We don't need to worry about how they got there yet, as the Cart component simply takes a list of items and determines how to render them.
 
-On line 9 we are checking to see if there are any items in the cart, if so we render the items, otherwise we display an empty cart message. On line 11 we are mapping over the items in the array and converting them to CartItem components. We'll need to create this component next. Below the items list we're displaying the total cost of all items. This is the sum of all the items in the cart. And is calculated here using the reduce Array method, which transforms the array of items into a single value. We then call `toFixed(2)` to format the value to decimal points.
+On line 9 we are checking to see if there are any items in the cart, if so we render the items, otherwise we display an empty cart message. On line 11 we are mapping over the items in the array and converting them to `<CartItem />` component - we'll need to create this component next. We're passing the required props through to the component, including a `cost` prop, which we're calculating by multiplying the price by the quantity.
+
+Below the items list we're displaying the total cost of all items in the cart. We'll calculate this in the `<App />` and pass it down, as we require it in multiple places. We are calling `toFixed(2)` to format the total cost to decimal places.
 
 Now we just need to style it. Create a new CSS file in `src/components/Cart/` named `Cart.css`. And add the following CSS:
 
@@ -261,7 +260,7 @@ Now we just need to style it. Create a new CSS file in `src/components/Cart/` na
 }
 {% endhighlight %}
 
-Next we need to create the `CartItem` component we're utilising above. Create a new directory `src/components/Cart/CartItem`. Inside that create a new file named `CartItem.js` and add the following code to it: 
+Next we need to create this `<CartItem />` component that we've just utilized above. Create a new directory `src/components/Cart/CartItem`. Inside that create a new file named `CartItem.js` and add the following code to it:
 
 {% highlight jsx linenos %}
 import React from 'react';
@@ -281,7 +280,7 @@ export default function CartItem({ title, cost, quantity }) {
 
 {% endhighlight %}
 
-Once again, this a simple function component that receives some props (title, cost and quantity) and renders them appropriately. Now we just need to style it. Create a new CSS file in `src/components/Cart/CartItem` named `CartItem.css`. And add the following CSS:
+Once again, this a simple function component that receives some props (title, cost and quantity) and renders it accordingly. Now we just need to style it. Create a new CSS file in `src/components/Cart/CartItem` named `CartItem.css`. And add the following CSS:
 
 {% highlight css linenos %}
 .CartItem {
@@ -306,7 +305,7 @@ Once again, this a simple function component that receives some props (title, co
 }
 {% endhighlight %}
 
-Now that we have all of the required UI, we need to add the functionality for adding items to the cart. Replace the `src/App.js` with the following code:
+Now that we have all of the required UI, we need to add the functionality for adding items to the cart. Update `src/App.js` with the following code:
 
 {% highlight jsx linenos %}
 import React, { useState } from 'react';
@@ -339,6 +338,11 @@ export default function App() {
     });
   };
 
+  const totalCost = itemsInCart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
   return (
     <div className="App">
       <header className="App-header">
@@ -356,46 +360,48 @@ export default function App() {
             />
           ))}
         </div>
-        <Cart itemsInCart={itemsInCart} />
-        {itemsInCart.length > 0 && (
-          <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-            <Elements>
-              <CheckoutForm />
-            </Elements>
-          </StripeProvider>
-        )}
+        <Cart itemsInCart={itemsInCart} totalCost={totalCost} />
       </main>
     </div>
   );
 }
 {% endhighlight %}
 
-We've added a few things here. Firstly we've added the `itemsInCart` state to the App component, which is initialized on line 9 as an empty array. As the name suggests, this will be where the items that have been added to the cart will be stored. On line 44 we have added another prop to the `Product` component named `onAddToCartClick`. This is the function that will get called when the add to cart button is clicked. We are creating a new arrow function here so that we can pass a parameter to the function. This is necessary as the `onClick` event invokes the callback by passing an event object as first and only parameter. So the inline function is returning the `handleAddToCartClick` function with the product ID as an argument. Which is what will get invoked when the add to cart button is clicked. The `handleAddToCartClick` updates the state appropriately.
+We've added a few things here. Firstly we've added the `itemsInCart` state to the App component, which is initialized on line 9 as an empty array. As the name suggests, this will be where the items that have been added to the cart will be stored. On line 49 we have added another prop to the `<Product />` component named `onAddToCartClick`. This is the function that will get called when the add to cart button is clicked. We are creating a new arrow function here so that we can pass a parameter to the function. This is necessary as the `onClick` event invokes the callback by passing an event object as the first and only parameter. So the inline function is returning the `handleAddToCartClick` function with the product ID as an argument. Which is what will get invoked when the add to cart button is clicked. And the `handleAddToCartClick` function will update the state accordingly.
 
-There's a bit going on in the `handleAddToCartClick` function so let's dissect it. Firstly we're calling `setItemsInCart`, which is the name we assigned to the function returned from calling `useState()`. And we're calling `setItemsInCart` with a function as the argument, this is referred to as the `updater` function. We're passing a function here because we need access to the previous state, and doing it this way guarantees the state is up to date.
+There's a bit going on in the `handleAddToCartClick` function so let's dissect it. Firstly we're calling `setItemsInCart`, which is the name we assigned to the function returned from calling `useState()`. And we're calling `setItemsInCart` with a function as the argument, this is referred to as the `updater` function. We're passing a function here because we need access to the previous state, and doing it this way, rather than accessing the `itemsInCart` state directly, guarantees the state is up to date.
 
-On the next line we're trying to find the item in the cart based on it's ID by using the `find()` array method, which will iterate of the `itemsInCart` state and return an item if the ID of the item matches the ID parameter passed in. Then if the item is found in the cart we increment the quantity property of that item in an immutable fashion. If there is no item in the cart with that ID, we need to add it to the cart. We accomplish this by first finding the item in our `items` array, and then returning an updated state object with that item appended to `itemsInCart`.
+On the next line we're trying to find the item in the cart based on it's ID by using the `find()` array method. This will iterate over the `itemsInCart` array and return an item if the ID of the item matches the ID parameter passed in. Then if the item is found in the cart we increment the quantity property of that item in an immutable fashion. If there is no item in the cart with that ID, we need to add it to the cart. We accomplish this by first finding the item in our `items` array, and then returning an updated state object with that item appended to `itemsInCart`.
 
-Finally, we've imported the Cart component and added it to the render function on line 48.  We're passing the list of `itemsIncart` from the App component's state to Cart component via a prop. And with that we have a basic functioning shopping cart user interface.
+Finally, we've imported the `<Cart />` component and added it to the render function on line 53.  We're passing it the items and the total cost of the items via props. The total cost is calculated on line 31 by using the `reduce()` array method, which transforms the array of items into a single value, in this case by adding each value to the previous. And with that we have a basic functioning shopping cart user interface.
 
 ## Checkout form with Stripe Elements
 
-We are going to make use of [Stripe Elements](https://stripe.com/payments/elements) to create the checkout form. Stripe Elements are a set of pre-built UI components, created by Stripe, to help you securely collect your customer's card details. They have also created [react-stripe-elements](https://github.com/stripe/react-stripe-elements), which includes these elements are React components. This is what we'll be using, go ahead and install it with this command:
+We are going to make use of [Stripe Elements](https://stripe.com/payments/elements) to create the checkout form. Stripe Elements are a set of pre-built UI components created by Stripe, to help you securely collect your customer's card details. They have also created [react-stripe-elements](https://github.com/stripe/react-stripe-elements), which includes these elements as React components. This is what we'll be using, go ahead and install it with this command:
 
-{% highlight bash linenos %}
+{% highlight text %}
 npm install react-stripe-elements
 {% endhighlight %}
 
-Next we need to add the Stripe.js library inside the `head` tag of`public/index.html`. This library is responsible for communicating with Stripe and performing the tokenization. We need to add it to the page this way for [PCI compliance](https://www.pcicomplianceguide.org/faq/), it cannot be included in our script bundle, as it needs to be loaded from Stripe's servers at runtime. The `react-stripe-elements` library depends upon this script.
+Next we need to add the Stripe.js library inside the `head` tag of`public/index.html`. 
 
-Now that we've got that setup we can go ahead and create the checkout form component. Create a new directory `src/components/CheckoutForm` and add a file named `CheckoutForm.js`, then add the following to it:
+{% highlight html %}
+<head>
+  <!-- add this somewhere before the closing head tag -->
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+{% endhighlight %}
+
+This library is responsible for communicating with Stripe and performing the tokenization. We need to add it to the page this way for [PCI compliance](https://www.pcicomplianceguide.org/faq/). It cannot be included in our script bundle, as it needs to be loaded from Stripe's servers at runtime. The `react-stripe-elements` library depends upon this script.
+
+Now that we've got that setup we can go ahead and create the `<CheckoutForm />` component. Create a new directory `src/components/CheckoutForm` and add a file named `CheckoutForm.js`, then add the following to it:
 
 {% highlight jsx linenos %}
 import React, { useState } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import './CheckoutForm.css';
 
-function CheckoutForm({ stripe }) {
+function CheckoutForm({ stripe, totalCost }) {
   const [status, setStatus] = useState('default');
 
   const submit = async e => {
@@ -409,7 +415,7 @@ function CheckoutForm({ stripe }) {
       let response = await fetch('/.netlify/functions/charge', {
         method: 'POST',
         body: JSON.stringify({
-          amount: 100,
+          amount: totalCost * 100,
           token: token.id,
         }),
       });
@@ -447,18 +453,15 @@ function CheckoutForm({ stripe }) {
 }
 
 export default injectStripe(CheckoutForm);
-
 {% endhighlight %}
 
-Now we have our completed checkout form. At the top we're importing the `CardElement` component from `react-stripe-elements`, this includes inputs for all of the major card fields: the card number, the expiration date, and the CVC. There other Stripe Element components if you want to display those inputs separately. The `CardElement` also handles client side validation of the input fields for us. To enable this, we're wrapping the `CheckoutForm` in the injectStripe function. This returns a new component with an injected stripe prop, which contains a Stripe object.
+This is our completed checkout form. At the top we're importing the `CardElement` component from `react-stripe-elements`, this includes inputs for all of the required card fields: the card number, the expiration date, and the CVC. There other Stripe Element components available should you want to display these as separate inputs. The `CardElement` also handles client side validation of the input fields for us. To enable this, we're wrapping the `CheckoutForm` in the `injectStripe` function. This returns a new component with the Stripe object injected.
 
-On line 6 we're initializing a `status` state with the `useState` hook. This will indicate the status of the checkout form. The different states our checkout form can be in are `'default'`, `'submitting'`, `'error'` and `'complete'`.
+On line 6 we're initializing a `status` state with the `useState` hook. This will indicate the status of the checkout form. The different states our checkout form can be in are `'default'`, `'submitting'`, `'error'` and `'complete'`. Upon submission of the checkout form, the `submit` function will tokenize the card information and send it to the server. Let's dive deeper into how we're accomplishing this. We first set the `status` to `'submitting'` and as a result the submit button will be disabled and display the text `submitting`.
 
-Upon submission of the checkout form, the `submit` function will tokenize the card information and send it to the server. Inside this function, we're firstly setting the `status` to `'submitting'`. And as a result the submit button will be disabled and display the text `submitting`.
+Then we're invoking the `createToken` function available on the `stripe` prop. The `stripe` prop is made available here due to the fact that on line 56, we've wrapped the component in the `injectStripe()` function. Note that we're passing in a hard coded string of `'Name'` as the value for the name key. This is because in this app, we're not asking for the name on the card since it's not a requirement. But if your shop was requesting the name, this is where you would use that value.
 
-Then we're invoking the `createToken` function available on the `stripe` prop. The `stripe` prop is made available here due to the fact that on line 47, we've wrapped the component in the `injectStripe()` function. Note that we're passing in a hard coded string of `'Name'` as the value for the name key. This is because we're not asking for the name on the card as it's not a requirement. But if your shop was asking for the name, this is where you would use that value.
-
-We're sending that token along with the charge amount (in cents) to the server via our api endpoint. This is the endpoint generated for us based on our Netlify configuration. If the request is successful we set the `status` state to `'complete'`, which will cause the successful payment UI to display. Otherwise we set the `status` state to `'error'`, which will display an error message.
+We're sending the token along with the charge amount, which we're converting to cents by multiplying by 100, to the server via our api endpoint. This is the endpoint generated for us based on our Netlify configuration. If the request is successful we set the `status` state to `'complete'`, which will cause the successful payment UI to display. Otherwise we set the `status` state to `'error'`, which will display an error message.
 
 We now need to add some styles for the checkout form. Create a new CSS file in `src/components/CheckoutForm/CheckoutForm` named `CheckoutForm.css`. And add the following CSS:
 
@@ -523,7 +526,7 @@ We now need to add some styles for the checkout form. Create a new CSS file in `
 }
 {% endhighlight %}
 
-Now we need to add the checkout form to our app. So back in our `App.js` we need to add the following where the rest of our imports are, add the following:
+Now we need to add the checkout form to our app. So back in our `App.js` we need to add the following to where the rest of our imports are located:
 
 {% highlight js %}
 import { Elements, StripeProvider } from 'react-stripe-elements';
@@ -536,7 +539,7 @@ Then we'll use these components in the `render` function. Directly after the `<C
 {itemsInCart.length > 0 && (
   <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
     <Elements>
-      <CheckoutForm />
+      <CheckoutForm totalCost={totalCost} />
     </Elements>
   </StripeProvider>
 )}
@@ -548,7 +551,9 @@ The Elements component creates an Elements group. When you use multiple Stripe E
 
 ## Tokenize payment inside Lambda function
 
-Now we need to write the code for our Lambda function, which is going to be executed when we submit the checkout form. With Netlify functions, each JavaScript file to be deployed as a Lambda function must export a handler method with the following structure:
+Now we have to write our server side code to handle the api call we're making upon the form submission. As mentioned earlier, we'll be using Lambda functions on Netlify. Netlify lets you deploy Lambda functions without an AWS account, and handles setting up API gateways and deployment configurations for you. With function management handled directly within Netlify. 
+
+Our Lambda function will be executed when we submit the checkout form. With Netlify functions, each JavaScript file to be deployed as a Lambda function must export a handler method with the following structure:
 
 {% highlight js %}
 exports.handler = function(event, context, callback) {
@@ -569,7 +574,7 @@ When you call a Netlify Lambda function’s endpoint, the handler receives an ev
 }
 {% endhighlight %}
 
-We don't need to worry about the `context` parameter, but if you would like more info visit the [docs](https://www.netlify.com/docs/functions/). We will be using the `callback` parameter to return either an error or a success response.
+We don't need to worry about the `context` parameter, but if you would like more info visit the [docs](https://www.netlify.com/docs/functions/). We'll be using the `callback` parameter to return either an error or a success response.
 
 Let's start writing our Lambda function. First we need to install the [Stripe client library](https://github.com/stripe/stripe-node) as a dev dependency:
 
@@ -623,15 +628,14 @@ exports.handler = (event, context, callback) => {
 };
 {% endhighlight %}
 
-This will look familiar to you if you've ever written a Lambda function with Node.js before. On line 1 we are initializing the Stripe library with our secret key. Note that this is a test key and you should never make yours publicly available. We're using the `require` syntax here, as Node.js support for `import` syntax is still experimental. Inside the `handler` method we are first checking if the request is a `POST` request method, and returning an error if it is not.
+This will look familiar to you if you've ever written a Lambda function with Node.js before. On line 1 we are initializing the Stripe library with our secret key. Note that this is a test key, you can find your secret key in your Stripe dashboard. We're using the `require` syntax here, as Node.js support for `import` syntax is still experimental. Inside the `handler` method we're first checking if the request is a `POST` request method, and returning a 405 error if it is not.
 
-On line 12 we parse the body content, and check to see if the required data has been provided. Along with a simple check that the amount is a positive value. If not we return a 400 error.
+Then we parse the body content, and check to see if the required data has been provided. Along with a simple check that the amount is a positive value. If not we return a 400 error.
 
-On line 20 we are using the Stripe client library to create a charge with the token and amount provided in the request body, in US dollars. If the charge is successful we return a 200 response with the successful status object (which in this case is just a string `'succeeded'`). If the charge fails and an exception is thrown, and we return a 400 error.
+On line 20 we're using the Stripe client library to create a charge with the token and amount provided in the request body. We're specifying US dollars. If the charge is successful we return a 200 response with the successful status object (which in this case is just a string `'succeeded'`). If the charge fails and an exception is thrown, and we return a 400 error.
 
 ## Setup Netlify Lambda
-
-Now we have to write our server side code to handle the api call we are making upon the form submission. As mentioned earlier, we'll be using Lambda functions on Netlify. Netlify lets you deploy Lambda functions without an AWS account, and handles setting up API gateways and deployment configurations for you. With function management handled directly within Netlify. After a little initial set up, all we have to worry about is writing the code within the Lambda function. Let's get that set up now, first install the `netlify-lambda` package:
+Before we can utilize our new api endpoint there's a little bit of initial setup required. First install the `netlify-lambda` package:
 
 {% highlight text %}
 npm install netlify-lambda --save-dev
@@ -658,7 +662,7 @@ Here we're telling Netlify that our Lambda functions will be in a directory name
 },
 {% endhighlight %}
 
-Now when we run `npm run start:lambda` our Lambda function will be running on `localhost:9000`. But if we try to access our new endpoint from our react app we'll get a CORS error. In order for us to be able to use our Lambda functions in our react app during development we need to set up a proxy. First, `install http-proxy-middleware` using npm:
+Now when we run `npm run start:lambda` our Lambda function will be running on `localhost:9000`. But if we try to access our new endpoint from our react app we'll get a CORS error. In order for us to be able to access this endpoint in our react app during development we need to set up a proxy. First, `install http-proxy-middleware` using npm:
 
 {% highlight text %}
 npm install http-proxy-middleware --save
@@ -686,13 +690,13 @@ If we run both the app and the Lambda by running `npm start` and `npm run start:
 
 ## Convenient build scripts
 
-During development we currently have to start the react app and the Lambda function with two separate commands. We will also need to build each of these when preparing for deployment. Let's improve that so that we only need to run a single command for each of these cases. To run multiple npm-scripts we will install [npm-run-all](https://www.npmjs.com/package/npm-run-all):
+During development we currently have to start the react app and the Lambda function with two separate commands. We'll also need to build each of these when preparing for deployment. Let's improve that so that we only need to run a single command for each of these cases. To run multiple NPM scripts install [npm-run-all](https://www.npmjs.com/package/npm-run-all) as a dev dependency:
 
 {%highlight js text %}
 npm install npm-run-all --save-dev
 {% endhighlight %}
 
-Then update the `scripts` block of your `package.json` to look like this:
+Then update the `scripts` block of your `package.json` to the following:
 
 {%highlight js linenos %}
   "scripts": {
@@ -711,7 +715,7 @@ We can now run `npm start` to start both the react app and the Lambda. And we ca
 
 ## Deploy to Netlify
 
-You are now ready to deploy to Netlify. This is super simple and only requires a few steps. In the Netlify console be sure to configure your site to run `npm run build` as the build command, and set the build directory to `build`. If your site is using Github or something similar you now have a modern build pipeline at your fingertips. Checkout the [Netlify docs](https://www.netlify.com/docs/welcome/) for details on how to set this up.
+We're now ready to deploy to Netlify. This is super simple and Netlify will walk you through the few steps required. In the Netlify console be sure to configure your site to run `npm run build` as the build command, and set the build directory to `build`. If your app is using Github or something similar for version control, you'll Netlify will set up a modern continuos integration pipeline for you. Checkout the [Netlify docs](https://www.netlify.com/docs/welcome/) for more details on setting this up.
 
 ## That's it!
 
