@@ -537,7 +537,7 @@ Then we'll use these components in the `render` function. Directly after the `<C
 
 {% highlight jsx %}
 {itemsInCart.length > 0 && (
-  <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+  <StripeProvider apiKey="your_public_key">
     <Elements>
       <CheckoutForm totalCost={totalCost} />
     </Elements>
@@ -545,7 +545,7 @@ Then we'll use these components in the `render` function. Directly after the `<C
 )}
 {% endhighlight %}
 
-Our `CheckoutForm` component is enclosed within the Stripe Elements components. The `StripeProvider` component initializes Stripe and passes in your publishable key. This is a test key, you'll need to get your key from your Stripe account dashboard.
+Our `CheckoutForm` component is enclosed within the Stripe Elements components. The `StripeProvider` component initializes Stripe and passes in your publishable key. Note that you'll need to get your public key from your Stripe account dashboard.
 
 The Elements component creates an Elements group. When you use multiple Stripe Elements components instead of the combined `CardElement` that we're using, the Elements group indicates they're related. For example, if you used separate components for the card number, expiration date, and CVC, you would put them all in the same Elements group. Note that Elements must contain the component that we wrapped with `injectStripe`.
 
@@ -585,7 +585,7 @@ npm install stripe --save-dev
 Then inside the `src/lambda` directory add a new file named `charge.js`, and add the following code:
 
 {% highlight js linenos %}
-const stripe = require('stripe')('sk_test_yaKbjP7rkSGdMeQtQvTMx4cG');
+const stripe = require('stripe')('your-secrect-key'); // add your secret key here
 
 exports.handler = (event, context, callback) => {
   // Only allow POST
@@ -628,7 +628,7 @@ exports.handler = (event, context, callback) => {
 };
 {% endhighlight %}
 
-This will look familiar to you if you've ever written a Lambda function with Node.js before. On line 1 we are initializing the Stripe library with our secret key. Note that this is a test key, you can find your secret key in your Stripe dashboard. We're using the `require` syntax here, as Node.js support for `import` syntax is still experimental. Inside the `handler` method we're first checking if the request is a `POST` request method, and returning a 405 error if it is not.
+This will look familiar to you if you've ever written a Lambda function with Node.js before. On line 1 we are initializing the Stripe library with our secret key. Note that you will need to replace this dummy key with your secret key, which you can find in your Stripe dashboard. We're using the `require` syntax here, as Node.js support for `import` syntax is still experimental. Inside the `handler` method we're first checking if the request is a `POST` request method, and returning a 405 error if it is not.
 
 Then we parse the body content, and check to see if the required data has been provided. Along with a simple check that the amount is a positive value. If not we return a 400 error.
 
@@ -686,7 +686,7 @@ module.exports = function(app) {
 {% endhighlight %}
 
 This creates a proxy by directly accessing the Express app instance created by create react app ([proxy documentation](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development)). Note that our Lambda function will be served from the same origin once deployed, this change is only required for local development.
-If we run both the app and the Lambda by running `npm start` and `npm run start:lambda`, our api call will now work as expected when accessed through `http://localhost:3000`.
+If we run both the app and the Lambda by running `npm start` and `npm run start:lambda`, our api call will now work as expected when accessed through `http://localhost:3000`. You can test out your checkout form by using one of the [test cards](https://stripe.com/docs/testing) provided by Stripe.
 
 ## Convenient build scripts
 
