@@ -249,11 +249,7 @@ constructor(props) {
     question: '',
     answerOptions: [],
     answer: '',
-    answersCount: {
-      nintendo: 0,
-      microsoft: 0,
-      sony: 0
-    },
+    answersCount: {},
     result: ''
   };
 }
@@ -265,10 +261,10 @@ State should contain data that a component's event handlers may change to trigge
 import quizQuestions from './api/quizQuestions';
 {% endhighlight %}
 
-Next, we'll populate our app's state using the `componentWillMount` life cycle event React provides us. Place this code directly below our constructor function:
+Next, we'll populate our app's state using the `componentDidMount` life cycle event React provides us. Place this code directly below our constructor function:
 
 {% highlight jsx linenos %}
-componentWillMount() {
+componentDidMount() {
   const shuffledAnswerOptions = quizQuestions.map((question) => this.shuffleArray(question.answers));  
 
   this.setState({
@@ -278,9 +274,9 @@ componentWillMount() {
 }
 {% endhighlight %}
 
-The `componentWillMount` life cycle event is invoked once, both on the client and server, immediately before the initial rendering occurs. When you call `setState` within this method as we are above on line 4, `render()` will see the updated state and it will be executed only once despite the state change.
+The `componentDidMount` life cycle event  is invoked immediately after a component is mounted (inserted into the tree). When you call `setState` within this method as we are above on line 4, `render()` will see the updated state and it will be executed only once despite the state change.
 
-As you may've notice we've also used a function named `shuffleArray` on line 2, this will randomise the order of the answer options - just to spice things up a bit. But we're yet to define that function, so let's do that now directly below the `componentWillMount` function:
+As you may have noticed we've also used a function named `shuffleArray` on line 2, this will randomise the order of the answer options - just to spice things up a bit. But we're yet to define that function, so let's do that now directly below the `componentDidMount` function:
 
 {% highlight js linenos %}
 shuffleArray(array) {
@@ -356,7 +352,7 @@ setUserAnswer(answer) {
   this.setState((state) => ({
     answersCount: {
       ...state.answersCount,
-      [answer]: state.answersCount[answer] + 1
+      [answer]: (state.answersCount[answer] || 0) + 1
     },
     answer: answer
   }));
