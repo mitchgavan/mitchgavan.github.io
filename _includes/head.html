@@ -29,6 +29,10 @@
 
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
+  {% if page.canonicalUrl %}
+    <link rel="canonical" href="{{ page.canonicalUrl }}" />
+  {% endif %}
+
   {% include favicon.html %}
   {% include twitter-card.html %}
   {% include grunticon-loader.html %}
