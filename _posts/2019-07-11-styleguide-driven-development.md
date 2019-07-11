@@ -347,6 +347,7 @@ The layout components can be styled via the theme object. Let's finish off our s
 These styles will be applied to the `<Layout />` and `<Container />` components respectively. We now have a complete custom responsive layout.
 
 ## Bonus: Easy dark mode
+
 Everybody loves dark mode. But if it isn't something that was thought through during the beginning of your project and architecture choices it may take a lot of effort to implement. The color modes feature of Theme UI changes that, it allows you to easily define and switch between dark mode or any number of color modes. Let's see just how easy we can implement this.
 
 First we need to add the new dark theme color properties to our theme object. Here is what our updated colors property looks like:
