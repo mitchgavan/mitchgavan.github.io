@@ -5,24 +5,24 @@ description: Theme UI is a new library built on top of the Emotion CSS in JS lib
 image: /images/posts/styleguide-dev.jpg
 ---
 
-We have seen the rapid growth and evolution of CSS in JS libraries in the past few years. It's an area that's both mature enough for large scale applications, and young enough to not have any flavour that's a clear favorite. [Theme UI](https://theme-ui.com/) is a new library built on top of the Emotion CSS in JS library, that helps you build consistent, themeable React apps based on a style guide. Having been a proponent of libraries that Theme UI builds upon, such as Tachyons and Styled System, Theme UI seems like a natural progression of those libraries to me.
+We have seen the rapid growth and evolution of CSS in JS libraries in the past few years. It's an area that's both mature enough for large scale applications, and young enough to not have any flavour that's a clear favorite. [Theme UI](https://theme-ui.com/) is a new library built on top of the Emotion CSS in JS library. It helps you build consistent, themeable React apps based on a style guide, with minimum effort. Having been a proponent of libraries that Theme UI builds upon, such as Tachyons and Styled System, Theme UI seems like a natural progression of those libraries to me.
 
 ## Benefits of style guide driven development
 
-If you've ever worked on a medium to large application that has been worked on by many different people over time, you know that consistency can be hard to maintain. The amount of different colors, spacing, font-sizes, media queries can easily get out of control. Having a style guide combats that by providing a set of constraints that your applications UI should adhere to, helping to maintain a consistent look and feel.
+If you've ever worked on a medium to large application that has been worked on by many different people over time, you know that consistency can be hard to maintain. The amount of different colors, spacing, font-sizes and media queries can easily get out of control. Having a style guide combats that by providing a set of constraints that your application's UI should adhere to, helping to maintain a consistent look and feel.
 
-I've also found that having a style guide leads to a more enjoyable developer experience. There's less time spent worrying about specific values, such as a specific padding value for an element, since your choices are limited. And it can help reduce conflicts with designers and other developers during reviews.
+I've also found that having a style guide leads to a more enjoyable developer experience. There's less time spent worrying about the precision values, such as a specific padding value for an element, since the choices are limited. And it can aid in reducing conflicts with designers and other engineers during reviews.
 
 ## What is Theme UI
 
 Theme UI combines many popular styling tools into one mini-framework like library. Theme UI is built with:
 
-- **Emotion:** a performant and flexible CSS-in-JS library
-- **MDX:** an authorable format that lets you use JSX in markdown documents
-- **Styled System:** similar theme based styling library but with a lower level API that is not coupled to Emotion or React
-- **Typography.js:** optionally used for creating rich typographic styles with a simple, high-level API
+- **[Emotion](https://emotion.sh/docs/introduction):** a performant and flexible CSS-in-JS library
+- **[MDX](https://mdxjs.com/):** an authorable format that lets you use JSX in markdown documents
+- **[Styled System](https://styled-system.com/):** similar theme based styling library but with a lower level API that is not coupled to Emotion or React
+- **[Typography.js](https://kyleamathews.github.io/typography.js/):** optionally used for creating rich typographic styles with a simple, high-level API
 
-Theme UI has just recently started being used as part of [Gatsby themes](https://www.gatsbyjs.org/blog/2019-07-03-customizing-styles-in-gatsby-themes-with-theme-ui/), as a way to customize and switch between blog themes. It's perfect for this, but I also believe it's a great way of styling any React application. Building React apps with Theme UI is like using Emotion with first class support for theming and a more convenient way to handle responsive styles.
+All of these features combined make it a great choice for [styling Gatsby themes](https://www.gatsbyjs.org/blog/2019-07-03-customizing-styles-in-gatsby-themes-with-theme-ui/) - enabling you to customize and switch between blog themes. I also believe it's a great way of styling any React application. It gives you the power of Emotion.js, with first class support for theming and a more convenient way to handle responsive styles.
 
 ## Getting started with Theme UI
 
@@ -47,7 +47,7 @@ Then open [http://localhost:3000](http://localhost:3000/) in your browser to vie
 npm i theme-ui @emotion/core @mdx-js/react
 ```
 
-To start with we need to define our theme object. This can include custom color palettes, typographic scales, fonts, and more. Create a new file `/src/theme.js` and add the following:
+To start with, we need to define our theme object. This can include custom color palettes, typographic scales, fonts, and more. Create a new file `/src/theme.js` and add the following:
 
 {% highlight javascript linenos %}
 export default {
@@ -77,9 +77,11 @@ export default {
 };
 {% endhighlight %}
 
-Theming with Theme UI is based on a standardized way to share common styles known as the [System UI Theme Spec](https://system-ui.com/theme/) (currently work in progress). Each key in theme object corresponds to a certain set of CSS properties. For example; the `fonts` key is used with font-family, the `space` key can be used to define margins, paddings, and grid-gap. We'll see this in action soon. For more details check out the Theme UI [theming documentation](https://theme-ui.com/theming).
+Theming with Theme UI is based on a standardized way to share common styles known as the [System UI Theme Spec](https://system-ui.com/theme/) (currently work in progress). Which makes themes portable between libraries.
 
-In order to use our theme we have to add the Theme provider to our app. Open up `/src/app.js` and replace the code with the following:
+Each key in the theme object corresponds to a certain set of CSS properties. For example; the `fonts` key is used with font-family, the `space` key can be used to define margins, paddings, and grid-gap. We'll see this in action soon. For more details check out the Theme UI [theming documentation](https://theme-ui.com/theming).
+
+In order to use our theme we have to add the `ThemeProvider` to our app. Open up `/src/app.js` and replace the code with the following:
 
 {% highlight jsx linenos %}
 import React from 'react';
@@ -98,7 +100,7 @@ function App() {
 export default App;
 {% endhighlight %}
 
-Above, we've wrapped our app with the `<ThemeProvider />` component from Theme UI. We're passing it our theme object via props, which will allow us to access our theme from anywhere in our app. We have added a single `<Card />` component to our app. Let's create this component by adding a new file `/src/Card.js` with the following contents:
+Above, we've wrapped our app with the `<ThemeProvider />` component from Theme UI. We're passing it our theme object via props, which will allow us to access our theme from anywhere in the app. We've added a single `<Card />` component to our app. Let's create this component by adding a new file `/src/Card.js` with the following contents:
 
 {% highlight jsx linenos %}
 import React from 'react';
@@ -124,7 +126,7 @@ This is a pretty basic card component, without any style added to it yet.
 
 ## Comparison with ‘vanilla’ Emotion
 
-First I'm going to show you how you can utilize the theme object to style with Emotion (which is what Theme UI is built on top of). We have already installed the packages we need to achieve this. Then we'll refactor the code to take advantage of some of the nice features of Theme UI. Below is the `<Card />` component with a couple of elements styled using the `css` prop from Emotion:
+Before styling with Theme UI, I'm going to show you how you can utilize the theme object to style with Emotion. Then we'll refactor the code to take advantage of some of the nice features of Theme UI. Below is the `<Card />` component with a couple of elements styled using the `css` prop from Emotion:
 
 {% highlight jsx linenos %}
 /** @jsx jsx */
@@ -202,7 +204,7 @@ const Card = () => (
 export default Card;
 {% endhighlight %}
 
-By using Theme UI we get rid of a lot of repetition and boiler plate from the previous example, without sacrificing readability. I especially like the way you define responsive styles using media queries (which I first came across in [Styled System](https://styled-system.com/)). As with Emotion's `css` prop, in order to use Theme UI's `sx` we must define the custom pragma at the top of the file.
+With Theme UI we've removed a lot of repetition and boiler plate from the previous example, without sacrificing readability. I especially like the way you define responsive styles using media queries (which I first came across in [Styled System](https://styled-system.com/)). As with Emotion's `css` prop, in order to use Theme UI's `sx` prop we must define the custom pragma at the top of the file.
 
 A quick list of the benefits we see when using Theme UI's `sx` prop in the example above are:
 
@@ -214,7 +216,7 @@ When you're writing a lot of CSS you really appreciate this terseness.
 
 ## Finishing off the styling
 
-Let's use Theme UI a bit more to complete the styling of our `<Card />` component. Here is the complete code for `/src/Card.js`:
+Let's use Theme UI a bit more to complete the styling of our `<Card />` component. Here's the complete code for `/src/Card.js`:
 
 {% highlight jsx linenos %}
 /** @jsx jsx */
@@ -287,7 +289,7 @@ const Card = () => (
 export default Card;
 {% endhighlight %}
 
-Nice. Now let's make this a bit more interesting by displaying a list of these cards in a responsive grid. We're going to create our new layout in `/src/App.js`, here's the updated code, and I'll explain how it works below:
+Nice. Now let's make this a bit more interesting by displaying a list of these cards in a responsive grid. We're going to create our new layout in `/src/App.js`, here's the updated code:
 
 {% highlight jsx linenos %}
 /** @jsx jsx */
@@ -318,13 +320,13 @@ function App() {
 export default App;
 {% endhighlight %}
 
-Theme UI provides us with some components for creating page layouts - we're importing and utilizing a few of these components:
+There's not much to it! Theme UI provides us with some components for creating page layouts - we're importing and utilizing a few of these components in our app:
 
 - **Layout:** the root styled component for wrapping other layout components
 - **Container:** a centered area with a max-width
 - **Box & Flex:** are convenience components with a few style presets, similar to the ones found in [Rebass](https://rebassjs.org/).
 
-The layout components can be styled via the theme object. Let's finish off our styling by adding the following `style` key to our theme object:
+The layout components can be styled via the theme object. To finish off our styling we'll add the following `style` key to our theme object:
 
 {% highlight js linenos %}
 {
@@ -348,9 +350,9 @@ These styles will be applied to the `<Layout />` and `<Container />` components 
 
 ## Bonus: Easy dark mode
 
-Everybody loves dark mode. But if it isn't something that was thought through during the beginning of your project and architecture choices it may take a lot of effort to implement. The color modes feature of Theme UI changes that, it allows you to easily define and switch between dark mode or any number of color modes. Let's see just how easy we can implement this.
+It's 2019, every app should have a dark mode! But if it isn't something that was thought about ahead of time, it could potentially take a lot of effort to implement. The color modes feature of Theme UI allows you to easily define and switch between dark mode, or any number of color modes. Let's see just how easily we can implement this.
 
-First we need to add the new dark theme color properties to our theme object. Here is what our updated colors property looks like:
+First we need to add the new dark theme color properties to our theme object. Here's our updated colors property:
 
 {% highlight jsx linenos %}
 initialColorMode: 'light',
@@ -410,8 +412,8 @@ const ColorSwitch = () => {
 export default ColorSwitch;
 {% endhighlight %}
 
-Theme UI comes with a custom hook `useColorMode`. We've added a button the utilizes this hook to toggle the value of `colorMode`. The color mode value will be stored in localStorage. Then all we need to do is add this component to our `<App />` and we're done!
+Theme UI comes with a `useColorMode` hook. We've added a button that utilizes this hook to toggle the value of `colorMode`. The color mode value will be stored in localStorage. Then all we need to do is add this component to our `<App />` and we're done!
 
 The completed demo is viewable [here](https://theme-ui-demo.netlify.com/) and the code can be found in [this repo](https://github.com/mitchgavan/theme-ui-app).
 
-I hope you've enjoyed this post. And I can't end this post without mentioning the creator of this and many other wonderful libraries, [Brent Jackson](https://twitter.com/jxnblk). Be sure to follow him on Twitter for the latest and greatest on this topic.
+And I can't end this post without mentioning the creator of this and many other wonderful libraries, [Brent Jackson](https://twitter.com/jxnblk). Be sure to follow him on Twitter for the latest and greatest on this topic.
