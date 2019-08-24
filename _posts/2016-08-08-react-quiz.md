@@ -565,7 +565,7 @@ This CSS is just changing the opacity values, and specifying the transition dura
 }
 {% endhighlight %}
 
-The last thing we need to change is the `render` function of the  `Result.js` component. Replace the `render` function with the following:
+The last thing we need to change it the `Result.js` component. Add the `CSSTransitionGroup` import after the other imports and replace the `render` function with the following:
 
 {% highlight jsx linenos %}
 return (
