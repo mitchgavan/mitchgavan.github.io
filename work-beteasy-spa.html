@@ -1,0 +1,43 @@
+---
+layout: default
+permalink: /work/beteasy-spa/
+title: Projects - BetEasy SPA
+---
+
+<main id="main" role="main" class="main">
+  <div class="containerWide">
+    <h1 class="projectTitle">BetEasy.com.au SPA Rebuild</h1>
+  </div>
+  <div class="container">
+    <p>
+      During my time at BetEasy most of my work was on the flagship website beteasy.com.au. Working as a senior software engineer in a product based team. Each team would generally include 6 - 8 software engineers, principal engineer, architect, product manager, senior product manager and delivery lead. Following the Agile methodology with sprint based planning. 
+    </p>
+    <p>
+      One of the main projects I worked on was a complete rebuild of the flagship webiste. From PHP/Backbone.js based web app to a greenfield React SPA. The web app consumes a lot of data from API’s handling real-time odds, placing bets and payments. It also integrated with Contentful’s GraphQL api. It’s a high volume website where performance is critical. The tech stack consisted of React, Redux, Redux Sagas, CSS Modules, Jest. Which spoke to ASP.Net Core microservices. On AWS cloud platform.
+    </p>
+  </div>
+  <div class="containerWide">
+    <img src="{{ site.baseurl }}/images/work/beteasyspa/be-sports.jpg" alt="Sports betting page" class="screenshot">
+  </div>
+  <div class="container">
+    <p>
+      The main goal of the first phase of the rebuild was to deliver the 'shell' of the web site as a single page app. Along with the home page and racing page as client side routes. We were going to be migrating to a full SPA in stages. This meant we had to come up with a solution that was able to work with the legacy server rendered pages.
+    </p>
+    <p>
+      We built a new shell was able to interact with the legacy pages. The shell consisted of global components. Such as the header, footer, navigation and bet slip. Allowing us to migrate the legacy pages to the new single page app at a later date.
+    </p>
+    <p>
+      Another goal of this rebuild was to set up continuous integration. The current build/deployment process was a little painful. The end result included branched deployments, which improved the QA situation. Along with a CI pipeline that automated deployment through to production. We were deploying to production many times per day. Which was a huge improvement over the previous solution!
+    </p>
+  </div>
+  <div class="containerWide">
+    <img src="{{ site.baseurl }}/images/work/beteasyspa/be-racing.jpg" alt="Racing page" class="screenshot">
+  </div>
+  <div class="container">
+    <p>
+      The project was quite a success. The speed of the client-side rendered pages was a great improvement. The developer experience was now also much nicer. Allowing all teams working on the website to build and release features a lot faster.
+    </p>
+    <a href="https://beteasy.com.au/" rel="nofollow" class="button">Visit website →</a>
+  </div>
+
+</main>
