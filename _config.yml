@@ -6,7 +6,7 @@
 name: Mitch Gavan
 
 # Short bio or description (displayed in the header)
-description: Software engineer. Writing code - mostly JavaScript, sometimes Elixir. Living in Melbourne, Australia.
+description: Specialising in UI development. Enjoying building user interfaces with React and TypeScript. Living in Melbourne, Australia.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: /images/avatar.jpg
@@ -62,17 +62,17 @@ kramdown:
 # plugins:
 #   - jekyll-gist
 
-
 # Exclude these files from your production _site
-exclude: [
-  .git,
-  .gitignore,
-  .DS_Store,
-  CNAME,
-  .sass-cache,
-  package.json,
-  Gruntfile.js,
-  node_modules,
-  readme.md,
-  _scss
-]
+exclude:
+  [
+    .git,
+    .gitignore,
+    .DS_Store,
+    CNAME,
+    .sass-cache,
+    package.json,
+    Gruntfile.js,
+    node_modules,
+    readme.md,
+    _scss,
+  ]
