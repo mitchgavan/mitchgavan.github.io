@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include head.html %}
+  {% include head.html %}
 
-<body>
-
-  <header class="header">
-    <div class="container">
-      <div class="header--container">
-        <img src="{{ site.baseurl }}/images/logo.svg" class="header--logo" alt="logo">
-        <h1 class="header--title">{{ site.name }}</h1>
-        <h2 class="header--subTitle">Write code |> Have fun</h2>
+  <body>
+    <script src="{{ site.baseurl }}/assets/js/bundle.js"></script>
+    <header class="header">
+      <div class="container">
+        <div class="header--container">
+          <img
+            src="{{ site.baseurl }}/images/logo.svg"
+            class="header--logo"
+            alt="logo"
+          />
+          <h1 class="header--title">{{ site.name }}</h1>
+          <h2 class="header--subTitle">Write code |> Have fun</h2>
+        </div>
       </div>
-    </div>
-    <a href="#iconNav" class="header--arrow bounce">Scroll Down</a>
-  </header>
+      <a href="#iconNav" class="header--arrow bounce">Scroll Down</a>
+    </header>
 
-  <nav id="iconNav" class="iconNav">
-    <ul>
-      <li>
-        <a href="{{ site.baseurl }}/blog/" class="iconNav--item">
-          <div class="icon-slurpee iconNav--item--icon"></div>
-          Blog
-        </a>
-      </li>
-      <li>
-        <a href="{{ site.baseurl }}/work/" class="iconNav--item">
-          <div class="icon-coffee iconNav--item--icon"></div>
-          Work
-        </a>
-      </li>
-      <li>
-        <a href="{{ site.baseurl }}/about/" class="iconNav--item">
-          <div class="icon-drink iconNav--item--icon"></div>
-          About
-        </a>
-      </li>
-    </ul>
-  </nav>
+    <nav id="iconNav" class="iconNav">
+      <ul>
+        <li>
+          <a href="{{ site.baseurl }}/blog/" class="iconNav--item">
+            <div class="icon-slurpee iconNav--item--icon"></div>
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.baseurl }}/work/" class="iconNav--item">
+            <div class="icon-coffee iconNav--item--icon"></div>
+            Work
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.baseurl }}/about/" class="iconNav--item">
+            <div class="icon-drink iconNav--item--icon"></div>
+            About
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-  <main id="main" role="main" class="main">
-    <div class="container">
-      {{ content }}
-    </div>
-  </main>
+    <main id="main" role="main" class="main">
+      <div class="container">
+        {{ content }}
+      </div>
+    </main>
 
-  {% include footer.html %}
-  {% include analytics.html %}
-</body>
-
+    {% include footer.html %} {% include analytics.html %}
+  </body>
 </html>

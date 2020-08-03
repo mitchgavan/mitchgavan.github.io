@@ -3,30 +3,26 @@
   {% include head.html %}
 
   <body class="default {{ page.title | downcase | remove:' ' | remove:'?' }}">
+    <script src="{{ site.baseurl }}/assets/js/bundle.js"></script>
 
     <header id="nav" class="headerSubpage">
+      <a href="{{ site.baseurl }}/" class="header--logo header--logo-subpage">
+        {% include svg/logo.html %}
+      </a>
 
-        <a href="{{ site.baseurl }}/" class="header--logo header--logo-subpage">
-          {% include svg/logo.html %}
+      <nav class="nav">
+        <a href="{{ site.baseurl }}/blog/" class="nav--item nav--item-blog">
+          Blog
         </a>
-
-        <nav class="nav">
-          <a href="{{ site.baseurl }}/blog/" class="nav--item nav--item-blog">
-            Blog
-          </a>
-          <a href="{{ site.baseurl }}/work/" class="nav--item nav--item-work">
-            Work
-          </a>
-          <a href="{{ site.baseurl }}/about/" class="nav--item nav--item-about">
-            About
-          </a>
-        </nav>
-
+        <a href="{{ site.baseurl }}/work/" class="nav--item nav--item-work">
+          Work
+        </a>
+        <a href="{{ site.baseurl }}/about/" class="nav--item nav--item-about">
+          About
+        </a>
+      </nav>
     </header>
 
-    {{ content }}
-
-    {% include footer.html %}
-    {% include analytics.html %}
+    {{ content }} {% include footer.html %} {% include analytics.html %}
   </body>
 </html>
