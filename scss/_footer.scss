@@ -7,7 +7,7 @@
   border-top: 1px solid $lightestGrey;
   text-align: center;
   font-family: $fontHeader;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
   @include font-size(13px);
@@ -16,4 +16,3 @@
     padding: 3rem 0;
   }
 }
-

@@ -3,86 +3,86 @@
 //
 
 .nav {
-	position: absolute;
-	top: 	1.5rem;
-	right: 1rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
 
-	@include bp(medium) {
-		right: 1.25rem;
-	}
+  @include bp(medium) {
+    right: 1.25rem;
+  }
 }
 
 .nav--item {
-	display: inline-block;
-	margin: 0 0 0 1.125rem;
-	border: 0;
-	font-family: $fontHeader;
-	font-weight: 500;
-	@include font-size(14px);
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	color: $darkerGrey;
+  display: inline-block;
+  margin: 0 0 0 1.125rem;
+  border: 0;
+  font-family: $fontHeader;
+  font-weight: 400;
+  @include font-size(14px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $darkerGrey;
 
-	&:hover {
-		color: $orange;
-	}
+  &:hover {
+    color: $orange;
+  }
 
-	.headerSubpage-transparent & {
-		color: $white;
-	}
+  .headerSubpage-transparent & {
+    color: $white;
+  }
 }
 
 .work .nav--item-work,
 .blog .nav--item-blog,
 .alittleaboutme .nav--item-about {
-	color: $orange;
+  color: $orange;
 }
 
 .iconNav {
-	margin: 0 auto;
-	padding: 2rem 0;
-	border-bottom: 1px solid $lightestGrey;
-	text-align: center;
+  margin: 0 auto;
+  padding: 2rem 0;
+  border-bottom: 1px solid $lightestGrey;
+  text-align: center;
 
-	@include bp(medium) {
- 		padding: 2.75rem 0;
- 	}
+  @include bp(medium) {
+    padding: 2.75rem 0;
+  }
 
-	ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-	li {
-	 	display: inline-block;
-	 	margin: 0 2.5%;
+  li {
+    display: inline-block;
+    margin: 0 2.5%;
 
-	 	@include bp(medium) {
-	 		margin: 0 3rem;
-	 	}
-	 }
+    @include bp(medium) {
+      margin: 0 3rem;
+    }
+  }
 }
 
 .iconNav--item {
-	display: block;
-	width: 80px;
-	margin: 0;
-	border-bottom: 0;
-	font-family: $fontHeader;
-	font-weight: 500;
-	text-transform: uppercase;
-	text-align: center;
-	letter-spacing: 1px;
-	@include font-size(16px);
+  display: block;
+  width: 80px;
+  margin: 0;
+  border-bottom: 0;
+  font-family: $fontHeader;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  @include font-size(16px);
 }
 
 .iconNav--item--icon {
-	margin: 0 auto 0.5rem;
-	opacity: 0.85;
-	transition: transform 0.2s ease-in-out;
+  margin: 0 auto 0.5rem;
+  opacity: 0.85;
+  transition: transform 0.2s ease-in-out;
 }
 
 .iconNav--item:hover .iconNav--item--icon {
-	transform: scale(1.2);
+  transform: scale(1.2);
 }
