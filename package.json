@@ -3,8 +3,7 @@
   "description": "Software Engineer from Melbourne Australia.",
   "author": "Mitch Gavan",
   "scripts": {
-    "build": "webpack && jekyll build",
-    "dev": "webpack && bundle exec jekyll serve",
+    "build": "webpack | bundle exec jekyll build",
     "start": "webpack --watch | bundle exec jekyll serve --livereload --incremental"
   },
   "dependencies": {
