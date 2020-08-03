@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './assets/js/'),
+    path: path.resolve(__dirname, './webpack/'),
   },
   module: {
     rules: [
