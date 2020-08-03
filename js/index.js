@@ -5,7 +5,6 @@ var smoothScroll = require('./smoothScroll');
 import '../scss/style.scss';
 
 $(document).ready(function () {
-  // Init
   navToggle();
   smoothScroll();
 });
