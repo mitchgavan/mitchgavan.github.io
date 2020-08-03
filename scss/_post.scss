@@ -16,7 +16,7 @@
 }
 
 .post--date {
-  color: $lightGrey;
+  color: $grey;
   margin-bottom: 1.75rem;
   @include font-size(16px);
 }
@@ -33,6 +33,6 @@ blockquote {
 
   p {
     margin: 0;
-    color: $lightGrey;
+    color: $grey;
   }
 }

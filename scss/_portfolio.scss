@@ -6,7 +6,7 @@
   margin: 0 0 2.5rem;
   text-align: center;
   text-transform: uppercase;
-  color: $lightGrey;
+  color: $grey;
   @include font-size(18px);
 
   @include bp(medium) {
@@ -79,7 +79,7 @@
 
 .item--description {
   @include font-size(16px);
-  color: $lightGrey;
+  color: $grey;
 }
 
 .mockup,
