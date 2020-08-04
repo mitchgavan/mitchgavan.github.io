@@ -36,7 +36,7 @@
   }
 
   &:hover .item--hero--overlay {
-    background-color: rgba(255,255,255,0.8)
+    background-color: rgba(255, 255, 255, 0.8);
   }
 
   &:hover .item--hero--overlay--cta {
@@ -50,7 +50,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(255,255,255,0);
+  background-color: rgba(255, 255, 255, 0);
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -66,7 +66,7 @@
   background-color: $darkGrey;
   color: $white;
   font-family: $fontHeader;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
   z-index: 1;
   @include font-size(20px);
@@ -89,5 +89,5 @@
 }
 
 .screenshot {
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
