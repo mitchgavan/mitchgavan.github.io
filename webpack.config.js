@@ -6,7 +6,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   devtool: process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, './webpack/'),
   },
   module: {

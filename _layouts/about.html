@@ -4,7 +4,7 @@
 
   <body class="{{ page.title | downcase | remove:' ' | remove:'?' }}">
 
-    <script src="{{ site.baseurl }}/webpack/bundle.js"></script>
+    {% include webpack.html %}
 
     <header id="nav" class="headerSubpage headerSubpage-transparent">
 
