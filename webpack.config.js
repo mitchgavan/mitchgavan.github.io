@@ -3,8 +3,8 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: './js/index.js',
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: process.env.NODE_ENV,
+  devtool: process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './webpack/'),

@@ -3,16 +3,21 @@
   "description": "Software Engineer from Melbourne Australia.",
   "author": "Mitch Gavan",
   "scripts": {
-    "build": "webpack | bundle exec jekyll build",
-    "start": "webpack --watch | bundle exec jekyll serve --livereload --incremental"
+    "build": "run-s build:webpack && bundle exec jekyll build",
+    "build:webpack": "cross-env NODE_ENV=production webpack",
+    "start": "run-p start:webpack start:jekyll",
+    "start:webpack": "cross-env NODE_ENV=development webpack --watch",
+    "start:jekyll": "bundle exec jekyll serve --livereload --incremental"
   },
   "dependencies": {
     "fastclick": "^1.0.6",
     "jquery": "^3.5.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "css-loader": "^4.2.0",
     "file-loader": "^6.0.0",
+    "npm-run-all": "^4.1.5",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
