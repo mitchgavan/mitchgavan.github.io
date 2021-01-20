@@ -9,13 +9,14 @@ Most React apps will use some type of bundler, such as Webpack, to combine their
 
 Code-splitting in React is relatively simple to implement these days. It can be accomplished with dynamic imports and `React.lazy`. However, it also introduces a new point of failure. Since the files are now being dynamically loaded, the requests may fail. Due to a network error for example.
 
-The problem with lazy loading and deployments
+## Potential pitfall after deployment
+
 Let's say we're using Create React App. We've implemented route based code-splitting with lazy loading in our application. We run our build process to generate files for production. The default webpack configuration in Create React App (and best practice) is to hash your assets. For example in CRA, your JavaScript and CSS file names will resemble the following:
 
 ```text
-`main.[hash].chunk.js`
-`1.[hash].chunk.js`
-`2.[hash].chunk.js`
+main.[hash].chunk.js
+1.[hash].chunk.js
+2.[hash].chunk.js
 ```
 
 Each of your JS and CSS files will have a unique hash appended to the filename that is generated, which allows you to use aggressive caching techniques to avoid the browser re-downloading your assets if the file contents haven't changed. If the contents of the file changed in a subsequent build, the filename hash that is generated will be different.
@@ -72,7 +73,7 @@ As with many questions in software development, the answer is, it depends. In th
 
 ## Solution 3 implementation
 
-Let's implement solution 3, programmatically refresh the page when the chunk loaded error occurs. The downside of this approach is that your application state is blown away. Which means if your application maintains state, such as user input between routes this is not a great solution. But a lot of the time you're going to be re-rendering the entire page on route changes, in which case it may not matter.
+Let's implement solution 3, where we programmatically refresh the page when the chunk loaded error occurs. The downside of this approach is that your application state is blown away. Which means if your application maintains state, such as user input between routes this is not a great solution. But a lot of the time you're going to be re-rendering the entire page on route changes, in which case this solution works well.
 
 Here's a simple example of a React app with route-based code-splitting using react-router.
 
@@ -105,7 +106,7 @@ function App() {
 export default App;
 {% endhighlight %}
 
-Next, we need to handle the possibility of a dynamically loaded file failing to load. To do so, lets add an error boundary to our `App` component:
+Next, we need to handle the possibility of a dynamically loaded file failing to load. To do so, lets add an error boundary to our `App` component. We'll utilise [react-error-boundary](https://github.com/bvaughn/react-error-boundary#readme) package instead of writing it ourselves.
 
 {% highlight jsx linenos %}
 import React, { Suspense } from "react";
@@ -140,25 +141,16 @@ function App() {
 export default App;
 {% endhighlight %}
 
-We can add the logic to handle the chunk failed to load error in our `<ErrorFallback />` component.
-
-(handle chunk failed code without loop check)
-
-This code checks for the chunk failed error using a regex and will reload the page if that is the error.
-
-One more thing we can do to make this more robust is to do is to prevent the possibility of an infinite reload loop. This could happen if the file that is trying to be dynamically loaded is missing due to a reason other than stale content. We can do this by adding the following code to our `<ErrorFallback />` component:
+The `<ErrorBoundary />` accepts a `FallbackComponent` prop. We pass this the component we want to be rendered in the event of an error. Lets add the logic to handle the chunk failed to load error in our `<ErrorFallback />` component:
 
 {% highlight jsx linenos %}
 import React, { useEffect } from "react";
-import { getWithExpiry, setWithExpiry } from "./storage";
 
 export function ErrorFallback({ error }) {
-  // Handles failed lazy loading of a JS/CSS chunk.
+  // Handle failed lazy loading of a JS/CSS chunk.
   useEffect(() => {
     const chunkFailedMessage = /Loading chunk [\d]+ failed/;
     if (error?.message && chunkFailedMessage.test(error.message)) {
-      if (!getWithExpiry("chunk_failed")) {
-        setWithExpiry("chunk_failed", "true", 10000);
         window.location.reload();
       }
     }
@@ -173,7 +165,23 @@ export function ErrorFallback({ error }) {
 }
 {% endhighlight %}
 
-Some explanation of above code. Then the local storage with expiry introduction:
+This code checks for the chunk failed error using a regex. Then reloads the page if that is the error.
+
+One more thing we can do to make this more robust is to do is to prevent the possibility of an infinite reload loop. This could happen if the file that is trying to be dynamically loaded is missing due to a reason other than stale content. We can do this by updating the logic `useEffect` logic in the `<ErrorFallback />` component:
+
+{% highlight jsx linenos %}
+useEffect(() => {
+  const chunkFailedMessage = /Loading chunk [\d]+ failed/;
+  if (error?.message && chunkFailedMessage.test(error.message)) {
+    if (!getWithExpiry("chunk_failed")) {
+      setWithExpiry("chunk_failed", "true", 10000);
+      window.location.reload();
+    }
+  }
+}, [error]);
+{% endhighlight %}
+
+Now before we reload the page, we set a value in local storage that expires after a short amount of time (10 seconds) that tells us that the chunk failed error has occurred recently. And when this is the case, we don't reload the page. The `localStorage` browser API doesn't include the ability to set a key that expires after a specific time. So we need to handle this somehow. There are NPM packages out there for this. Here is how you could implement it yourself:
 
 {% highlight jsx linenos %}
 export function setWithExpiry(key, value, ttl) {
@@ -200,4 +208,4 @@ export function getWithExpiry(key) {
 }
 {% endhighlight %}
 
-Conclusion/outro
+That's it! I've created a [CodeSandbox](https://codesandbox.io/s/react-lazy-cdv8q) for this solution so you can view the code snippets from above all together. Hope you enjoyed the article, thanks for reading!
