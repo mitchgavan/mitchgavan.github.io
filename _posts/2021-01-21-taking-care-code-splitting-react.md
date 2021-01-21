@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Taking care when code-splitting in React
-description: TODO
-image: /images/posts/styleguide-dev.jpg
+title: Taking care when code-splitting React apps
+description: Code-splitting in React is relatively simple to implement. However, it also introduces a new point of failure.  Here's some ways you can handle it.
+image: /images/posts/taking-care-code-splitting.jpg.jpg
 ---
 
 Most React apps will use some type of bundler, such as Webpack, to combine their source files into a bundle. As your application grows so does your bundle. Code-splitting is a technique used to reduce your bundle size. A good place to split your bundle is based on routes. So that users only download files when they're needed. Rather than downloading the whole application upfront.
@@ -25,7 +25,7 @@ We then upload our new assets to the server and delete the old files. Which is p
 
 ## Handling the chunk failed to load error
 
-There are a few ways to handle this. Each resulting in a different user experience.
+There are a number of ways you could handle this. Here are a few options, each resulting in a different user experience:
 
 ### Solution 1: Keep old files on your server after a deployment
 
@@ -208,4 +208,4 @@ export function getWithExpiry(key) {
 }
 {% endhighlight %}
 
-That's it! I've created a [CodeSandbox](https://codesandbox.io/s/react-lazy-cdv8q) for this solution so you can view the code snippets from above all together. Hope you enjoyed the article, thanks for reading!
+That's it! I've created a [CodeSandbox](https://codesandbox.io/s/react-lazy-cdv8q) for this solution so you can view all of the code snippets from the article working together. I hope you enjoyed the article, thanks for reading!
