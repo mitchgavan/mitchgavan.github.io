@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Taking care when code-splitting React apps
+title: Code-splitting React apps safely
 description: Code-splitting in React is relatively simple to implement. However, it also introduces a new point of failure.  Here's some ways you can handle it.
-image: /images/posts/taking-care-code-splitting.jpg.jpg
+image: /images/posts/code-splitting-react.jpg
 ---
 
 Most React apps will use some type of bundler, such as Webpack, to combine their source files into a bundle. As your application grows so does your bundle. Code-splitting is a technique used to reduce your bundle size. A good place to split your bundle is based on routes. So that users only download files when they're needed. Rather than downloading the whole application upfront.
