@@ -5,9 +5,7 @@ description: Code-splitting in React is relatively simple to implement. However,
 image: /images/posts/code-splitting-react.jpg
 ---
 
-Most React apps will use some type of bundler, such as Webpack, to combine their source files into a bundle. As your application grows so does your bundle. Code-splitting is a technique used to reduce your bundle size. A good place to split your bundle is based on routes. So that users only download files when they're needed. Rather than downloading the whole application upfront.
-
-Code-splitting in React is relatively simple to implement these days. It can be accomplished with dynamic imports and `React.lazy`. However, it also introduces a new point of failure. Since the files are now being dynamically loaded, the requests may fail. Due to a network error for example.
+Most React apps will use some type of bundler, such as Webpack, to combine their source files into a bundle. As your application grows so does your bundle. Code-splitting is a technique used to reduce your bundle size. A good place to split your bundle is based on routes. So that users only download files when they're needed. Rather than downloading the whole application upfront. Code-splitting in React is relatively simple to implement these days. It can be accomplished with dynamic imports and `React.lazy`. However, it also introduces a new point of failure. Since the files are now being dynamically loaded, the network requests may fail.
 
 ## Potential pitfall after deployment
 
