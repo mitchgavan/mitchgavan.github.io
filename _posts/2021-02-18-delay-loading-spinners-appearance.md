@@ -5,7 +5,7 @@ description: Sometimes delaying the appearance of loading spinners can improve t
 image: /images/posts/code-splitting-react.jpg
 ---
 
-When content is loaded very quickly, loading spinners will flash in and out. This is visually unappealing. We could improve the user experience if the spinner was not displayed at all in this case. This can also improves the perceived performance of your application. A simple way to achieve this is to add a slight delay before displaying the loading spinners.
+Web apps should provide a visual indicator when content is being loaded. But sometimes this content is loaded very quickly, causing loading spinners to flash in and out. Which isn't very useful or visually appealing. We could improve the user experience by not displaying the spinner at all in these cases. This also improves the perceived performance of the application. A simple way to achieve this is to introduce a slight delay before displaying the loading spinners.
 
 I've found this technique particularly useful when code-splitting your bundle and lazily loading code. For example, in React, it is common to code-split routes and only load the code when required. Rather than loading the code for the entire application upfront. Here's a visual example:
 
@@ -44,7 +44,7 @@ Let's create a loading spinner with a single `<div>` element and some CSS:
 
 Now to delay the appearance of the spinner, we'll add another animation to our spinner. We want it to fade in after a short amount of time. We want the delay to be barely noticeable. We'll go with 400 milliseconds.
 
-You can define multiple animations by specifying multiple comma-separated values on an animation-* property. They will be assigned to the animations specified in the animation-name property. Add the following styles to your spinner CSS:
+You can define multiple animations by specifying multiple comma-separated values on an `animation-*` property. They will be assigned to the animations specified in the `animation-name` property. Add the following styles to your spinner CSS:
 
 ```css
 .spinner {
@@ -68,7 +68,7 @@ You can define multiple animations by specifying multiple comma-separated values
 }
 ```
 
-You will now notice that our spinner fades in after the delay, but it then disappears again as soon as it fades in. Pictured below.
+You will now notice that our spinner fades in after the delay, but it then disappears again as soon as it fades in. Pictured below:
 
 ![spinner disappears](/images/posts/delay-loading-spinners/spinner1.webp)
 
@@ -82,7 +82,7 @@ After the fade in animation finishes the opacity value is reset back to the init
 }
 ```
 
-Now our animation works as expected! Pictured below.
+Now our animation works as expected! Pictured below:
 
 ![spinner with delay](/images/posts/delay-loading-spinners/spinner2.webp)
 
@@ -128,4 +128,4 @@ Here is the complete CSS:
 
 ## Wrapping up
 
-This is a nice and simple way to improve the user experience when content is expected to load very quickly. But you may not want to introduce a delay to all of your loading states. React's new [Suspense API](https://reactjs.org/docs/concurrent-mode-suspense.html) (currently experimental), will allow us to solve this problem elegantly when it eventually launches.
+This is a nice and simple way to improve the user experience when content is expected to load very quickly. But you may not always want to delay displaying your loading states. React's new [Suspense API](https://reactjs.org/docs/concurrent-mode-suspense.html) (currently experimental), will allow us to solve this problem elegantly when it eventually launches.
