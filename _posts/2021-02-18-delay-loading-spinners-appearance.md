@@ -7,11 +7,11 @@ image: /images/posts/code-splitting-react.jpg
 
 Web apps should provide a visual indicator when content is being loaded. But sometimes this content is loaded very quickly, causing loading spinners to flash in and out. Which isn't very useful or visually appealing. We could improve the user experience by not displaying the spinner at all in these cases. This also improves the perceived performance of the application. A simple way to achieve this is to introduce a slight delay before displaying the loading spinners.
 
-I've found this technique particularly useful when code-splitting your bundle and lazily loading code. For example, in React, it is common to code-split routes and only load the code when required. Rather than loading the code for the entire application upfront. Here's a visual example:
+I've found this technique particularly useful when code-splitting your bundle and lazily loading code. For example, in React, it is common to implement route-based code-splitting. So that the user doesn't have to load the entire application upfront. Here's a visual example of a code-split application, that makes a network request for a JS file when changing routes:
 
 [example with spinner flashing]
 
-And here is the same example, but with a slight appearance delay added to the spinner.
+And here it is again, but with a slight appearance delay added to the spinner.
 
 [example with spinner delay]
 
@@ -86,7 +86,7 @@ Now our animation works as expected! Pictured below:
 
 ![spinner with delay](/images/posts/delay-loading-spinners/spinner2.webp)
 
-Here is the complete CSS:
+Here's the complete CSS:
 ```css
 .spinner {
   display: inline-block;
@@ -128,4 +128,4 @@ Here is the complete CSS:
 
 ## Wrapping up
 
-This is a nice and simple way to improve the user experience when content is expected to load very quickly. But you may not always want to delay displaying your loading states. React's new [Suspense API](https://reactjs.org/docs/concurrent-mode-suspense.html) (currently experimental), will allow us to solve this problem elegantly when it eventually launches.
+This is a nice and simple way to improve the user experience when content is expected to load very quickly. But you may not always want to delay displaying your loading states. React's new [Suspense for Data Fetching](https://reactjs.org/docs/concurrent-mode-suspense.html) (currently experimental), will allow us to solve this problem elegantly when it is eventually released.
