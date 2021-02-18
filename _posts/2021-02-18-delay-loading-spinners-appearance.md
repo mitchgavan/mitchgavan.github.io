@@ -120,4 +120,4 @@ Here's the complete CSS:
 
 ## Wrapping up
 
-This is a nice and simple way to improve the user experience when content is expected to load very quickly. But you may not always want to delay displaying your loading states. React's new [Suspense for Data Fetching](https://reactjs.org/docs/concurrent-mode-suspense.html) (currently experimental), will allow us to solve this problem elegantly when it is eventually released.
+This is a nice and simple way to improve the user experience when content is expected to load very quickly. But you may not always want to delay displaying your loading states. For React apps, the new [Suspense for Data Fetching](https://reactjs.org/docs/concurrent-mode-suspense.html) (currently experimental), will allow us to solve this problem elegantly when it is eventually released.
