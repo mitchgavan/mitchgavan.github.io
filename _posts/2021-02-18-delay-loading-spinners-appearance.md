@@ -2,18 +2,10 @@
 layout: post
 title: Delay the appearance of loading spinners with CSS
 description: Sometimes delaying the appearance of loading spinners can improve the user experience of your web apps.
-image: /images/posts/code-splitting-react.jpg
+image: /images/posts/delay-loading.jpg
 ---
 
 Web apps should provide a visual indicator when content is being loaded. But sometimes this content is loaded very quickly, causing loading spinners to flash in and out. Which isn't very useful or visually appealing. We could improve the user experience by not displaying the spinner at all in these cases. This also improves the perceived performance of the application. A simple way to achieve this is to introduce a slight delay before displaying the loading spinners.
-
-I've found this technique particularly useful when code-splitting your bundle and lazily loading code. For example, in React, it is common to implement route-based code-splitting. So that the user doesn't have to load the entire application upfront. Here's a visual example of a code-split application, that makes a network request for a JS file when changing routes:
-
-[example with spinner flashing]
-
-And here it is again, but with a slight appearance delay added to the spinner.
-
-[example with spinner delay]
 
 ## Spinner CSS
 
