@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Configure cache policy in AWS for React apps
+title: Configure a cache policy in AWS for React apps
 description: In this article, we’ll go through how to set up a caching policy for React single-page apps hosted on AWS (S3 and CloudFront)
 image: /images/posts/aws-react.jpg
 ---
@@ -21,17 +21,9 @@ To implement this, we'll define the cache policy by setting `Cache-Control` head
 
 Setting these headers can be done manually via the AWS console. But usually, our assets will be uploaded programmatically as part of a build pipeline. For this build step, we can use the [S3 sync](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html) command from the AWS CLI. For our case, we will need to do upload our files in two parts:
 
-1. Upload all files except for the `build/static` folder with a `Cache-Control` value of `no-cache`.
+1. Upload all files except for the `build/static` folder with a `Cache-Control` value of `no-cache`: `aws s3 sync --cache-control 'no-cache' --exclude 'static/**/*' . s3://yourappbucket/`
+1. Then upload the files in the `build/static` folder with a `Cache-Control` value of 1 year: `aws s3 sync --cache-control 'max-age=2592000' . s3://yourappbucket/`
 
-  ```text
-  aws s3 sync --cache-control 'no-cache' --exclude 'static/**/*' . s3://yourappbucket/
-  ```
-
-2. Then upload the files in the `build/static` folder with a `Cache-Control` value of 1 year.
-
-  ```text
-  aws s3 sync --cache-control 'max-age=2592000' . s3://yourappbucket/
-  ```
 *Note: Make sure you are inside the `build` folder when running these commands.*
 
 ## Review your perf gains
