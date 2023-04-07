@@ -18,6 +18,7 @@ module.exports = {
           'style-loader',
           // Translates CSS into CommonJS
           'css-loader',
+          'resolve-url-loader',
           // Compiles Sass to CSS
           'sass-loader',
         ],
