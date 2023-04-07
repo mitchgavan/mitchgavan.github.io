@@ -7,7 +7,7 @@ module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
   output: {
     filename: 'bundle.[contenthash].js',
-    path: path.resolve(__dirname, './webpack/'),
+    path: path.resolve(__dirname, './'),
   },
   module: {
     rules: [
@@ -18,14 +18,8 @@ module.exports = {
           'style-loader',
           // Translates CSS into CommonJS
           'css-loader',
-          'resolve-url-loader',
           // Compiles Sass to CSS
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true, // required for resolve-url-loader
-            },
-          },
+          'sass-loader',
         ],
       },
       {
