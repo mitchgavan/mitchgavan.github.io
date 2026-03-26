@@ -3,20 +3,81 @@
 //
 
 .pageTitle {
-  margin: 0 0 2.5rem;
-  text-align: center;
+  margin: 0 0 2rem;
   text-transform: uppercase;
   color: $grey;
   @include font-size(18px);
 
   @include bp(medium) {
-    margin: 0 0 3rem;
+    margin: 0 0 2rem;
   }
 }
 
 .projectTitle {
   margin-bottom: 2rem;
   text-align: center;
+}
+
+.selectedWork {
+  margin: 0 auto 4rem;
+
+  @include bp(medium) {
+    margin-bottom: 5rem;
+  }
+}
+
+.selectedWork__section {
+  margin-bottom: 3.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.selectedWork__title {
+  margin-bottom: 1.5rem;
+  font-family: $fontHeader;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $darkerGrey;
+  @include font-size(32px);
+
+  @include bp(medium) {
+    @include font-size(38px);
+  }
+}
+
+.selectedWork__eyebrow {
+  margin: 2rem 0 1rem;
+  font-family: $fontHeader;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $darkerGrey;
+  @include font-size(14px);
+}
+
+.selectedWork__list {
+  margin: 0;
+  padding-left: 1.25rem;
+
+  li {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.selectedWork__see,
+.selectedWork__intro {
+  margin-bottom: 0;
+}
+
+.selectedWork__section--earlier {
+  padding-top: 2rem;
+  border-top: 1px solid $lightestGrey;
+
+  @include bp(medium) {
+    padding-top: 2.5rem;
+  }
 }
 
 .item {

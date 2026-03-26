@@ -13,6 +13,7 @@
 
 .post--title {
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .post--date {
@@ -23,6 +24,10 @@
 
 .post--image {
   margin: 1rem 0;
+}
+
+.post--content h2 {
+  font-weight: 400;
 }
 
 blockquote {
