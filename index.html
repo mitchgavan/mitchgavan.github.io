@@ -1,33 +1,48 @@
 ---
 layout: homepage
-home: Software Engineer
+home: Senior Frontend Engineer
 ---
 
-<h2 class="pageTitle">Recent Posts</h2>
+<section class="homeIntro">
+  <div class="homeIntro__avatarWrap">
+    <img
+      src="{{ site.baseurl }}{{ site.avatar }}"
+      alt="Portrait of {{ site.name }}"
+      class="homeIntro__avatar"
+      width="180"
+      height="180"
+    />
+  </div>
 
-<div class="posts">
-  {% for post in site.posts limit: 5 %}
-    <article class="post">
+  <div class="homeIntro__content">
+    <h1 class="homeIntro__title">{{ site.name }}</h1>
+    <p class="homeIntro__lede">
+      Senior frontend engineer focused on design systems and frontend platforms
+      that scale across products, teams, and codebases.
+    </p>
 
-      <h2 class="post--title">
-      	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </h2>
-
-      <!--<img src="{{post.image}}" class="post--image" alt="{{post.title}}">-->
-
-      <div class="post--date">
-	      Posted on {{ post.date | date: "%B %e, %Y" }}
-	    </div>
-
-      <div class="post--content">
-        {{ post.content | truncatewords:70}}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="button">Read more →</a>
-    </article>
-  {% endfor %}
-</div>
-
-<div class="center">
-  <a href="{{ site.baseurl }}/blog">More posts&hellip;</a>
-</div>
+    <ul class="homeIntro__contacts" aria-label="Contact links">
+      <li>
+        <a href="mailto:{{ site.footer-links.email }}">Email</a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/{{ site.footer-links.github }}"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/mitch-gavan/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          LinkedIn
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
