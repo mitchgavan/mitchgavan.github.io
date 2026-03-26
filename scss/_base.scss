@@ -28,7 +28,7 @@ h5,
 h6 {
   font-family: $fontHeader;
   color: $darkerGrey;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.25;
   margin: 0.125rem 0 1.125rem;
   padding: 0;
@@ -47,7 +47,7 @@ h1 {
 }
 
 h2 {
-  @include font-size(36px);
+  @include font-size(32px);
 }
 
 h3 {

@@ -1,13 +1,129 @@
 ---
 layout: default
 permalink: /work/
-title: Work
+title: Selected Work
 ---
 
 <main id="main" role="main" class="main">
-  <div class="containerWide">
-    <h1 class="pageTitle">Recent Projects</h1>
+  <div class="container">
+    <div class="selectedWork">
+      <h1 class="pageTitle">Selected Work</h1>
 
+      <section class="selectedWork__section">
+        <h2 class="selectedWork__title">
+          Migrating from runtime CSS-in-JS to build-time styling
+        </h2>
+        <p>
+          At Atlassian, the design system relied on runtime CSS-in-JS, which
+          introduced performance overhead across large applications like Jira
+          and Confluence.
+        </p>
+        <p>
+          I contributed to a migration towards a build-time styling approach,
+          shifting styles to statically analyzable CSS. This required evolving
+          component patterns, ensuring compatibility with theming, and
+          supporting adoption across multiple teams and products.
+        </p>
+        <p>
+          A key part of the work involved coordinating rollout across large
+          codebases, balancing performance improvements with the need for safe,
+          incremental adoption.
+        </p>
+
+        <h3 class="selectedWork__eyebrow">Impact</h3>
+        <ul class="selectedWork__list">
+          <li>Reduced component render times</li>
+          <li>Improved p90 time-to-first-paint across products</li>
+          <li>
+            Established more maintainable and predictable styling patterns at
+            scale
+          </li>
+        </ul>
+      </section>
+
+      <section class="selectedWork__section">
+        <h2 class="selectedWork__title">Scaling theming with design tokens</h2>
+        <p>
+          I contributed to the rollout of design tokens across Atlassian's
+          design system, enabling consistent theming across products including
+          Jira and Confluence. This work helped support the introduction of
+          light and dark modes, while ensuring tokens could evolve safely over
+          time without breaking existing usage.
+        </p>
+        <p>
+          Beyond implementation, this involved thinking through versioning,
+          backwards compatibility, and how to roll out changes across a large
+          and diverse product ecosystem.
+        </p>
+
+        <h3 class="selectedWork__eyebrow">Focus areas</h3>
+        <ul class="selectedWork__list">
+          <li>Token adoption across products</li>
+          <li>Supporting light and dark themes</li>
+          <li>Safe evolution of tokens at scale</li>
+        </ul>
+
+        <p class="selectedWork__see">
+          See:
+          <a
+            href="https://atlassian.design/foundations/design-tokens/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Atlassian Design System - Design Tokens
+          </a>
+        </p>
+      </section>
+
+      <section class="selectedWork__section">
+        <h2 class="selectedWork__title">
+          Building a cross-product navigation system
+        </h2>
+        <p>
+          I worked on a new navigation system designed to be used across
+          multiple Atlassian products, including Jira and Confluence. My focus
+          was on building composable layout and navigation primitives that could
+          be consistently adopted while still allowing flexibility for different
+          product needs.
+        </p>
+        <p>
+          This included handling complex interaction patterns (such as nested
+          actions and popovers), while ensuring accessibility and a cohesive
+          user experience. A key challenge was designing components that worked
+          well across a wide range of use cases without becoming overly rigid or
+          overly flexible.
+        </p>
+
+        <h3 class="selectedWork__eyebrow">Focus areas</h3>
+        <ul class="selectedWork__list">
+          <li>Composable layout and navigation primitives</li>
+          <li>Accessibility and interaction design</li>
+          <li>Balancing consistency with product-level flexibility</li>
+        </ul>
+
+        <p class="selectedWork__see">
+          See:
+          <a
+            href="https://atlassian.design/components/navigation-system/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Atlassian Design System - Navigation System
+          </a>
+        </p>
+      </section>
+
+      <section class="selectedWork__section selectedWork__section--earlier">
+        <h2 class="selectedWork__title">Earlier work</h2>
+        <p class="selectedWork__intro">
+          Product-focused work from earlier in my career, building
+          customer-facing applications and frontend architecture.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <div class="containerWide">
     <div class="col-2">
       <div class="item">
         <a
@@ -26,7 +142,7 @@ title: Work
         </a>
         <h2 class="item--title">
           <a href="{{ site.baseurl }}/work/beteasy-styleguide/"
-            >BetEasy Style Guide</a
+            >BetEasy Component Library</a
           >
         </h2>
         <p class="item--description">
