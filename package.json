@@ -6,6 +6,8 @@
     "build": "run-s build:webpack build:jekyll",
     "build:jekyll": "bundle exec jekyll build",
     "build:webpack": "cross-env NODE_ENV=production webpack",
+    "preview": "run-s build:webpack preview:jekyll",
+    "preview:jekyll": "bundle exec jekyll serve --incremental",
     "start": "run-p start:webpack start:jekyll",
     "start:jekyll": "bundle exec jekyll serve --livereload --incremental",
     "start:webpack": "cross-env NODE_ENV=development webpack --watch"
