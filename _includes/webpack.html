@@ -1,3 +1,1 @@
-{% for js in site.static_files %} {% if js.path contains "webpack/bundle" %}
-<script src="{{ site.baseurl }}{{js.path}}"></script>
-{% endif %} {% endfor %}
+<script src="{{ site.baseurl }}/webpack/bundle.js"></script>

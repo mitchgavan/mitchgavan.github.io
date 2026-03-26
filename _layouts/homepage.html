@@ -2,52 +2,38 @@
 <html lang="en">
   {% include head.html %}
 
-  <body>
+  <body class="homepage">
     {% include webpack.html %}
-    <header class="header">
-      <div class="container">
-        <div class="header--container">
-          <img
-            src="{{ site.baseurl }}/images/logo.svg"
-            class="header--logo"
-            alt="logo"
-          />
-          <h1 class="header--title">{{ site.name }}</h1>
-          <h2 class="header--subTitle">Write code |> Have fun</h2>
+
+    <main class="home" id="main" role="main">
+      <aside class="homeRail" aria-label="Primary">
+        <div class="homeRail__inner">
+          <div class="homeRail__brand" aria-hidden="true">
+            {% include svg/logo.html %}
+          </div>
+
+          <div class="homeRail__content">
+            <nav class="homeRail__nav" aria-label="Homepage">
+              <a href="{{ site.baseurl }}/about/" class="homeRail__link">About</a>
+              <a href="{{ site.baseurl }}/blog/" class="homeRail__link">Blog</a>
+              <a href="{{ site.baseurl }}/work/" class="homeRail__link">Projects</a>
+            </nav>
+          </div>
+
+          <div class="homeRail__meta">
+            <p>&copy; {{ "now" | date: "%Y" }} {{ site.name }}</p>
+            <p>Melbourne, Australia</p>
+          </div>
         </div>
-      </div>
-      <a href="#iconNav" class="header--arrow bounce">Scroll Down</a>
-    </header>
+      </aside>
 
-    <nav id="iconNav" class="iconNav">
-      <ul>
-        <li>
-          <a href="{{ site.baseurl }}/blog/" class="iconNav--item">
-            <div class="icon-slurpee iconNav--item--icon"></div>
-            Blog
-          </a>
-        </li>
-        <li>
-          <a href="{{ site.baseurl }}/work/" class="iconNav--item">
-            <div class="icon-coffee iconNav--item--icon"></div>
-            Work
-          </a>
-        </li>
-        <li>
-          <a href="{{ site.baseurl }}/about/" class="iconNav--item">
-            <div class="icon-drink iconNav--item--icon"></div>
-            About
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <main id="main" role="main" class="main">
-      <div class="container">
-        {{ content }}
-      </div>
+      <section class="homePanel">
+        <div class="homePanel__inner">
+          {{ content }}
+        </div>
+      </section>
     </main>
 
-    {% include footer.html %} {% include analytics.html %}
+    {% include analytics.html %}
   </body>
 </html>
