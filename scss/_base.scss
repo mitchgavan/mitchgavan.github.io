@@ -6,14 +6,55 @@ html {
   font-size: 100%;
 }
 
+:root {
+  --color-bg: #{$white};
+  --color-surface: #{$white};
+  --color-surface-alt: #f6f4f0;
+  --color-text: #{$darkGrey};
+  --color-heading: #{$darkerGrey};
+  --color-muted: #{$grey};
+  --color-subtle: #{$lightGrey};
+  --color-border: #{$lightestGrey};
+  --color-border-strong: #{$lighterGrey};
+  --color-accent: #{$orange};
+  --color-accent-contrast: #{$white};
+  --color-selection-bg: #{$lightestGrey};
+  --color-selection-text: #{$black};
+  --color-code-inline-bg: #{$codeBg};
+  --color-card-overlay: rgba(255, 255, 255, 0.84);
+  --color-icon-filter: none;
+  --color-icon-opacity: 0.95;
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #161718;
+  --color-surface: #161718;
+  --color-surface-alt: #23262a;
+  --color-text: #f0e9df;
+  --color-heading: #fffaf2;
+  --color-muted: #d8d0c4;
+  --color-subtle: #b7aea2;
+  --color-border: #3a3d42;
+  --color-border-strong: #4b4f55;
+  --color-accent: #{$orange};
+  --color-accent-contrast: #161718;
+  --color-selection-bg: #373b41;
+  --color-selection-text: #f5efe6;
+  --color-code-inline-bg: #2a2d31;
+  --color-card-overlay: rgba(19, 21, 23, 0.66);
+  --color-icon-filter: invert(1) brightness(1.15);
+  --color-icon-opacity: 0.88;
+}
+
 body {
-  background: $white;
+  background: var(--color-bg);
   font-family: $fontBody;
   font-weight: 300;
   @include font-size(18px);
   line-height: 1.8;
-  color: $darkGrey;
+  color: var(--color-text);
   text-size-adjust: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
 
   &.default {
     padding-top: $headerHeight;
@@ -27,7 +68,7 @@ h4,
 h5,
 h6 {
   font-family: $fontHeader;
-  color: $darkerGrey;
+  color: var(--color-heading);
   font-weight: 700;
   line-height: 1.25;
   margin: 0.125rem 0 1.125rem;
@@ -64,15 +105,15 @@ p {
 
 a {
   color: inherit;
-  border-bottom: 1px solid $lighterGrey;
+  border-bottom: 1px solid var(--color-border-strong);
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
   &:hover,
   &:active {
-    color: $orange;
-    border-bottom-color: $orange;
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
   }
 }
 
@@ -128,10 +169,10 @@ img {
 
 // Specify the color of the selection
 ::-moz-selection {
-  color: $black;
-  background: $lightestGrey;
+  color: var(--color-selection-text);
+  background: var(--color-selection-bg);
 }
 ::selection {
-  color: $black;
-  background: $lightestGrey;
+  color: var(--color-selection-text);
+  background: var(--color-selection-bg);
 }

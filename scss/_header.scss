@@ -15,11 +15,11 @@ body.homepage {
 }
 
 .homeRail {
-  border-bottom: 1px solid $lightestGrey;
+  border-bottom: 1px solid var(--color-border);
 
   @include bp(large) {
     flex: 0 0 285px;
-    border-right: 1px solid $lightestGrey;
+    border-right: 1px solid var(--color-border);
     border-bottom: 0;
     display: flex;
     align-items: center;
@@ -59,7 +59,7 @@ body.homepage {
   border: 0;
   line-height: 0;
   align-self: flex-start;
-  color: $darkerGrey;
+  color: var(--color-text);
   isolation: isolate;
 
   &::before {
@@ -102,20 +102,24 @@ body.homepage {
   border: 0;
   font-family: $fontHeader;
   font-weight: 400;
-  color: $grey;
+  color: var(--color-muted);
   @include font-size(14px);
 }
 
 .homeRail__link-active {
-  color: $darkestGrey;
+  color: var(--color-heading);
 }
 
-.homeRail__meta {
+.homeRail__theme {
+  margin-bottom: 0.75rem;
+
+  @include bp(large) {
+    margin-bottom: 0.85rem;
+  }
+}
+
+.homeRail__footer {
   margin-top: auto;
-  font-family: $fontHeader;
-  color: $lightGrey;
-  @include font-size(13px);
-  line-height: 1.8;
 
   @include bp(large) {
     position: absolute;
@@ -123,6 +127,13 @@ body.homepage {
     bottom: 9rem;
     left: 3.5rem;
   }
+}
+
+.homeRail__meta {
+  font-family: $fontHeader;
+  color: var(--color-subtle);
+  @include font-size(13px);
+  line-height: 1.8;
 
   p {
     margin: 0;
@@ -210,7 +221,7 @@ body.homepage {
   border-radius: inherit;
   object-fit: cover;
   object-position: center;
-  background: $lightestGrey;
+  background: var(--color-surface-alt);
 }
 
 @keyframes homeAvatarBlob {
@@ -235,7 +246,7 @@ body.homepage {
   margin: 0 0 1rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: $black;
+  color: var(--color-heading);
   @include font-size(40px);
 
   @include bp(medium) {
@@ -245,7 +256,7 @@ body.homepage {
 
 .homeIntro__lede {
   margin: 0 0 1.5rem;
-  color: $grey;
+  color: var(--color-muted);
   @include font-size(18px);
 
   @include bp(medium) {
@@ -265,7 +276,7 @@ body.homepage {
     border: 0;
     font-family: $fontHeader;
     font-weight: 400;
-    color: $darkGrey;
+    color: var(--color-text);
     letter-spacing: 0.5px;
     @include font-size(13px);
   }
@@ -276,18 +287,33 @@ body.homepage {
   width: 100%;
   position: fixed;
   top: 0;
-  padding: 1rem;
-  background: $white;
-  border-bottom: 1px solid $lightestGrey;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
   transition: all 0.2s ease-in-out;
   z-index: 99;
   will-change: transform;
   @extend %clearfix;
+
+  @include bp(medium) {
+    padding: 0 1.25rem;
+  }
 }
 
 .headerSubpage-transparent {
   background: transparent;
   border-bottom: 0;
+}
+
+.headerSubpage__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.9rem;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .header--container {
@@ -319,7 +345,7 @@ body.homepage {
 
 .header--subTitle {
   margin: 0;
-  color: #563d29;
+  color: var(--color-muted);
   font-family: $fontBody;
   text-transform: lowercase;
   opacity: 0.8;
@@ -344,14 +370,13 @@ body.homepage {
 }
 
 .header--logo-subpage {
-  float: left;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 46px;
   height: 46px;
-  color: $darkerGrey;
+  color: var(--color-text);
   isolation: isolate;
   transition: color 0.2s ease-in-out;
 
@@ -381,7 +406,64 @@ body.homepage {
   }
 
   &:hover {
-    color: $orange;
+    color: var(--color-accent);
+  }
+}
+
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.themeToggle__icon {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.themeToggle__iconHalf {
+  fill: currentColor;
+}
+
+.themeToggle__iconRing {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+}
+
+.themeToggle__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.themeToggle--rail {
+  align-self: flex-start;
+}
+
+.themeToggle--nav {
+  .headerSubpage-transparent & {
+    color: $white;
   }
 }
 
@@ -389,4 +471,10 @@ body.homepage {
   height: 64vh;
   background: #543640 url('/images/header-about.jpg') no-repeat;
   background-size: cover;
+}
+
+:root[data-theme='dark'] {
+  .banner {
+    background-color: #2a201d;
+  }
 }

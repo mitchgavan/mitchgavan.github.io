@@ -10,17 +10,20 @@
         {% include svg/logo.html %}
       </a>
 
-      <nav class="nav">
-        <a href="{{ site.baseurl }}/blog/" class="nav--item nav--item-blog">
-          Blog
-        </a>
-        <a href="{{ site.baseurl }}/work/" class="nav--item nav--item-work">
-          Work
-        </a>
-        <a href="{{ site.baseurl }}/about/" class="nav--item nav--item-about">
-          About
-        </a>
-      </nav>
+      <div class="headerSubpage__actions">
+        <nav class="nav">
+          <a href="{{ site.baseurl }}/blog/" class="nav--item nav--item-blog">
+            Blog
+          </a>
+          <a href="{{ site.baseurl }}/work/" class="nav--item nav--item-work">
+            Work
+          </a>
+          <a href="{{ site.baseurl }}/about/" class="nav--item nav--item-about">
+            About
+          </a>
+        </nav>
+        {% include theme-toggle.html class="themeToggle--nav" %}
+      </div>
     </header>
 
     {{ content }} {% include footer.html %} {% include analytics.html %}

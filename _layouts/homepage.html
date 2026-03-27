@@ -20,9 +20,15 @@
             </nav>
           </div>
 
-          <div class="homeRail__meta">
-            <p>&copy; {{ "now" | date: "%Y" }} {{ site.name }}</p>
-            <p>Melbourne, Australia</p>
+          <div class="homeRail__footer">
+            <div class="homeRail__theme">
+              {% include theme-toggle.html class="themeToggle--rail" %}
+            </div>
+
+            <div class="homeRail__meta">
+              <p>&copy; {{ "now" | date: "%Y" }} {{ site.name }}</p>
+              <p>Melbourne, Australia</p>
+            </div>
           </div>
         </div>
       </aside>

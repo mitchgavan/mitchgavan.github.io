@@ -17,7 +17,7 @@
 }
 
 .post--date {
-  color: $grey;
+  color: var(--color-muted);
   margin-bottom: 1.75rem;
   @include font-size(16px);
 }
@@ -32,12 +32,12 @@
 
 blockquote {
   margin: 1.8em .8em;
-  border-left: 2px solid $grey;
+  border-left: 2px solid var(--color-border-strong);
   padding: 0.1em 1em;
   font-style: italic;
 
   p {
     margin: 0;
-    color: $grey;
+    color: var(--color-muted);
   }
 }

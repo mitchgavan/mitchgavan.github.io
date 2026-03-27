@@ -5,7 +5,7 @@
 .pageTitle {
   margin: 0 0 2rem;
   text-transform: uppercase;
-  color: $grey;
+  color: var(--color-muted);
   @include font-size(18px);
 
   @include bp(medium) {
@@ -39,7 +39,7 @@
   font-family: $fontHeader;
   font-weight: 700;
   line-height: 1.2;
-  color: $darkerGrey;
+  color: var(--color-heading);
   @include font-size(32px);
 
   @include bp(medium) {
@@ -53,7 +53,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: $darkerGrey;
+  color: var(--color-heading);
   @include font-size(14px);
 }
 
@@ -73,7 +73,7 @@
 
 .selectedWork__section--earlier {
   padding-top: 2rem;
-  border-top: 1px solid $lightestGrey;
+  border-top: 1px solid var(--color-border);
 
   @include bp(medium) {
     padding-top: 2.5rem;
@@ -97,7 +97,7 @@
   }
 
   &:hover .item--hero--overlay {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--color-card-overlay);
   }
 
   &:hover .item--hero--overlay--cta {
@@ -124,8 +124,8 @@
   transition: opacity 0.3s ease-in-out;
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  background-color: $darkGrey;
-  color: $white;
+  background-color: var(--color-heading);
+  color: var(--color-bg);
   font-family: $fontHeader;
   font-weight: 400;
   text-transform: uppercase;
@@ -140,7 +140,7 @@
 
 .item--description {
   @include font-size(16px);
-  color: $grey;
+  color: var(--color-muted);
 }
 
 .mockup,

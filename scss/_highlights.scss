@@ -8,8 +8,8 @@
   .lineno {
     margin-right: 0.75rem;
     padding-right: 0.5rem;
-    border-right: 1px solid $darkGrey;
-    color: $grey;
+    border-right: 1px solid var(--color-border-strong);
+    color: var(--color-muted);
   }
 }
 
@@ -19,7 +19,7 @@ code {
 }
 
 p code {
-  background-color: $codeBg;
+  background-color: var(--color-code-inline-bg);
   padding: 0rem 0.375rem;
 }
 
