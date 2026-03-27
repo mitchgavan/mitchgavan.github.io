@@ -7,6 +7,12 @@
   margin: 0 auto 1rem;
   padding: 0;
 
+  .icon-social {
+    filter: var(--color-icon-filter);
+    opacity: var(--color-icon-opacity);
+    transition: filter 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+
   li {
   	display: inline-block;
   	margin: 0 0.5rem;
@@ -17,4 +23,3 @@
   	}
   }
 }
-

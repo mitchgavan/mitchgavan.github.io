@@ -1,0 +1,26 @@
+<button
+  type="button"
+  class="themeToggle {% if include.class %}{{ include.class }}{% endif %}"
+  data-theme-toggle
+  aria-pressed="false"
+  aria-label="Switch to dark mode"
+>
+  <svg
+    class="themeToggle__icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      class="themeToggle__iconHalf"
+      d="M12 3A9 9 0 0 0 12 21L12 3Z"
+    />
+    <circle
+      class="themeToggle__iconRing"
+      cx="12"
+      cy="12"
+      r="9"
+    />
+  </svg>
+  <span class="themeToggle__label" data-theme-toggle-label>Dark mode</span>
+</button>

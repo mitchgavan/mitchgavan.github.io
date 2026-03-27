@@ -2,6 +2,32 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+
+  <script>
+    (function () {
+      var key = 'theme-preference';
+      var root = document.documentElement;
+      var storedTheme = null;
+
+      try {
+        storedTheme = localStorage.getItem(key);
+      } catch (error) {
+        storedTheme = null;
+      }
+
+      var theme =
+        storedTheme === 'dark' || storedTheme === 'light'
+          ? storedTheme
+          : window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+
+      root.setAttribute('data-theme', theme);
+      root.style.colorScheme = theme;
+    })();
+  </script>
 
   <title>
     {% if page.title %}{{ page.title }} – {% endif %} {{ site.name }} {% if

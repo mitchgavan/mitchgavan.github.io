@@ -3,12 +3,12 @@
 //
 
 .nav {
-  position: absolute;
-  top: 1.5rem;
-  right: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 
   @include bp(medium) {
-    right: 1.25rem;
+    justify-content: flex-end;
   }
 }
 
@@ -21,10 +21,10 @@
   @include font-size(14px);
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: $darkerGrey;
+  color: var(--color-heading);
 
   &:hover {
-    color: $orange;
+    color: var(--color-accent);
   }
 
   .headerSubpage-transparent & {
@@ -36,7 +36,7 @@
 .selectedwork .nav--item-work,
 .blog .nav--item-blog,
 .alittleaboutme .nav--item-about {
-  color: $orange;
+  color: var(--color-accent);
 }
 
 .iconNav {
