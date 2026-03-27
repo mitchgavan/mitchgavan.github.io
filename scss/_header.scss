@@ -59,7 +59,7 @@ body.homepage {
   border: 0;
   line-height: 0;
   align-self: flex-start;
-  color: var(--color-heading);
+  color: var(--color-text);
   isolation: isolate;
 
   &::before {
@@ -111,19 +111,15 @@ body.homepage {
 }
 
 .homeRail__theme {
-  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
 
   @include bp(large) {
-    margin-top: 1.5rem;
+    margin-bottom: 0.85rem;
   }
 }
 
-.homeRail__meta {
+.homeRail__footer {
   margin-top: auto;
-  font-family: $fontHeader;
-  color: var(--color-subtle);
-  @include font-size(13px);
-  line-height: 1.8;
 
   @include bp(large) {
     position: absolute;
@@ -131,6 +127,13 @@ body.homepage {
     bottom: 9rem;
     left: 3.5rem;
   }
+}
+
+.homeRail__meta {
+  font-family: $fontHeader;
+  color: var(--color-subtle);
+  @include font-size(13px);
+  line-height: 1.8;
 
   p {
     margin: 0;
@@ -284,13 +287,19 @@ body.homepage {
   width: 100%;
   position: fixed;
   top: 0;
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   transition: all 0.2s ease-in-out;
   z-index: 99;
   will-change: transform;
   @extend %clearfix;
+
+  @include bp(medium) {
+    padding: 0 1.25rem;
+  }
 }
 
 .headerSubpage-transparent {
@@ -299,16 +308,12 @@ body.homepage {
 }
 
 .headerSubpage__actions {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.9rem;
-
-  @include bp(medium) {
-    right: 1.25rem;
-  }
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .header--container {
@@ -365,14 +370,13 @@ body.homepage {
 }
 
 .header--logo-subpage {
-  float: left;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 46px;
   height: 46px;
-  color: var(--color-heading);
+  color: var(--color-text);
   isolation: isolate;
   transition: color 0.2s ease-in-out;
 

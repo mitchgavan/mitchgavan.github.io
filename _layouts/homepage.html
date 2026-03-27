@@ -18,14 +18,17 @@
               <a href="{{ site.baseurl }}/blog/" class="homeRail__link">Blog</a>
               <a href="{{ site.baseurl }}/work/" class="homeRail__link">Work</a>
             </nav>
+          </div>
+
+          <div class="homeRail__footer">
             <div class="homeRail__theme">
               {% include theme-toggle.html class="themeToggle--rail" %}
             </div>
-          </div>
 
-          <div class="homeRail__meta">
-            <p>&copy; {{ "now" | date: "%Y" }} {{ site.name }}</p>
-            <p>Melbourne, Australia</p>
+            <div class="homeRail__meta">
+              <p>&copy; {{ "now" | date: "%Y" }} {{ site.name }}</p>
+              <p>Melbourne, Australia</p>
+            </div>
           </div>
         </div>
       </aside>
