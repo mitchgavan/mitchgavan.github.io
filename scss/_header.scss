@@ -88,7 +88,7 @@ body.homepage {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1.25rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 
   @include bp(large) {
     flex-direction: column;
@@ -111,17 +111,16 @@ body.homepage {
 }
 
 .homeRail__theme {
-  margin-bottom: 0.75rem;
-
   @include bp(large) {
     margin-bottom: 0.85rem;
   }
 }
 
 .homeRail__footer {
-  margin-top: auto;
+  margin-top: 1rem;
 
   @include bp(large) {
+    margin-top: auto;
     position: absolute;
     right: 3.5rem;
     bottom: 9rem;
