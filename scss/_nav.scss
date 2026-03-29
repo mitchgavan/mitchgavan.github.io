@@ -28,7 +28,7 @@
   }
 
   .headerSubpage-transparent & {
-    color: $white;
+    color: var(--color-nav-transparent);
   }
 }
 
@@ -42,7 +42,7 @@
 .iconNav {
   margin: 0 auto;
   padding: 2rem 0;
-  border-bottom: 1px solid $lightestGrey;
+  border-bottom: 1px solid var(--color-border);
   text-align: center;
 
   @include bp(medium) {

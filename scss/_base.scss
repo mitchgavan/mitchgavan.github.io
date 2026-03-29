@@ -7,21 +7,26 @@ html {
 }
 
 :root {
-  --color-bg: #{$white};
-  --color-surface: #{$white};
+  --color-bg: #fdfdfd;
+  --color-surface: #fdfdfd;
   --color-surface-alt: #f6f4f0;
-  --color-text: #{$darkGrey};
-  --color-heading: #{$darkerGrey};
-  --color-muted: #{$grey};
-  --color-subtle: #{$lightGrey};
-  --color-border: #{$lightestGrey};
-  --color-border-strong: #{$lighterGrey};
-  --color-accent: #{$orange};
-  --color-accent-contrast: #{$white};
-  --color-selection-bg: #{$lightestGrey};
-  --color-selection-text: #{$black};
-  --color-code-inline-bg: #{$codeBg};
-  --color-card-overlay: rgba(255, 255, 255, 0.84);
+  --color-text: #444444;
+  --color-heading: #333333;
+  --color-muted: #666666;
+  --color-subtle: #999999;
+  --color-border: #dddddd;
+  --color-border-strong: #bbbbbb;
+  --color-accent: #14b8a6;
+  --color-accent-contrast: #fdfdfd;
+  --color-selection-bg: #dddddd;
+  --color-selection-text: #000000;
+  --color-code-inline-bg: #efefef;
+  --color-card-overlay: rgba(253, 253, 253, 0.84);
+  --color-avatar-outline: rgba(51, 51, 51, 0.22);
+  --color-avatar-highlight: rgba(253, 253, 253, 0.1);
+  --color-nav-transparent: #fdfdfd;
+  --color-banner-title: rgba(253, 253, 253, 0.5);
+  --color-banner-bg: #543640;
   --color-icon-filter: none;
   --color-icon-opacity: 0.95;
 }
@@ -36,12 +41,17 @@ html {
   --color-subtle: #b7aea2;
   --color-border: #3a3d42;
   --color-border-strong: #4b4f55;
-  --color-accent: #{$orange};
+  --color-accent: #14b8a6;
   --color-accent-contrast: #161718;
   --color-selection-bg: #373b41;
   --color-selection-text: #f5efe6;
   --color-code-inline-bg: #2a2d31;
   --color-card-overlay: rgba(19, 21, 23, 0.66);
+  --color-avatar-outline: rgba(255, 250, 242, 0.16);
+  --color-avatar-highlight: rgba(255, 250, 242, 0.12);
+  --color-nav-transparent: #fffaf2;
+  --color-banner-title: rgba(255, 250, 242, 0.56);
+  --color-banner-bg: #2a201d;
   --color-icon-filter: invert(1) brightness(1.15);
   --color-icon-opacity: 0.88;
 }

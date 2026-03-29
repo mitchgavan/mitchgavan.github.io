@@ -188,7 +188,7 @@ body.homepage {
     content: '';
     position: absolute;
     inset: 0;
-    border: 8px solid rgba($darkerGrey, 0.22);
+    border: 8px solid var(--color-avatar-outline);
     border-radius: inherit;
     mix-blend-mode: multiply;
     pointer-events: none;
@@ -199,7 +199,7 @@ body.homepage {
     content: '';
     position: absolute;
     inset: 8px;
-    border: 1px solid rgba($white, 0.1);
+    border: 1px solid var(--color-avatar-highlight);
     border-radius: inherit;
     pointer-events: none;
     z-index: 3;
@@ -389,7 +389,7 @@ body.homepage {
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-banner-title);
   @include font-size(26px);
 }
 
@@ -462,10 +462,11 @@ body.homepage {
   }
 
   .headerSubpage-transparent & {
-    color: $white;
+    color: var(--color-nav-transparent);
   }
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: var(--color-accent);
   }
 }
@@ -484,7 +485,8 @@ body.homepage {
   cursor: pointer;
   transition: color 0.2s ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: var(--color-accent);
   }
 }
@@ -523,18 +525,17 @@ body.homepage {
 
 .themeToggle--nav {
   .headerSubpage-transparent & {
-    color: $white;
+    color: var(--color-nav-transparent);
+  }
+
+  .headerSubpage-transparent &:hover,
+  .headerSubpage-transparent &:focus-visible {
+    color: var(--color-accent);
   }
 }
 
 .banner {
   height: 64vh;
-  background: #543640 url('/images/header-about.jpg') no-repeat;
+  background: var(--color-banner-bg) url('/images/header-about.jpg') no-repeat;
   background-size: cover;
-}
-
-:root[data-theme='dark'] {
-  .banner {
-    background-color: #2a201d;
-  }
 }
