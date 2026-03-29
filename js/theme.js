@@ -1,12 +1,12 @@
-var STORAGE_KEY = 'theme-preference';
-var mediaQuery =
+const STORAGE_KEY = 'theme-preference';
+const mediaQuery =
   typeof window !== 'undefined' && window.matchMedia
     ? window.matchMedia('(prefers-color-scheme: dark)')
     : null;
 
-var getStoredTheme = function () {
+const getStoredTheme = () => {
   try {
-    var storedTheme = localStorage.getItem(STORAGE_KEY);
+    const storedTheme = localStorage.getItem(STORAGE_KEY);
     return storedTheme === 'dark' || storedTheme === 'light'
       ? storedTheme
       : null;
@@ -15,27 +15,25 @@ var getStoredTheme = function () {
   }
 };
 
-var getSystemTheme = function () {
-  return mediaQuery && mediaQuery.matches ? 'dark' : 'light';
-};
+const getSystemTheme = () => (mediaQuery && mediaQuery.matches ? 'dark' : 'light');
 
-var setTheme = function (theme) {
-  var root = document.documentElement;
+const setTheme = theme => {
+  const root = document.documentElement;
 
   root.setAttribute('data-theme', theme);
   root.style.colorScheme = theme;
 };
 
-var updateToggles = function (theme) {
-  var nextTheme = theme === 'dark' ? 'light' : 'dark';
-  var label = nextTheme === 'dark' ? 'Dark mode' : 'Light mode';
-  var toggles = document.querySelectorAll('[data-theme-toggle]');
+const updateToggles = theme => {
+  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+  const label = nextTheme === 'dark' ? 'Dark mode' : 'Light mode';
+  const toggles = document.querySelectorAll('[data-theme-toggle]');
 
-  toggles.forEach(function (toggle) {
+  toggles.forEach(toggle => {
     toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
     toggle.setAttribute('aria-label', 'Switch to ' + nextTheme + ' mode');
 
-    var toggleLabel = toggle.querySelector('[data-theme-toggle-label]');
+    const toggleLabel = toggle.querySelector('[data-theme-toggle-label]');
 
     if (toggleLabel) {
       toggleLabel.textContent = label;
@@ -43,7 +41,7 @@ var updateToggles = function (theme) {
   });
 };
 
-var applyTheme = function (theme, persist) {
+const applyTheme = (theme, persist) => {
   setTheme(theme);
   updateToggles(theme);
 
@@ -56,24 +54,24 @@ var applyTheme = function (theme, persist) {
   }
 };
 
-var initTheme = function () {
-  var currentTheme =
+const initTheme = () => {
+  const currentTheme =
     document.documentElement.getAttribute('data-theme') || getSystemTheme();
 
   updateToggles(currentTheme);
 
-  document.querySelectorAll('[data-theme-toggle]').forEach(function (toggle) {
-    toggle.addEventListener('click', function () {
-      var activeTheme =
+  document.querySelectorAll('[data-theme-toggle]').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const activeTheme =
         document.documentElement.getAttribute('data-theme') || getSystemTheme();
-      var nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+      const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
 
       applyTheme(nextTheme, true);
     });
   });
 
   if (mediaQuery) {
-    var handleChange = function () {
+    const handleChange = () => {
       if (!getStoredTheme()) {
         applyTheme(getSystemTheme(), false);
       }
@@ -87,4 +85,4 @@ var initTheme = function () {
   }
 };
 
-module.exports = initTheme;
+export default initTheme;

@@ -1,84 +1,80 @@
-var $ = require('jquery');
+const NavToggle = () => {
+  const body = document.body;
+  const navbar = document.getElementById('nav');
 
-var NavToggle = function () {
-  var didScroll;
-  var lastScrollTop = 0;
-  var delta = 5;
-  var $body = $('body');
-  var $navbar = $('#nav');
-  var navbarHeight = $navbar.outerHeight();
-  var $banner = $('#banner');
-  var bannerHeight = $banner.outerHeight();
-
-  var bindScrollAction = $(window).scroll(function (event) {
-    didScroll = true;
-  });
-
-  var checkScroll = function () {
-    if (didScroll) {
-      hasScrolled();
-      didScroll = false;
-    }
-  };
-
-  var checkScrollAlt = function () {
-    if (didScroll) {
-      hasScrolledAlt();
-      didScroll = false;
-    }
-  };
-
-  if ($body.hasClass('default')) {
-    var scrollInterval = setInterval(checkScroll, 250);
-  } else {
-    var scrollIntervalAlt = setInterval(checkScrollAlt, 250);
+  if (!body || !navbar) {
+    return;
   }
 
-  var hasScrolled = function () {
-    var st = $(this).scrollTop();
+  const banner = document.getElementById('banner');
+  const isDefaultPage = body.classList.contains('default');
+  const delta = 5;
+  let lastScrollTop = window.scrollY || window.pageYOffset || 0;
+  let navbarHeight = navbar.offsetHeight;
+  let bannerHeight = banner ? banner.offsetHeight : 0;
+  let ticking = false;
 
-    // Make sure they scroll more than delta
-    if (Math.abs(lastScrollTop - st) <= delta) return;
+  const updateMeasurements = () => {
+    navbarHeight = navbar.offsetHeight;
+    bannerHeight = banner ? banner.offsetHeight : 0;
+  };
 
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight) {
-      // Scroll Down
-      $navbar.addClass('is-navUp');
-    } else {
-      // Scroll Up
-      if (st + $(window).height() < $(document).height()) {
-        $navbar.removeClass('is-navUp');
+  const getPageHeight = () => document.documentElement.scrollHeight;
+
+  const hasScrolled = scrollTop => {
+    if (Math.abs(lastScrollTop - scrollTop) <= delta) {
+      return;
+    }
+
+    if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
+      navbar.classList.add('is-navUp');
+    } else if (scrollTop + window.innerHeight < getPageHeight()) {
+      navbar.classList.remove('is-navUp');
+    }
+
+    lastScrollTop = scrollTop;
+  };
+
+  const hasScrolledAlt = scrollTop => {
+    if (Math.abs(lastScrollTop - scrollTop) <= delta) {
+      return;
+    }
+
+    if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
+      navbar.classList.add('is-navUp');
+    } else if (scrollTop + window.innerHeight < getPageHeight()) {
+      navbar.classList.remove('is-navUp', 'headerSubpage-transparent');
+
+      if (scrollTop < bannerHeight) {
+        navbar.classList.add('headerSubpage-transparent');
       }
     }
 
-    lastScrollTop = st;
+    lastScrollTop = scrollTop;
   };
 
-  var hasScrolledAlt = function () {
-    var st = $(this).scrollTop();
-
-    // Make sure they scroll more than delta
-    if (Math.abs(lastScrollTop - st) <= delta) return;
-
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight) {
-      // Scroll Down
-      $navbar.addClass('is-navUp');
-    } else {
-      // Scroll Up
-      if (st + $(window).height() < $(document).height()) {
-        $navbar.removeClass('is-navUp headerSubpage-transparent');
-
-        if (st < bannerHeight) {
-          $navbar.addClass('headerSubpage-transparent');
-        }
-      }
+  const handleScroll = () => {
+    if (ticking) {
+      return;
     }
 
-    lastScrollTop = st;
+    ticking = true;
+
+    window.requestAnimationFrame(() => {
+      const scrollTop = window.scrollY || window.pageYOffset || 0;
+
+      if (isDefaultPage) {
+        hasScrolled(scrollTop);
+      } else {
+        hasScrolledAlt(scrollTop);
+      }
+
+      ticking = false;
+    });
   };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', updateMeasurements);
 };
 
-module.exports = NavToggle;
+export default NavToggle;

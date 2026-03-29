@@ -13,8 +13,7 @@
     "start:webpack": "cross-env NODE_ENV=development webpack --watch"
   },
   "dependencies": {
-    "fastclick": "^1.0.6",
-    "jquery": "^3.5.1"
+    "fastclick": "^1.0.6"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
