@@ -273,12 +273,72 @@ body.homepage {
   list-style: none;
 
   a {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.12rem;
     border: 0;
     font-family: $fontHeader;
     font-weight: 400;
-    color: var(--color-text);
+    color: var(--color-muted);
     letter-spacing: 0.5px;
+    transform: translateY(0);
+    transition:
+      color 0.18s ease,
+      transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
     @include font-size(13px);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition:
+        transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.18s ease;
+      opacity: 0;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-accent);
+      transform: translateY(-2px);
+
+      &::after {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeIntro__contacts a {
+    transition: color 0.18s ease;
+
+    &::after {
+      transition: opacity 0.18s ease;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      transform: none;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform: scaleX(1);
+      opacity: 1;
+    }
   }
 }
 
