@@ -10,7 +10,7 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--color-subtle);
+  color: var(--color-meta);
   @include font-size(13px);
 
   @include bp(large) {
