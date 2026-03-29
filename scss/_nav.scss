@@ -22,13 +22,20 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--color-heading);
+  transition: color 0.2s ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: var(--color-accent);
   }
 
   .headerSubpage-transparent & {
     color: var(--color-nav-transparent);
+  }
+
+  .headerSubpage-transparent &:hover,
+  .headerSubpage-transparent &:focus-visible {
+    color: var(--color-accent);
   }
 }
 
