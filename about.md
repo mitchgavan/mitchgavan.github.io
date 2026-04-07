@@ -4,7 +4,7 @@ title: A little about me
 permalink: /about/
 ---
 
-I’m a senior frontend engineer focused on design systems and frontend platforms.
+I’m a senior software engineer focused on design systems and frontend platforms.
 
 Most recently, I spent over three years at Atlassian on the design system team, building shared UI infrastructure used across products like Jira and Confluence. My work centred on platform-level improvements at scale. Helping evolve the systems that thousands of engineers rely on to build consistent, high-quality user experiences.
 
